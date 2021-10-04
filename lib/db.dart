@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:flutter/foundation.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -9,7 +10,7 @@ class DatabaseHandler {
       join(path, 'dzikir_database.db'),
       onCreate: (database, version) async {
         await database.execute(
-          'CREATE TABLE dzikirs(id INTEGER PRIMARY KEY, name TEXT, qty INTEGER, timer INTEGER)',
+          'CREATE TABLE dzikirs(id INTEGER AUTOINCREMENT PRIMARY KEY NOT NULL, name TEXT, qty INTEGER, timer INTEGER)',
         );
       },
       version: 1,
@@ -17,6 +18,7 @@ class DatabaseHandler {
   }
 
   Future<void> deleteUser(int id) async {
+    print(id);
     final db = await initializeDB();
     await db.delete(
       'dzikirs',
@@ -31,6 +33,7 @@ class DatabaseHandler {
     for (var dzikir in dzikirs) {
       result = await db.insert('dzikirs', dzikir.toMap());
     }
+    print(result);
     return result;
   }
 
@@ -38,6 +41,7 @@ class DatabaseHandler {
     final Database db = await initializeDB();
     final List<Map<String, dynamic>> maps = await db.query('dzikirs');
     // return queryResult.map((e) => Dzikir.fromMap(e)).toList();
+    print(maps);
     return List.generate(maps.length, (i) {
       return Dzikir(
         id: maps[i]['id'],
@@ -114,31 +118,25 @@ class DatabaseHandler {
 // }
 
 class Dzikir {
-  final int id;
   final String name;
   final int qty;
   final int timer;
+  final int? id;
 
-  Dzikir({
-    required this.id,
-    required this.name,
-    required this.qty,
-    required this.timer,
-  });
+  Dzikir({required this.name, required this.qty, required this.timer, this.id});
 
   // Convert a Dog into a Map. The keys must correspond to the names of the
   // columns in the database.
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'name': name,
       'qty': qty,
       'timer': timer,
+      'id': id,
     };
   }
 
   // Implement toString to make it easier to see information about
-  // each dog when using the print statement.
   @override
   String toString() {
     return 'Dzikir{id: $id, name: $name, qty: $qty, timer: $timer}';

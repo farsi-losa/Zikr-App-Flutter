@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dzikirapp/db.dart';
-import 'package:dzikirapp/component/itemListDzikir.dart';
+// import 'package:dzikirapp/component/itemListDzikir.dart';
+import 'package:dzikirapp/component/dialogAddDzikir.dart';
 
 class AppHome extends StatefulWidget {
   AppHome({Key? key}) : super(key: key);
@@ -10,7 +11,6 @@ class AppHome extends StatefulWidget {
 
 class _AppHome extends State<AppHome> {
   // This widget is the root of your application.
-  int _counter = 0;
   late final Future<List<Dzikir>> dzikirList;
   late DatabaseHandler handler;
 
@@ -22,20 +22,16 @@ class _AppHome extends State<AppHome> {
   void initState() {
     super.initState();
     this.handler = DatabaseHandler();
-    // this.handler.initializeDB().whenComplete(() async {
-    //   // await this.addUsers();
-    //   setState(() {});
-    // });
   }
 
-  Future<int> addUsers() async {
-    setState(() {
-      _counter++;
+  void _showAddDzikirModal() {
+    showDialog(
+      context: context,
+      builder: (context) => DialogAddDzikir(),
+    ).then((value) {
+      print(value);
+      setState(() {});
     });
-    Dzikir firstDzikir =
-        Dzikir(id: _counter, name: 'Alhamdulillah', qty: 35, timer: 1000);
-    List<Dzikir> listOfDzikirs = [firstDzikir];
-    return await this.handler.insertUser(listOfDzikirs);
   }
 
   @override
@@ -89,12 +85,12 @@ class _AppHome extends State<AppHome> {
                                   alignment: Alignment.centerRight,
                                   child: Icon(Icons.delete_forever),
                                 ),
-                                key: ValueKey<int>(snapshot.data![index].id),
+                                key: ValueKey<int>(snapshot.data![index].id!),
                                 onDismissed:
                                     (DismissDirection direction) async {
                                   await this
                                       .handler
-                                      .deleteUser(snapshot.data![index].id);
+                                      .deleteUser(snapshot.data![index].id!);
                                   setState(() {
                                     snapshot.data!
                                         .remove(snapshot.data![index]);
@@ -167,7 +163,7 @@ class _AppHome extends State<AppHome> {
             }),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            this.addUsers();
+            _showAddDzikirModal();
           },
           child: Icon(Icons.add),
         ),

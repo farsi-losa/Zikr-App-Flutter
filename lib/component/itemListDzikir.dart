@@ -35,9 +35,9 @@ class _ItemListState extends State<ItemList> {
                     padding: EdgeInsets.symmetric(horizontal: 10.0),
                     child: Icon(Icons.delete_forever),
                   ),
-                  key: ValueKey<int>(snapshot.data![index].id),
+                  key: ValueKey<int>(index),
                   onDismissed: (DismissDirection direction) async {
-                    await this.handler.deleteUser(snapshot.data![index].id);
+                    // await this.handler.deleteUser(snapshot.data![index].id);
                     setState(() {
                       snapshot.data!.remove(snapshot.data![index]);
                     });
