@@ -85,106 +85,113 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
 
   @override
   Widget build(BuildContext context) {
-    return AlertDialog(
-      content: Container(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: <Widget>[
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                'Dzikir name',
-                style: TextStyle(color: Color(0xff407C60)),
-              ),
+    return Padding(
+      padding: const EdgeInsets.all(40),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              'Dzikir name',
+              style: TextStyle(color: Color(0xff407C60)),
             ),
-            Padding(
-              padding: EdgeInsets.all(2.0),
-              child: TextField(
-                controller: txtName,
-                onChanged: (text) {
-                  _inputNameChange(text);
-                },
-              ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(2.0),
+            child: TextField(
+              controller: txtName,
+              onChanged: (text) {
+                _inputNameChange(text);
+              },
             ),
-            Padding(
-              padding: EdgeInsets.all(2.0),
-              child: Text(
-                'Dzikir quantity',
-                style: TextStyle(color: Color(0xff407C60)),
-              ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(2.0),
+            child: Text(
+              'Dzikir quantity',
+              style: TextStyle(color: Color(0xff407C60)),
             ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: TextField(
-                controller: txtQty,
-                keyboardType: TextInputType.number,
-                onChanged: (text) {
-                  _inputQtyChange(text.length > 0 ? int.parse(text) : 0);
-                },
-              ),
+          ),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: TextField(
+              controller: txtQty,
+              keyboardType: TextInputType.number,
+              onChanged: (text) {
+                _inputQtyChange(text.length > 0 ? int.parse(text) : 0);
+              },
             ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text('Set Timer'),
+          ),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text('Set Timer'),
+          ),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: _timerStart
+                      ? Center(
+                          child: CircularProgressIndicator(
+                            backgroundColor: Color(0xff93BC9C),
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                Color(0xff24573F)),
+                          ),
+                        )
+                      : Text('$_timerLength ms'),
+                ),
+                Expanded(
+                  child: (_timerLength > 0 && !_timerStart)
+                      ? TextButton(
+                          onPressed: _resetTimer,
+                          child: Icon(Icons.loop_rounded,
+                              color: Color(0xff93BC9C)),
+                        )
+                      : SizedBox(),
+                ),
+                Expanded(
+                  child: ElevatedButton(
+                      style:
+                          ElevatedButton.styleFrom(primary: Color(0xff93BC9C)),
+                      onPressed: _handleTimerCLick,
+                      child: Text(_timerStart ? 'stop' : 'start')),
+                ),
+              ],
             ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Expanded(
-                    child: _timerStart
-                        ? Center(
-                            child: CircularProgressIndicator(
-                              backgroundColor: Color(0xff93BC9C),
-                              valueColor: AlwaysStoppedAnimation<Color>(
-                                  Color(0xff24573F)),
-                            ),
-                          )
-                        : Text('$_timerLength ms'),
+          ),
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              '*please start then saying your dzikir and stop after finish',
+              style: TextStyle(fontSize: 12),
+            ),
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(color: Color(0xffB64839)),
                   ),
-                  Expanded(
-                    child: (_timerLength > 0 && !_timerStart)
-                        ? TextButton(
-                            onPressed: _resetTimer,
-                            child: Icon(Icons.loop_rounded,
-                                color: Color(0xff93BC9C)),
-                          )
-                        : SizedBox(),
-                  ),
-                  Expanded(
-                    child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            primary: Color(0xff93BC9C)),
-                        onPressed: _handleTimerCLick,
-                        child: Text(_timerStart ? 'stop' : 'start')),
-                  ),
-                ],
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
-                  '*please start then saying your dzikir and stop after finish'),
-            ),
-          ],
-        ),
+              Expanded(
+                child: TextButton(
+                  onPressed: () => this.addUsers(),
+                  child: Text(
+                    'Save',
+                    style: TextStyle(color: Color(0xff407C60)),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ],
       ),
-      actions: <Widget>[
-        TextButton(
-          onPressed: () => Navigator.of(context).pop(),
-          child: Text(
-            'Cancel',
-            style: TextStyle(color: Color(0xffB64839)),
-          ),
-        ),
-        TextButton(
-          onPressed: () => this.addUsers(),
-          child: Text(
-            'Save',
-            style: TextStyle(color: Color(0xff407C60)),
-          ),
-        ),
-      ],
     );
   }
 }
