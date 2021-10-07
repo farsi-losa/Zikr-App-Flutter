@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dzikirapp/db.dart';
 import 'package:dzikirapp/component/dialogAddDzikir.dart';
 import 'package:dzikirapp/component/slideMenu.dart';
-import 'package:dzikirapp/pages/dzikir_counter.dart';
+import 'package:dzikirapp/component/route.dart';
 
 class AppHome extends StatefulWidget {
   AppHome({Key? key}) : super(key: key);
@@ -53,12 +53,7 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
   }
 
   void _onItemClicked(data) {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) =>
-            StackOver(timer: data.timer, name: data.name, qty: data.qty),
-      ),
-    );
+    Navigator.of(context).push(createRoute(data));
   }
 
   void _onDeleteItem() {

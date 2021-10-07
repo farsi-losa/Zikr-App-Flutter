@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
+import 'package:dzikirapp/component/route.dart';
 
 class StackOver extends StatefulWidget {
   final int timer;
@@ -40,6 +41,9 @@ class _StackOverState extends State<StackOver>
   }
 
   void _handleTabSelection() {
+    if (_tabController.indexIsChanging && _isPlaying) {
+      _zikrStop();
+    }
     setState(() {
       _currentIndex = _tabController.index;
     });
@@ -61,7 +65,6 @@ class _StackOverState extends State<StackOver>
       setState(() {
         _counter++;
       });
-      print(_countLoop);
       if (_counter == _qtyZikr) {
         Vibrate.vibrate();
         _zikrStop();
@@ -130,6 +133,11 @@ class _StackOverState extends State<StackOver>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: new IconButton(
+            icon: new Icon(Icons.arrow_back),
+            onPressed: () {
+              Navigator.of(context).pop(createRouteToHome);
+            }),
         title: Text(
           '$_dzikirName',
           style: TextStyle(color: Color(0xff93BC9C)),
@@ -180,9 +188,13 @@ class _StackOverState extends State<StackOver>
                         ),
                       ),
                     ),
-                    Container(
+                    AnimatedContainer(
+                      // Define how long the animation should take.
+                      duration: const Duration(seconds: 1),
+                      // Provide an optional curve to make the animation feel smoother.
+                      curve: Curves.fastOutSlowIn,
                       // margin: const EdgeInsets.fromLTRB(35, 0, 35, 55),
-                      width: _currentIndex == 0 ? 360 : 300,
+                      width: _currentIndex == 0 ? 340 : 300,
                       height: 62,
                       padding: const EdgeInsets.only(bottom: 10, top: 10),
                       margin: const EdgeInsets.only(bottom: 34),
@@ -222,43 +234,49 @@ class _StackOverState extends State<StackOver>
                                       width: 1.0, color: Color(0xffE7EFEE)),
                                 ),
                               ),
-                              child: (_currentIndex == 0
-                                  ? Row(children: [
-                                      Spacer(),
-                                      Icon(Icons.timer,
-                                          color: Color(0xff93BC9C)),
-                                      Text(
-                                        '$_timerLength',
-                                        style: TextStyle(
-                                            color: Color(0xff93BC9C),
-                                            fontSize: 25),
-                                      ),
-                                      Align(
-                                        alignment: Alignment(0, 0.15),
-                                        child: Text(
-                                          'ms',
-                                          style: TextStyle(
-                                              color: Color(0xff93BC9C),
-                                              fontSize: 15),
+                              child: AnimatedSwitcher(
+                                duration: Duration(milliseconds: 400),
+                                child: _currentIndex == 0
+                                    ? Container(
+                                        color: Colors.white,
+                                        child: Row(children: [
+                                          Spacer(),
+                                          Column(children: [
+                                            Icon(Icons.timer,
+                                                color: Color(0xff93BC9C)),
+                                            Text(
+                                              'ms',
+                                              style: TextStyle(
+                                                  color: Color(0xff93BC9C),
+                                                  fontSize: 12),
+                                            ),
+                                          ]),
+                                          Text(
+                                            '$_timerLength',
+                                            style: TextStyle(
+                                                color: Color(0xff93BC9C),
+                                                fontSize: 25),
+                                          ),
+                                          Spacer(),
+                                        ]),
+                                      )
+                                    : GestureDetector(
+                                        onTap: () {
+                                          _toggleVibrateOnTap();
+                                        },
+                                        child: Container(
+                                          color: Colors.white,
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 8),
+                                          child: Center(
+                                            child: Icon(Icons.vibration_sharp,
+                                                color: _vibrateOnTap
+                                                    ? Color(0xff93BC9C)
+                                                    : Colors.grey),
+                                          ),
                                         ),
                                       ),
-                                      Spacer(),
-                                    ])
-                                  : GestureDetector(
-                                      onTap: () {
-                                        _toggleVibrateOnTap();
-                                      },
-                                      child: Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 8),
-                                        child: Center(
-                                          child: Icon(Icons.vibration_sharp,
-                                              color: _vibrateOnTap
-                                                  ? Color(0xff93BC9C)
-                                                  : Colors.grey),
-                                        ),
-                                      ),
-                                    )),
+                              ),
                             ),
                           ),
                           Expanded(
@@ -293,51 +311,66 @@ class _StackOverState extends State<StackOver>
                       child: Center(
                         child: GestureDetector(
                           onTap: (_currentIndex == 0
-                              ? Feedback.wrapForTap(
-                                  (_qtyZikr > 0 &&
-                                          _timerLength > 0 &&
-                                          _counter < _qtyZikr)
-                                      ? (_isPlaying ? _zikrStop : _playZikr)
-                                      : () => null,
-                                  context)
+                              ? _qtyZikr > 0 &&
+                                      _timerLength > 0 &&
+                                      _counter < _qtyZikr
+                                  ? (_isPlaying ? _zikrStop : _playZikr)
+                                  : () => null
                               : _countingZikr),
                           child: Container(
                             width: 233,
                             height: 219,
-                            child: (_currentIndex == 0
-                                ? Column(children: [
-                                    Spacer(),
-                                    Icon(
-                                        _isPlaying
-                                            ? Icons.stop
-                                            : Icons.play_arrow,
-                                        color: Colors.white,
-                                        size: 100),
-                                    Spacer(),
-                                    Text(
-                                      'click to start counting',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    Spacer(),
-                                  ])
-                                : Column(children: [
-                                    Spacer(),
-                                    Container(
-                                      width: 130,
-                                      height: 130,
-                                      child: Center(
-                                        child: Container(
-                                          width: 95,
-                                          height: 95,
+                            child: AnimatedSwitcher(
+                              duration: Duration(milliseconds: 500),
+                              child: _currentIndex == 0
+                                  ? Container(
+                                      color: Color(0xff93BC9C),
+                                      child: Column(children: [
+                                        Spacer(),
+                                        Icon(
+                                            _isPlaying
+                                                ? Icons.stop
+                                                : Icons.play_arrow,
+                                            color: Colors.white,
+                                            size: 100),
+                                        Spacer(),
+                                        Text(
+                                          'click to start counting',
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        Spacer(),
+                                      ]),
+                                    )
+                                  : Container(
+                                      color: Color(0xff93BC9C),
+                                      child: Column(children: [
+                                        Spacer(),
+                                        Container(
+                                          width: 130,
+                                          height: 130,
                                           child: Center(
                                             child: Container(
-                                              width: 60,
-                                              height: 60,
+                                              width: 95,
+                                              height: 95,
+                                              child: Center(
+                                                child: Container(
+                                                  width: 60,
+                                                  height: 60,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                65)),
+                                                    border: Border.all(
+                                                        color: Colors.white24),
+                                                  ),
+                                                ),
+                                              ),
                                               decoration: BoxDecoration(
                                                 borderRadius: BorderRadius.all(
                                                     Radius.circular(65)),
                                                 border: Border.all(
-                                                    color: Colors.white24),
+                                                    color: Colors.white30),
                                               ),
                                             ),
                                           ),
@@ -345,24 +378,18 @@ class _StackOverState extends State<StackOver>
                                             borderRadius: BorderRadius.all(
                                                 Radius.circular(65)),
                                             border: Border.all(
-                                                color: Colors.white30),
+                                                color: Colors.white54),
                                           ),
                                         ),
-                                      ),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(65)),
-                                        border:
-                                            Border.all(color: Colors.white54),
-                                      ),
+                                        Spacer(),
+                                        Text(
+                                          'tap to counting',
+                                          style: TextStyle(color: Colors.white),
+                                        ),
+                                        Spacer(),
+                                      ]),
                                     ),
-                                    Spacer(),
-                                    Text(
-                                      'tap to counting',
-                                      style: TextStyle(color: Colors.white),
-                                    ),
-                                    Spacer(),
-                                  ])),
+                            ),
                             decoration: BoxDecoration(
                               color: Color(0xff93BC9C),
                               borderRadius:
