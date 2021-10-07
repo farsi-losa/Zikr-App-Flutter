@@ -42,14 +42,16 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
   }
 
   void _showAddDzikirModal() {
-    showModalBottomSheet(
-      transitionAnimationController: modalController,
+    showDialog(
+      // transitionAnimationController: modalController,
       context: context,
-      builder: (context) => DialogAddDzikir(),
+      builder: (context) {
+        return DialogAddDzikir();
+      },
     ).then((value) {
       print(value);
       setState(() {});
-    }).whenComplete(() => initController());
+    });
   }
 
   void _onItemClicked(data) {
