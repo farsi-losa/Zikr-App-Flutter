@@ -170,95 +170,107 @@ class _StackOverState extends State<StackOver>
               Expanded(
                 child: Column(
                   children: [
-                    Flexible(
-                      flex: 3,
-                      child: Container(
-                        child: Center(
-                          child: Text(
-                            _counter.toString(),
-                            style: TextStyle(
-                                color: Color(0xff2F6149), fontSize: 80),
-                          ),
+                    Container(
+                      margin: const EdgeInsets.only(top: 40, bottom: 70),
+                      child: Center(
+                        child: Text(
+                          _counter.toString(),
+                          style:
+                              TextStyle(color: Color(0xff2F6149), fontSize: 80),
                         ),
                       ),
                     ),
                     Container(
-                      margin: const EdgeInsets.fromLTRB(35, 0, 35, 55),
+                      // margin: const EdgeInsets.fromLTRB(35, 0, 35, 55),
+                      width: _currentIndex == 0 ? 360 : 300,
                       height: 62,
+                      padding: const EdgeInsets.only(bottom: 10, top: 10),
+                      margin: const EdgeInsets.only(bottom: 34),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: Center(
-                              child: Row(children: [
-                                Align(
-                                  alignment: Alignment(0, 0.15),
-                                  child: Text(
-                                    'Max',
-                                    style: TextStyle(
-                                        color: Color(0xff93BC9C), fontSize: 12),
-                                  ),
+                          Expanded(
+                            flex: 2,
+                            child: Row(children: [
+                              Spacer(),
+                              Align(
+                                alignment: Alignment(0, 0.15),
+                                child: Text(
+                                  'Max',
+                                  style: TextStyle(
+                                      color: Color(0xff93BC9C), fontSize: 12),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 4),
-                                  child: Text(
-                                    _qtyZikr.toString(),
-                                    style: TextStyle(
-                                        color: Color(0xff93BC9C), fontSize: 25),
-                                  ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 4),
+                                child: Text(
+                                  _qtyZikr.toString(),
+                                  style: TextStyle(
+                                      color: Color(0xff93BC9C), fontSize: 25),
                                 ),
-                              ]),
-                            ),
+                              ),
+                              Spacer(),
+                            ]),
                           ),
-                          Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 20),
-                            child: (_currentIndex == 0
-                                ? Row(children: [
-                                    Icon(Icons.timer, color: Color(0xff93BC9C)),
-                                    Padding(
-                                      padding: EdgeInsets.only(left: 8.0),
-                                      child: Text(
+                          Expanded(
+                            flex: 2,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  left: BorderSide(
+                                      width: 1.0, color: Color(0xffE7EFEE)),
+                                  right: BorderSide(
+                                      width: 1.0, color: Color(0xffE7EFEE)),
+                                ),
+                              ),
+                              child: (_currentIndex == 0
+                                  ? Row(children: [
+                                      Spacer(),
+                                      Icon(Icons.timer,
+                                          color: Color(0xff93BC9C)),
+                                      Text(
                                         '$_timerLength',
                                         style: TextStyle(
                                             color: Color(0xff93BC9C),
                                             fontSize: 25),
                                       ),
-                                    ),
-                                    Align(
-                                      alignment: Alignment(0, 0.15),
-                                      child: Text(
-                                        'ms',
-                                        style: TextStyle(
-                                            color: Color(0xff93BC9C),
-                                            fontSize: 15),
+                                      Align(
+                                        alignment: Alignment(0, 0.15),
+                                        child: Text(
+                                          'ms',
+                                          style: TextStyle(
+                                              color: Color(0xff93BC9C),
+                                              fontSize: 15),
+                                        ),
                                       ),
-                                    ),
-                                  ])
-                                : GestureDetector(
-                                    onTap: () {
-                                      _toggleVibrateOnTap();
-                                    },
-                                    child: Container(
-                                      width: 50,
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 8),
-                                      child: Center(
-                                        child: Icon(Icons.vibration_sharp,
-                                            color: _vibrateOnTap
-                                                ? Color(0xff93BC9C)
-                                                : Colors.grey),
+                                      Spacer(),
+                                    ])
+                                  : GestureDetector(
+                                      onTap: () {
+                                        _toggleVibrateOnTap();
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 8),
+                                        child: Center(
+                                          child: Icon(Icons.vibration_sharp,
+                                              color: _vibrateOnTap
+                                                  ? Color(0xff93BC9C)
+                                                  : Colors.grey),
+                                        ),
                                       ),
-                                    ),
-                                  )),
+                                    )),
+                            ),
                           ),
-                          InkWell(
-                            onTap: _resetCounter,
-                            child: Container(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
-                              child: Icon(Icons.loop_rounded,
-                                  color: Color(0xff93BC9C)),
+                          Expanded(
+                            flex: 2,
+                            child: InkWell(
+                              onTap: _resetCounter,
+                              child: Container(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 20),
+                                child: Icon(Icons.loop_rounded,
+                                    color: Color(0xff93BC9C)),
+                              ),
                             ),
                           ),
                         ],
@@ -404,19 +416,15 @@ class _StackOverState extends State<StackOver>
                   labelColor: Color(0xff93BC9C),
                   unselectedLabelColor: Color(0xff93BC9C),
                   tabs: [
-                    // first tab [you can add an icon using the icon property]
                     Tab(
                       text: 'Automatic',
                     ),
-
-                    // second tab [you can add an icon using the icon property]
                     Tab(
                       text: 'Manual',
                     ),
                   ],
                 ),
               ),
-              // give the tab bar a height [can change hheight to preferred height]
             ],
           ),
         ]),
