@@ -107,38 +107,38 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterDocked,
       bottomNavigationBar: BottomAppBar(
-          color: Color(0xff24573F),
-          shape: AutomaticNotchedShape(
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    topRight: Radius.circular(15))),
-            RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20))),
-          ),
-          child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: <Widget>[
-                IconButton(
-                    icon: Icon(Icons.home),
-                    color:
-                        _currentIndex == 0 ? Color(0xffAF9C4D) : Colors.white,
-                    onPressed: () {
-                      setState(() {
-                        _currentIndex = 0;
-                      });
-                    }),
-                IconButton(
-                    icon: Icon(Icons.info_outlined),
-                    color:
-                        _currentIndex == 1 ? Color(0xffAF9C4D) : Colors.white,
-                    onPressed: () {
-                      setState(() {
-                        _currentIndex = 1;
-                      });
-                    }),
-              ])),
+        color: Color(0xff24573F),
+        shape: AutomaticNotchedShape(
+          RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15), topRight: Radius.circular(15))),
+          RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: <Widget>[
+            IconButton(
+                icon: Icon(Icons.home),
+                color: _currentIndex == 0 ? Color(0xffAF9C4D) : Colors.white,
+                onPressed: () {
+                  setState(() {
+                    _currentIndex = 0;
+                  });
+                }),
+            IconButton(
+              icon: Icon(Icons.info_outlined),
+              color: _currentIndex == 1 ? Color(0xffAF9C4D) : Colors.white,
+              onPressed: () {
+                setState(() {
+                  _currentIndex = 1;
+                });
+              },
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
