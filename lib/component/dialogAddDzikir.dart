@@ -2,41 +2,54 @@ import 'package:flutter/material.dart';
 import 'package:dzikirapp/db.dart';
 
 class DialogAddDzikir extends StatefulWidget {
-  // final int qty;
-  // final int timerLength;
+  final int qty;
+  final int timer;
+  final String? method;
+  final String name;
+  final int? id;
 
   DialogAddDzikir({
     Key? key,
-    // required this.timerLength,
-    // required this.qty,
+    required this.qty,
+    required this.timer,
+    this.method,
+    this.id,
+    required this.name,
   }) : super(key: key);
+
   @override
   _DialogAddDzikirState createState() => new _DialogAddDzikirState();
 }
 
 class _DialogAddDzikirState extends State<DialogAddDzikir> {
-  int _qtyZikr = 0;
+  late int _qtyZikr;
   late String _nameDzikir;
   late TextEditingController txtQty;
   late TextEditingController txtName;
-  bool _timerStart = false;
-  int _timerLength = 0;
   late DateTime startDate;
   late DatabaseHandler handler;
+  late bool _validateName = true;
+  late bool _validateQty = true;
+  late bool _validateTimer = true;
+
+  bool _timerStart = false;
+
+  int _timerLength = 0;
+
   @override
   void initState() {
     super.initState();
 
-    // _timerLength = widget.timerLength;
-    // _qtyZikr = widget.qty;
-    txtQty = TextEditingController();
-    txtName = TextEditingController();
+    // _validateName = false;
+    // _validateQty = false;
+    // _validateTimer = false;
+    _timerLength = widget.timer;
+    _qtyZikr = widget.qty;
+    _nameDzikir = widget.name;
+    txtQty = TextEditingController(text: widget.qty.toString());
+    txtName = TextEditingController(text: widget.name);
 
     this.handler = DatabaseHandler();
-    // this.handler.initializeDB().whenComplete(() async {
-    //   // await this.addUsers();
-    //   setState(() {});
-    // });
   }
 
   void _inputQtyChange(value) {
@@ -75,12 +88,50 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
     });
   }
 
+  void onSaveClick() {
+    if (widget.method == 'add') {
+      print(txtName.text.isNotEmpty);
+      setState(() {
+        _validateName = txtName.text.isNotEmpty;
+        _validateQty = txtQty.text.isNotEmpty && txtQty.text != '0';
+        _validateTimer = _timerLength != 0;
+      });
+
+      if (txtName.text.isNotEmpty &&
+          txtQty.text.isNotEmpty &&
+          txtQty.text != '0' &&
+          _timerLength != 0) {
+        this.addUsers();
+      }
+    } else
+      this.updateUsers(widget.id);
+  }
+
   Future<int> addUsers() async {
     Navigator.pop(context);
+    print(_nameDzikir);
+    print(_qtyZikr);
+    print(_timerLength);
     Dzikir firstDzikir =
         Dzikir(name: _nameDzikir, qty: _qtyZikr, timer: _timerLength);
     List<Dzikir> listOfDzikirs = [firstDzikir];
     return await this.handler.insertUser(listOfDzikirs);
+  }
+
+  Future<int> updateUsers(id) async {
+    Navigator.pop(context);
+    Dzikir dzikir =
+        Dzikir(id: id, name: _nameDzikir, qty: _qtyZikr, timer: _timerLength);
+    // List<Dzikir> listOfDzikirs = [firstDzikir];
+    return await this.handler.updateUser(dzikir);
+  }
+
+  @override
+  dispose() {
+    // setState(() {
+    //   _validate = true;
+    // });
+    super.dispose();
   }
 
   @override
@@ -108,6 +159,7 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
                   style: TextStyle(fontSize: 16.0, height: 1.5),
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.all(10),
+                    errorText: _validateName ? null : 'Value can\'t be empty',
                     border: const OutlineInputBorder(),
                   ),
                   onChanged: (text) {
@@ -130,6 +182,7 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
                   decoration: InputDecoration(
                     contentPadding: const EdgeInsets.all(10),
                     border: const OutlineInputBorder(),
+                    errorText: _validateQty ? null : 'Value can\'t be empty',
                   ),
                   keyboardType: TextInputType.number,
                   onChanged: (text) {
@@ -170,13 +223,25 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
                     ),
                     Expanded(
                       child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              primary: Color(0xff93BC9C)),
-                          onPressed: _handleTimerCLick,
-                          child: Text(_timerStart ? 'stop' : 'start')),
+                        style: ElevatedButton.styleFrom(
+                            primary: Color(0xff93BC9C)),
+                        onPressed: _handleTimerCLick,
+                        child: Text(_timerStart ? 'stop' : 'start'),
+                      ),
                     ),
                   ],
                 ),
+              ),
+              Container(
+                padding: EdgeInsets.only(left: 10),
+                alignment: Alignment.topLeft,
+                child: _validateTimer
+                    ? null
+                    : Text(
+                        "Value can't be zero",
+                        style: TextStyle(fontSize: 12, color: Colors.red),
+                        textAlign: TextAlign.left,
+                      ),
               ),
               Padding(
                 padding: EdgeInsets.all(8.0),
@@ -198,7 +263,7 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
           ),
         ),
         TextButton(
-          onPressed: () => this.addUsers(),
+          onPressed: () => onSaveClick(),
           child: Text(
             'Save',
             style: TextStyle(color: Color(0xff407C60), fontSize: 16),

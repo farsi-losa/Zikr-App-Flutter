@@ -22,6 +22,7 @@ class _StackOverState extends State<StackOver>
   late String _dzikirName;
   late int _timerLength;
   late Timer _timerZikr;
+  late bool _timerActive;
 
   int _counter = 0;
   int _loopLength = 33;
@@ -32,7 +33,7 @@ class _StackOverState extends State<StackOver>
 
   void initState() {
     super.initState();
-
+    _timerActive = false;
     _tabController = TabController(length: 2, vsync: this);
     _tabController.addListener(_handleTabSelection);
     _timerLength = widget.timer;
@@ -50,6 +51,9 @@ class _StackOverState extends State<StackOver>
   }
 
   void _playZikr() {
+    setState(() {
+      _timerActive = true;
+    });
     _timerZikr = Timer.periodic(Duration(milliseconds: _timerLength), (timer) {
       if (_countLoop == _loopLength) {
         setState(() {
@@ -126,6 +130,9 @@ class _StackOverState extends State<StackOver>
   @override
   void dispose() {
     super.dispose();
+    if (_timerActive) {
+      _timerZikr.cancel();
+    }
     _tabController.dispose();
   }
 
@@ -309,23 +316,25 @@ class _StackOverState extends State<StackOver>
                     Flexible(
                       flex: 3,
                       child: Center(
-                        child: GestureDetector(
-                          onTap: (_currentIndex == 0
-                              ? _qtyZikr > 0 &&
-                                      _timerLength > 0 &&
-                                      _counter < _qtyZikr
-                                  ? (_isPlaying ? _zikrStop : _playZikr)
-                                  : () => null
-                              : _countingZikr),
-                          child: Container(
-                            width: 233,
-                            height: 219,
-                            child: AnimatedSwitcher(
-                              duration: Duration(milliseconds: 500),
-                              child: _currentIndex == 0
-                                  ? Container(
-                                      color: Color(0xff93BC9C),
-                                      child: Column(children: [
+                        child: Container(
+                          width: 233,
+                          height: 219,
+                          child: Material(
+                            color: Color(0xffAF9C4D),
+                            borderRadius:
+                                new BorderRadius.all(Radius.circular(40)),
+                            child: InkWell(
+                              onTap: (_currentIndex == 0
+                                  ? _qtyZikr > 0 &&
+                                          _timerLength > 0 &&
+                                          _counter < _qtyZikr
+                                      ? (_isPlaying ? _zikrStop : _playZikr)
+                                      : () => null
+                                  : _countingZikr),
+                              child: AnimatedSwitcher(
+                                duration: Duration(milliseconds: 500),
+                                child: _currentIndex == 0
+                                    ? Column(children: [
                                         Spacer(),
                                         Icon(
                                             _isPlaying
@@ -339,11 +348,8 @@ class _StackOverState extends State<StackOver>
                                           style: TextStyle(color: Colors.white),
                                         ),
                                         Spacer(),
-                                      ]),
-                                    )
-                                  : Container(
-                                      color: Color(0xff93BC9C),
-                                      child: Column(children: [
+                                      ])
+                                    : Column(children: [
                                         Spacer(),
                                         Container(
                                           width: 130,
@@ -388,22 +394,19 @@ class _StackOverState extends State<StackOver>
                                         ),
                                         Spacer(),
                                       ]),
-                                    ),
+                              ),
                             ),
-                            decoration: BoxDecoration(
-                              color: Color(0xff93BC9C),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30)),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0xff8D8D8D).withOpacity(0.25),
-                                  spreadRadius: 0,
-                                  blurRadius: 20,
-                                  offset: Offset(
-                                      0, 5), // changes position of shadow
-                                ),
-                              ],
-                            ),
+                          ),
+                          decoration: BoxDecoration(
+                            boxShadow: [
+                              BoxShadow(
+                                color: Color(0xff8D8D8D).withOpacity(0.25),
+                                spreadRadius: 0,
+                                blurRadius: 20,
+                                offset:
+                                    Offset(0, 5), // changes position of shadow
+                              ),
+                            ],
                           ),
                         ),
                       ),

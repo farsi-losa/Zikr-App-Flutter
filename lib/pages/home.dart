@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dzikirapp/db.dart';
 import 'package:dzikirapp/component/dialogAddDzikir.dart';
-import 'package:dzikirapp/component/slideMenu.dart';
+import 'package:dzikirapp/component/slideItem.dart';
 import 'package:dzikirapp/component/route.dart';
 
 class AppHome extends StatefulWidget {
@@ -41,24 +41,11 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
     modalController.reverseDuration = const Duration(milliseconds: 100);
   }
 
-  void _showAddDzikirModal() {
-    showDialog(
-      // transitionAnimationController: modalController,
-      context: context,
-      builder: (context) {
-        return DialogAddDzikir();
-      },
-    ).then((value) {
-      print(value);
-      setState(() {});
-    });
-  }
-
   void _onItemClicked(data) {
     Navigator.of(context).push(createRoute(data));
   }
 
-  void _onDeleteItem() {
+  void _onDataChange() {
     this.setState(() {});
   }
 
@@ -93,7 +80,7 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
                         flexibleSpace: FlexibleSpaceBar(
                           centerTitle: true,
                           title: Text(
-                            'YOURS DZIKIR',
+                            'DZIKIR LIST',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: Color(0xff93BC9C), fontSize: 18),
@@ -118,13 +105,13 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
                                 ),
                               ),
                               new Positioned(
-                                left: 40.0,
-                                top: 130.0,
+                                left: -10.0,
+                                top: -90.0,
                                 child: new RotationTransition(
                                   turns: new AlwaysStoppedAnimation(130 / 360),
                                   child: Container(
                                     width: 109,
-                                    height: 120,
+                                    height: 220,
                                     decoration: new BoxDecoration(
                                       color: Color(0xff24573F),
                                       borderRadius: new BorderRadius.all(
@@ -139,96 +126,155 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
                       ),
                       SliverToBoxAdapter(
                         child: Container(
+                          padding: const EdgeInsets.only(top: 20),
                           color: Color(0xffE7EFEE),
                           child: Container(
-                            height: 40,
+                            height: snapshot.data?.length == 0 ? null : 40,
+                            child: snapshot.data?.length == 0
+                                ? Column(
+                                    children: [
+                                      Center(
+                                        child: Container(
+                                          margin: EdgeInsets.only(top: 100),
+                                          width: 190,
+                                          height: 140,
+                                          decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              image: AssetImage(
+                                                  "assets/images/empty_dzikir.png"),
+                                              fit: BoxFit.fitWidth,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.only(
+                                            top: 30, bottom: 10),
+                                        child: Text(
+                                          'Start by adding  a dzikir',
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      Container(
+                                        width: 280,
+                                        child: Text(
+                                          'Click on the button at the bottom to add a new dzikir',
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                : null,
                             decoration: new BoxDecoration(
                               color: Colors.white,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.10),
+                                  spreadRadius: 0,
+                                  blurRadius: 7,
+                                  offset: Offset(
+                                      0, -8), // changes position of shadow
+                                ),
+                              ],
                               borderRadius: new BorderRadius.only(
-                                  topRight: Radius.circular(40),
-                                  topLeft: Radius.circular(40)),
+                                  topRight: Radius.circular(30),
+                                  topLeft: Radius.circular(30)),
                             ),
                           ),
                         ),
                       ),
                       SliverPadding(
-                        padding: const EdgeInsets.only(bottom: 100),
+                        padding: const EdgeInsets.only(bottom: 100, top: 20),
                         sliver: SliverList(
                           delegate: SliverChildBuilderDelegate(
                             (BuildContext context, int index) {
                               return Container(
-                                margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                                margin: EdgeInsets.fromLTRB(20, 0, 20, 30),
                                 child: SlideMenu(
-                                  deleteItem: _onDeleteItem,
+                                  onDataChange: _onDataChange,
                                   id: snapshot.data![index].id!,
+                                  data: snapshot.data![index],
                                   child: Container(
-                                    child: Row(children: [
-                                      Container(
-                                        height: 68,
-                                        width: 70,
-                                        child: Center(
-                                          child: Text(
-                                            (index + 1).toString(),
-                                            style: TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 28),
-                                          ),
+                                    child: new Material(
+                                      color: Colors.transparent,
+                                      child: InkWell(
+                                        splashColor: Color(0xffE8F0EF),
+                                        borderRadius: new BorderRadius.only(
+                                          topLeft: Radius.circular(15),
+                                          bottomLeft: Radius.circular(15),
                                         ),
-                                        decoration: new BoxDecoration(
-                                          color: Color(0xff24573F),
-                                          borderRadius: new BorderRadius.only(
-                                              topLeft: Radius.circular(15),
-                                              bottomRight: Radius.circular(15),
-                                              bottomLeft: Radius.circular(15)),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: InkWell(
-                                          onTap: () {
-                                            _onItemClicked(
-                                                snapshot.data![index]);
-                                          },
-                                          child: Container(
-                                            padding: const EdgeInsets.fromLTRB(
-                                                20, 0, 0, 0),
-                                            child: Column(children: [
-                                              Container(
-                                                height: 34,
-                                                alignment: Alignment.centerLeft,
-                                                width: double.infinity,
-                                                child: Text(
-                                                  snapshot.data![index].name,
-                                                  style:
-                                                      TextStyle(fontSize: 16),
-                                                ),
-                                                decoration: BoxDecoration(
-                                                  border: Border(
-                                                      bottom: BorderSide(
-                                                          width: 1.0,
-                                                          color: Color(
-                                                              0xffE7EFEE))),
-                                                ),
+                                        onTap: () {
+                                          _onItemClicked(snapshot.data![index]);
+                                        },
+                                        child: Row(children: [
+                                          Container(
+                                            height: 50,
+                                            width: 54,
+                                            margin: EdgeInsets.all(10),
+                                            child: Center(
+                                              child: Text(
+                                                (index + 1).toString(),
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 20),
                                               ),
-                                              Container(
-                                                height: 34,
-                                                alignment:
-                                                    Alignment.centerRight,
-                                                width: double.infinity,
-                                                child: Text(
-                                                    '${snapshot.data![index].qty.toString()} x'),
-                                                decoration: BoxDecoration(
-                                                  border: Border(
-                                                      bottom: BorderSide(
-                                                          width: 1.0,
-                                                          color: Color(
-                                                              0xffE7EFEE))),
-                                                ),
+                                            ),
+                                            decoration: new BoxDecoration(
+                                              color: Color(0xff24573F),
+                                              borderRadius:
+                                                  new BorderRadius.only(
+                                                topLeft: Radius.circular(10),
+                                                bottomLeft: Radius.circular(10),
+                                                bottomRight:
+                                                    Radius.circular(10),
                                               ),
-                                            ]),
+                                            ),
                                           ),
-                                        ),
+                                          Expanded(
+                                            child: Container(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      20, 0, 0, 0),
+                                              child: Column(children: [
+                                                Container(
+                                                  height: 34,
+                                                  alignment:
+                                                      Alignment.centerLeft,
+                                                  width: double.infinity,
+                                                  child: Text(
+                                                    snapshot.data![index].name,
+                                                    style: TextStyle(
+                                                        fontSize: 18,
+                                                        color:
+                                                            Color(0xff93BC9C),
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                  decoration: BoxDecoration(
+                                                    border: Border(
+                                                        bottom: BorderSide(
+                                                            width: 1.0,
+                                                            color: Color(
+                                                                0xffE7EFEE))),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  height: 34,
+                                                  alignment:
+                                                      Alignment.centerRight,
+                                                  width: double.infinity,
+                                                  child: Text(
+                                                    '${snapshot.data![index].qty.toString()} x',
+                                                  ),
+                                                ),
+                                              ]),
+                                            ),
+                                          ),
+                                        ]),
                                       ),
-                                    ]),
+                                    ),
                                   ),
                                 ),
                               );
@@ -244,15 +290,6 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
                 return Center(child: CircularProgressIndicator());
               }
             }),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            _showAddDzikirModal();
-          },
-          child: Icon(Icons.add),
-          backgroundColor: Color(0xff24573F),
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(10))),
-        ),
       ),
     );
   }

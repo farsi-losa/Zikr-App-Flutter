@@ -10,7 +10,7 @@ class AppInformation extends StatefulWidget {
 class _AppInformation extends State<AppInformation> {
   // This widget is the root of your application.
 
-  late String appVersion;
+  String appVersion = '0.0.0';
 
   @override
   void initState() {
@@ -25,109 +25,84 @@ class _AppInformation extends State<AppInformation> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.blue,
-        ),
-        home: Scaffold(
-          body: Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage("assets/images/bgpattern.png"),
-                fit: BoxFit.contain,
-                repeat: ImageRepeat.repeatY,
-              ),
+      home: Scaffold(
+        body: Container(
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage("assets/images/bgpattern.png"),
+              fit: BoxFit.contain,
+              repeat: ImageRepeat.repeatY,
             ),
-            child: Column(
-              children: [
-                Flexible(
-                  child: Center(
-                    child: Container(
-                      height: 300,
-                      margin: const EdgeInsets.fromLTRB(35, 0, 35, 55),
-                      padding: const EdgeInsets.all(35),
-                      alignment: Alignment.center,
-                      child: Column(children: [
-                        Text(
-                          'Dzikir Application',
-                          textAlign: TextAlign.center,
-                          style:
-                              TextStyle(color: Color(0xff24573F), fontSize: 18),
-                        ),
-                        Spacer(),
-                        Container(
-                          width: 200,
-                          child: Text(
-                            'Dukung kami dengan memberikan penilaian di appstore',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Color(0xff24573F), fontSize: 12),
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.fromLTRB(0, 25, 0, 25),
-                          width: 147,
-                          height: 34,
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              primary: Color(0xff93BC9C),
-                            ),
-                            child: Text(
-                              'Review',
-                              textAlign: TextAlign.center,
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 12),
-                            ),
-                          ),
-                        ),
-                        Text(
-                          'V $appVersion',
-                          textAlign: TextAlign.center,
-                          style:
-                              TextStyle(color: Color(0xffAF9C4D), fontSize: 12),
-                        ),
-                      ]),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
-                            spreadRadius: 2,
-                            blurRadius: 3,
-                            offset: Offset(2, 2), // changes position of shadow
-                          ),
-                        ],
+          ),
+          child: Column(
+            children: [
+              Flexible(
+                child: Center(
+                  child: Container(
+                    height: 300,
+                    margin: const EdgeInsets.fromLTRB(35, 0, 35, 55),
+                    padding: const EdgeInsets.all(35),
+                    alignment: Alignment.center,
+                    child: Column(children: [
+                      Text(
+                        'Dzikir Application',
+                        textAlign: TextAlign.center,
+                        style:
+                            TextStyle(color: Color(0xff24573F), fontSize: 18),
                       ),
+                      Spacer(),
+                      Container(
+                        width: 200,
+                        child: Text(
+                          'Dukung kami dengan memberikan penilaian di appstore',
+                          textAlign: TextAlign.center,
+                          style:
+                              TextStyle(color: Color(0xff24573F), fontSize: 12),
+                        ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.fromLTRB(0, 25, 0, 25),
+                        width: 147,
+                        height: 34,
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          style: ElevatedButton.styleFrom(
+                            primary: Color(0xff93BC9C),
+                          ),
+                          child: Text(
+                            'Review',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(color: Colors.white, fontSize: 12),
+                          ),
+                        ),
+                      ),
+                      Text(
+                        'Version $appVersion',
+                        textAlign: TextAlign.center,
+                        style:
+                            TextStyle(color: Color(0xffAF9C4D), fontSize: 12),
+                      ),
+                    ]),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          spreadRadius: 2,
+                          blurRadius: 3,
+                          offset: Offset(2, 2), // changes position of shadow
+                        ),
+                      ],
                     ),
                   ),
                 ),
-                Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    width: 82,
-                    height: 67,
-                    child: Align(
-                      alignment: Alignment(0.5, 0),
-                      child: IconButton(
-                        icon:
-                            new Icon(Icons.arrow_back_ios, color: Colors.white),
-                        onPressed: () => Navigator.of(context).pop(),
-                      ),
-                    ),
-                    decoration: BoxDecoration(
-                      color: Color(0xff93BC9C),
-                      borderRadius:
-                          BorderRadius.only(topLeft: Radius.circular(80)),
-                    ),
-                  ),
-                )
-              ],
-            ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
 

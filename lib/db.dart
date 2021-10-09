@@ -32,7 +32,13 @@ class DatabaseHandler {
     for (var dzikir in dzikirs) {
       result = await db.insert('dzikirs', dzikir.toMap());
     }
-    print(result);
+    return result;
+  }
+
+  Future<int> updateUser(Dzikir dzikir) async {
+    final db = await initializeDB();
+    var result = await db.update("dzikirs", dzikir.toMap(),
+        where: "id = ?", whereArgs: [dzikir.id]);
     return result;
   }
 
