@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+// import 'package:url_launcher/link.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppInformation extends StatefulWidget {
   AppInformation({Key? key}) : super(key: key);
@@ -22,8 +24,22 @@ class _AppInformation extends State<AppInformation> {
     });
   }
 
-  @override
+  Future<void> _launchInBrowser(String url) async {
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: false,
+        forceWebView: false,
+        headers: <String, String>{'my_header_key': 'my_header_value'},
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   Widget build(BuildContext context) {
+    const _url =
+        'https://play.google.com/store/apps/details?id=com.farsi.dzikirapp';
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -58,7 +74,9 @@ class _AppInformation extends State<AppInformation> {
                         width: 147,
                         height: 34,
                         child: ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            _launchInBrowser(_url);
+                          },
                           style: ElevatedButton.styleFrom(
                             primary: Color(0xff93BC9C),
                           ),
