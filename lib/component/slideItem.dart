@@ -24,12 +24,15 @@ class _SlideMenuState extends State<SlideMenu>
   late AnimationController _controller;
 
   late DatabaseHandler handler;
+  late bool deleteClick;
   bool openAction = false;
+  GlobalKey _toolTipKey = GlobalKey();
 
   @override
   initState() {
     super.initState();
     this.handler = DatabaseHandler();
+    deleteClick = false;
     openAction = false;
     _controller = new AnimationController(
         vsync: this, duration: const Duration(milliseconds: 200));
@@ -47,15 +50,30 @@ class _SlideMenuState extends State<SlideMenu>
   }
 
   void _onDeleteItem() {
-    _controller.animateTo(.0);
+    if (deleteClick) {
+      _controller.animateTo(.0);
 
-    setState(() {
-      openAction = !openAction;
-    });
-    Future.delayed(const Duration(milliseconds: 300), () {
-      this.handler.deleteUser(widget.id);
-      widget.onDataChange();
-    });
+      setState(() {
+        openAction = !openAction;
+        deleteClick = false;
+      });
+      Future.delayed(const Duration(milliseconds: 300), () {
+        this.handler.deleteUser(widget.id);
+        widget.onDataChange();
+      });
+    } else {
+      final dynamic tooltip = _toolTipKey.currentState;
+      tooltip.ensureTooltipVisible();
+      this.setState(() {
+        deleteClick = true;
+      });
+      Future.delayed(const Duration(seconds: 2), () {
+        tooltip.deactivate();
+        this.setState(() {
+          deleteClick = false;
+        });
+      });
+    }
   }
 
   void _onEditItem() {
@@ -65,7 +83,6 @@ class _SlideMenuState extends State<SlideMenu>
     });
 
     showDialog(
-      // transitionAnimationController: modalController,
       context: context,
       builder: (context) {
         return DialogAddDzikir(
@@ -73,10 +90,10 @@ class _SlideMenuState extends State<SlideMenu>
             id: widget.data.id,
             name: widget.data.name,
             qty: widget.data.qty,
+            lastCount: widget.data.lastcount,
             timer: widget.data.timer);
       },
     ).then((value) {
-      print(value);
       widget.onDataChange();
     });
   }
@@ -138,22 +155,27 @@ class _SlideMenuState extends State<SlideMenu>
                         ),
                         Expanded(
                           child: Material(
-                            color: Color(0xffE8F0EF),
+                            color: deleteClick ? Colors.red : Color(0xffE8F0EF),
                             borderRadius: new BorderRadius.only(
                               topRight: Radius.circular(15),
                               bottomRight: Radius.circular(15),
                             ),
                             child: new InkWell(
-                                splashColor: Color(0xffE8F0EF),
+                              splashColor: Color(0xffE8F0EF),
+                              child: Tooltip(
+                                key: _toolTipKey,
+                                message: 'Click again to delete',
                                 child: Container(
                                   height: 68,
                                   color: Colors.transparent,
                                   child: new Icon(Icons.delete,
                                       color: Color(0xff24573F)),
                                 ),
-                                onTap: () {
-                                  _onDeleteItem();
-                                }),
+                              ),
+                              onTap: () {
+                                return _onDeleteItem();
+                              },
+                            ),
                           ),
                         ),
                       ]),
@@ -169,14 +191,10 @@ class _SlideMenuState extends State<SlideMenu>
           child: Container(
             decoration: new BoxDecoration(
               color: Colors.white,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.20),
-                  spreadRadius: 0,
-                  blurRadius: 10,
-                  offset: Offset(0, 2), // changes position of shadow
-                ),
-              ],
+              border: Border.all(
+                width: 1.0,
+                color: Color(0xffE8F0EF),
+              ),
               borderRadius: new BorderRadius.all(Radius.circular(15)),
             ),
             child: Row(children: [
@@ -200,7 +218,6 @@ class _SlideMenuState extends State<SlideMenu>
                     child: Icon(Icons.more_vert),
                   ),
                 ),
-                // ),
               ),
             ]),
           ),

@@ -7,15 +7,17 @@ class DialogAddDzikir extends StatefulWidget {
   final String? method;
   final String name;
   final int? id;
+  final int lastCount;
 
-  DialogAddDzikir({
-    Key? key,
-    required this.qty,
-    required this.timer,
-    this.method,
-    this.id,
-    required this.name,
-  }) : super(key: key);
+  DialogAddDzikir(
+      {Key? key,
+      required this.qty,
+      required this.timer,
+      this.method,
+      this.id,
+      required this.name,
+      required this.lastCount})
+      : super(key: key);
 
   @override
   _DialogAddDzikirState createState() => new _DialogAddDzikirState();
@@ -31,6 +33,7 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
   late bool _validateName = true;
   late bool _validateQty = true;
   late bool _validateTimer = true;
+  late int _lastCount;
 
   bool _timerStart = false;
 
@@ -39,10 +42,7 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
   @override
   void initState() {
     super.initState();
-
-    // _validateName = false;
-    // _validateQty = false;
-    // _validateTimer = false;
+    _lastCount = widget.lastCount;
     _timerLength = widget.timer;
     _qtyZikr = widget.qty;
     _nameDzikir = widget.name;
@@ -68,7 +68,6 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
     if (_timerStart) {
       var endDate = new DateTime.now();
       var seconds = endDate.difference(startDate).inMilliseconds;
-      print(seconds);
 
       setState(() {
         _timerStart = false;
@@ -90,7 +89,6 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
 
   void onSaveClick() {
     if (widget.method == 'add') {
-      print(txtName.text.isNotEmpty);
       setState(() {
         _validateName = txtName.text.isNotEmpty;
         _validateQty = txtQty.text.isNotEmpty && txtQty.text != '0';
@@ -101,36 +99,33 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
           txtQty.text.isNotEmpty &&
           txtQty.text != '0' &&
           _timerLength != 0) {
-        this.addUsers();
+        this.addDzikir();
       }
     } else
       this.updateUsers(widget.id);
   }
 
-  Future<int> addUsers() async {
+  Future<int> addDzikir() async {
     Navigator.pop(context);
-    print(_nameDzikir);
-    print(_qtyZikr);
-    print(_timerLength);
-    Dzikir firstDzikir =
-        Dzikir(name: _nameDzikir, qty: _qtyZikr, timer: _timerLength);
+    Dzikir firstDzikir = Dzikir(
+        name: _nameDzikir, qty: _qtyZikr, timer: _timerLength, lastcount: 0);
     List<Dzikir> listOfDzikirs = [firstDzikir];
     return await this.handler.insertUser(listOfDzikirs);
   }
 
   Future<int> updateUsers(id) async {
     Navigator.pop(context);
-    Dzikir dzikir =
-        Dzikir(id: id, name: _nameDzikir, qty: _qtyZikr, timer: _timerLength);
-    // List<Dzikir> listOfDzikirs = [firstDzikir];
+    Dzikir dzikir = Dzikir(
+        id: id,
+        name: _nameDzikir,
+        qty: _qtyZikr,
+        timer: _timerLength,
+        lastcount: _lastCount);
     return await this.handler.updateUser(dzikir);
   }
 
   @override
   dispose() {
-    // setState(() {
-    //   _validate = true;
-    // });
     super.dispose();
   }
 

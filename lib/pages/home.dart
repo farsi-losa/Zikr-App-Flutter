@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:dzikirapp/db.dart';
-import 'package:dzikirapp/component/dialogAddDzikir.dart';
 import 'package:dzikirapp/component/slideItem.dart';
 import 'package:dzikirapp/component/route.dart';
 
@@ -12,7 +11,6 @@ class AppHome extends StatefulWidget {
 
 class _AppHome extends State<AppHome> with TickerProviderStateMixin {
   // This widget is the root of your application.
-  late final Future<List<Dzikir>> dzikirList;
   late DatabaseHandler handler;
   late AnimationController modalController;
 
@@ -22,7 +20,6 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
   bool openAction = false;
 
   void onTapOptionItem() {
-    print(openAction);
     setState(() {
       openAction = !openAction;
     });
@@ -42,7 +39,9 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
   }
 
   void _onItemClicked(data) {
-    Navigator.of(context).push(createRoute(data));
+    Navigator.of(context).push(createRoute(data)).then((value) {
+      _onDataChange();
+    });
   }
 
   void _onDataChange() {
@@ -186,12 +185,12 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
                         ),
                       ),
                       SliverPadding(
-                        padding: const EdgeInsets.only(bottom: 100, top: 20),
+                        padding: const EdgeInsets.only(bottom: 30, top: 20),
                         sliver: SliverList(
                           delegate: SliverChildBuilderDelegate(
                             (BuildContext context, int index) {
                               return Container(
-                                margin: EdgeInsets.fromLTRB(20, 0, 20, 30),
+                                margin: EdgeInsets.fromLTRB(30, 0, 30, 30),
                                 child: SlideMenu(
                                   onDataChange: _onDataChange,
                                   id: snapshot.data![index].id!,
@@ -236,38 +235,76 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
                                             child: Container(
                                               padding:
                                                   const EdgeInsets.fromLTRB(
-                                                      20, 0, 0, 0),
+                                                      10, 0, 0, 0),
                                               child: Column(children: [
                                                 Container(
-                                                  height: 34,
+                                                  height: 24,
+                                                  width: double.infinity,
                                                   alignment:
                                                       Alignment.centerLeft,
-                                                  width: double.infinity,
                                                   child: Text(
-                                                    snapshot.data![index].name,
+                                                    snapshot.data![index].name
+                                                        .toUpperCase(),
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
                                                     style: TextStyle(
                                                         fontSize: 18,
                                                         color:
-                                                            Color(0xff93BC9C),
+                                                            Color(0xff24573F),
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
                                                   decoration: BoxDecoration(
                                                     border: Border(
-                                                        bottom: BorderSide(
-                                                            width: 1.0,
-                                                            color: Color(
-                                                                0xffE7EFEE))),
+                                                      bottom: BorderSide(
+                                                        width: 1.0,
+                                                        color:
+                                                            Color(0xffE7EFEE),
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
                                                 Container(
-                                                  height: 34,
+                                                  height: 24,
                                                   alignment:
                                                       Alignment.centerRight,
                                                   width: double.infinity,
-                                                  child: Text(
-                                                    '${snapshot.data![index].qty.toString()} x',
-                                                  ),
+                                                  child: Row(
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Container(
+                                                          child: Row(children: [
+                                                            Icon(
+                                                              Icons
+                                                                  .access_time_filled,
+                                                              size: 14,
+                                                              color: Color(
+                                                                  0xff24573F),
+                                                            ),
+                                                            Padding(
+                                                              padding: EdgeInsets
+                                                                  .symmetric(
+                                                                      horizontal:
+                                                                          4),
+                                                              child: Text(
+                                                                '${snapshot.data![index].timer.toString()}',
+                                                              ),
+                                                            ),
+                                                            Text(
+                                                              'ms',
+                                                            ),
+                                                          ]),
+                                                        ),
+                                                        Align(
+                                                          alignment:
+                                                              Alignment.center,
+                                                          child: Text(
+                                                            '${snapshot.data![index].qty.toString()} x',
+                                                          ),
+                                                        ),
+                                                      ]),
                                                 ),
                                               ]),
                                             ),

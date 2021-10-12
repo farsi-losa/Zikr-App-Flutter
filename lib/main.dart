@@ -76,13 +76,12 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _showAddDzikirModal() {
     showDialog(
-      // transitionAnimationController: modalController,
       context: context,
       builder: (context) {
-        return DialogAddDzikir(method: 'add', name: '', qty: 0, timer: 0);
+        return DialogAddDzikir(
+            method: 'add', name: '', qty: 0, timer: 0, lastCount: 0);
       },
     ).then((value) {
-      print(value);
       setState(() {});
     });
   }
