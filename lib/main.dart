@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dzikirapp/pages/information.dart';
 import 'package:dzikirapp/component/dialogAddDzikir.dart';
 import 'package:dzikirapp/pages/home.dart';
-import 'package:dzikirapp/component/AnimatedBottomNav.dart';
+// import 'package:dzikirapp/component/AnimatedBottomNav.dart';
 
 void main() {
   runApp(MyApp());
@@ -46,33 +46,33 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  Widget _buildBottomBar() {
-    return CustomAnimatedBottomBar(
-      containerHeight: 70,
-      backgroundColor: Color(0xff24573F),
-      selectedIndex: _currentIndex,
-      showElevation: false,
-      itemCornerRadius: 24,
-      curve: Curves.easeIn,
-      onItemSelected: (index) => setState(() => _currentIndex = index),
-      items: <BottomNavyBarItem>[
-        BottomNavyBarItem(
-          icon: Icon(Icons.list_outlined),
-          title: Text('Dzikir'),
-          activeColor: Colors.white,
-          inactiveColor: Colors.white,
-          textAlign: TextAlign.center,
-        ),
-        BottomNavyBarItem(
-          icon: Icon(Icons.info_outline),
-          title: Text('App info'),
-          activeColor: Colors.white,
-          inactiveColor: Colors.white,
-          textAlign: TextAlign.center,
-        ),
-      ],
-    );
-  }
+  // Widget _buildBottomBar() {
+  //   return CustomAnimatedBottomBar(
+  //     containerHeight: 70,
+  //     backgroundColor: Color(0xff24573F),
+  //     selectedIndex: _currentIndex,
+  //     showElevation: false,
+  //     itemCornerRadius: 24,
+  //     curve: Curves.easeIn,
+  //     onItemSelected: (index) => setState(() => _currentIndex = index),
+  //     items: <BottomNavyBarItem>[
+  //       BottomNavyBarItem(
+  //         icon: Icon(Icons.list_outlined),
+  //         title: Text('Dzikir'),
+  //         activeColor: Colors.white,
+  //         inactiveColor: Colors.white,
+  //         textAlign: TextAlign.center,
+  //       ),
+  //       BottomNavyBarItem(
+  //         icon: Icon(Icons.info_outline),
+  //         title: Text('App info'),
+  //         activeColor: Colors.white,
+  //         inactiveColor: Colors.white,
+  //         textAlign: TextAlign.center,
+  //       ),
+  //     ],
+  //   );
+  // }
 
   void _showAddDzikirModal() {
     showDialog(
