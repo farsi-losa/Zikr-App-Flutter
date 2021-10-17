@@ -110,7 +110,7 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
     Dzikir firstDzikir = Dzikir(
         name: _nameDzikir, qty: _qtyZikr, timer: _timerLength, lastcount: 0);
     List<Dzikir> listOfDzikirs = [firstDzikir];
-    return await this.handler.insertUser(listOfDzikirs);
+    return await this.handler.insertUser(listOfDzikirs, 'dzikirs');
   }
 
   Future<int> updateUsers(id) async {

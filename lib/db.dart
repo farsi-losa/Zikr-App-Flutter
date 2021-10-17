@@ -11,8 +11,20 @@ class DatabaseHandler {
         await database.execute(
           'CREATE TABLE dzikirs(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT, qty INTEGER, timer INTEGER, lastcount INTEGER)',
         );
+        await database.execute(
+          'CREATE TABLE dzikirs_default(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT, qty INTEGER, timer INTEGER, lastcount INTEGER)',
+        );
+        await database.execute(
+            "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
+            [0, "Tasbih", 33, 900, 0]);
+        await database.execute(
+            "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
+            [1, "Tahmid", 33, 900, 0]);
+        await database.execute(
+            "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
+            [2, "Takbir", 33, 900, 0]);
       },
-      version: 2,
+      version: 3,
     );
   }
 
@@ -25,11 +37,12 @@ class DatabaseHandler {
     );
   }
 
-  Future<int> insertUser(List<Dzikir> dzikirs) async {
+  Future<int> insertUser(List<Dzikir> dzikirs, table) async {
     int result = 0;
     final Database db = await initializeDB();
     for (var dzikir in dzikirs) {
-      result = await db.insert('dzikirs', dzikir.toMap());
+      result = await db.insert(table, dzikir.toMap(),
+          conflictAlgorithm: ConflictAlgorithm.replace);
     }
     return result;
   }
@@ -41,9 +54,23 @@ class DatabaseHandler {
     return result;
   }
 
-  Future<List<Dzikir>> retrieveDzikirs() async {
+  Future retrieveDzikirs() async {
     final Database db = await initializeDB();
     final List<Map<String, dynamic>> maps = await db.query('dzikirs');
+    return List.generate(maps.length, (i) {
+      return Dzikir(
+        id: maps[i]['id'],
+        name: maps[i]['name'],
+        qty: maps[i]['qty'],
+        timer: maps[i]['timer'],
+        lastcount: maps[i]['lastcount'],
+      );
+    });
+  }
+
+  Future<List<Dzikir>> retrieveDzikirsDefault() async {
+    final Database db = await initializeDB();
+    final List<Map<String, dynamic>> maps = await db.query('dzikirs_default');
     return List.generate(maps.length, (i) {
       return Dzikir(
         id: maps[i]['id'],
