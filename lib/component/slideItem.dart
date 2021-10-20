@@ -58,7 +58,7 @@ class _SlideMenuState extends State<SlideMenu>
         deleteClick = false;
       });
       Future.delayed(const Duration(milliseconds: 300), () {
-        this.handler.deleteUser(widget.id);
+        this.handler.deleteDzikir(widget.id);
         widget.onDataChange();
       });
     } else {

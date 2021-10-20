@@ -102,7 +102,7 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
         this.addDzikir();
       }
     } else
-      this.updateUsers(widget.id);
+      this.updateDzikirs(widget.id);
   }
 
   Future<int> addDzikir() async {
@@ -110,10 +110,10 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
     Dzikir firstDzikir = Dzikir(
         name: _nameDzikir, qty: _qtyZikr, timer: _timerLength, lastcount: 0);
     List<Dzikir> listOfDzikirs = [firstDzikir];
-    return await this.handler.insertUser(listOfDzikirs, 'dzikirs');
+    return await this.handler.insertDzikir(listOfDzikirs, 'dzikirs');
   }
 
-  Future<int> updateUsers(id) async {
+  Future<int> updateDzikirs(id) async {
     Navigator.pop(context);
     Dzikir dzikir = Dzikir(
         id: id,
@@ -121,7 +121,7 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
         qty: _qtyZikr,
         timer: _timerLength,
         lastcount: _lastCount);
-    return await this.handler.updateUser(dzikir);
+    return await this.handler.updateDzikir(dzikir);
   }
 
   @override

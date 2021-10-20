@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-// import 'package:url_launcher/link.dart';
+import 'package:dzikirapp/db.dart';
+import 'package:dzikirapp/models/globalCounter.dart';
+import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AppInformation extends StatefulWidget {
@@ -12,16 +14,37 @@ class AppInformation extends StatefulWidget {
 class _AppInformation extends State<AppInformation> {
   // This widget is the root of your application.
 
+  late DatabaseHandler handler;
+  late bool _showDzikirReference;
+  late Settings _dzikirReference;
   String appVersion = '0.0.0';
 
   @override
   void initState() {
     super.initState();
+    this.handler = DatabaseHandler();
+    // print(_getSettingByCode());
+    this.handler.retrieveSettingsByCode('dzikir_default').then((data) {
+      print(data);
+      _dzikirReference = data;
+      return data;
+    }, onError: (e) {
+      print(e);
+    });
     PackageInfo.fromPlatform().then((PackageInfo packageInfo) {
       setState(() {
         appVersion = packageInfo.version;
       });
     });
+  }
+
+  Future<int> _updateSettingReference(value) async {
+    Settings setting = Settings(
+        id: _dzikirReference.id,
+        name: _dzikirReference.name,
+        active: value ? 0 : 1,
+        featureCode: _dzikirReference.featureCode);
+    return await this.handler.updateSetting(setting);
   }
 
   Future<void> _launchInBrowser(String url) async {
@@ -37,9 +60,18 @@ class _AppInformation extends State<AppInformation> {
     }
   }
 
+  void _referenceOnchange(value) {
+    var globalCounter = Provider.of<SettingsModel>(context, listen: false);
+    _updateSettingReference(value);
+    globalCounter.setDzikirReference(value);
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
     const _url =
         'https://play.google.com/store/apps/details?id=com.farsi.dzikirapp';
+    var globalCounter = Provider.of<SettingsModel>(context, listen: false);
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -54,10 +86,57 @@ class _AppInformation extends State<AppInformation> {
                     alignment: Alignment.center,
                     child: Column(children: [
                       Text(
-                        'Dzikir Application',
+                        'Dzikir Settings',
                         textAlign: TextAlign.center,
                         style:
                             TextStyle(color: Color(0xff24573F), fontSize: 18),
+                      ),
+                      Container(
+                        child: FutureBuilder<List<Settings>>(
+                          future: this.handler.retrieveSettings(),
+                          builder:
+                              (context, AsyncSnapshot<List<dynamic>> snapshot) {
+                            if (snapshot.hasData) {
+                              return SwitchListTile(
+                                title: const Text('Show dzikir reference'),
+                                value: globalCounter.dzikirReference,
+                                activeColor: Color(0xff24573F),
+                                onChanged: (bool value) {
+                                  _referenceOnchange(value);
+                                },
+                              );
+                            } else if (snapshot.hasError) {
+                              return Text("${snapshot.error}");
+                            }
+                            return CircularProgressIndicator();
+                          },
+                        ),
+                        //             child: FutureBuilder(
+                        //                 future: this.handler.retrieveDzikirs(),
+                        //                 builder: (context,
+                        //                     AsyncSnapshot<List<dynamic>> snapshot) {
+                        //                   if (snapshot.hasData) {
+                        //                     return SwitchListTile(
+                        //                       title: const Text('Show dzikir reference'),
+                        //                       value: _showDzikirReference,
+                        //                       activeColor: Color(0xff24573F),
+                        //                       onChanged: (bool value) {
+                        //                         setState(() {
+                        //                           _showDzikirReference = value;
+                        //                         });
+                        //                       },
+                        //                     );
+                        //                   } else else if (snapshot.hasError) {
+                        //   return Text("${snapshot.error}");
+                        // }
+                        // return CircularProgressIndicator();
+
+                        //                 }),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          Text('show dzikir reference'),
+                        ],
                       ),
                       Spacer(),
                       Container(

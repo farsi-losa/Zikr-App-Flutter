@@ -15,6 +15,11 @@ class DatabaseHandler {
           'CREATE TABLE dzikirs_default(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT, qty INTEGER, timer INTEGER, lastcount INTEGER)',
         );
         await database.execute(
+          'CREATE TABLE features_setting(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, featureCode TEXT, active INTEGER, name TEXT)',
+        );
+
+        // init record dzikirs default
+        await database.execute(
             "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
             [0, "Tasbih", 33, 900, 0]);
         await database.execute(
@@ -23,12 +28,20 @@ class DatabaseHandler {
         await database.execute(
             "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
             [2, "Takbir", 33, 900, 0]);
+        await database.execute(
+            "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
+            [3, "Alhamdulillah", 33, 900, 0]);
+
+        // init record settings
+        await database.execute(
+            "INSERT INTO features_setting ('featureCode', 'active', 'name')values (?, ?, ?)",
+            ["dzikir_default", 1, 'Dzikir Reference']);
       },
       version: 3,
     );
   }
 
-  Future<void> deleteUser(int id) async {
+  Future<void> deleteDzikir(int id) async {
     final db = await initializeDB();
     await db.delete(
       'dzikirs',
@@ -37,7 +50,7 @@ class DatabaseHandler {
     );
   }
 
-  Future<int> insertUser(List<Dzikir> dzikirs, table) async {
+  Future<int> insertDzikir(List<Dzikir> dzikirs, table) async {
     int result = 0;
     final Database db = await initializeDB();
     for (var dzikir in dzikirs) {
@@ -47,7 +60,7 @@ class DatabaseHandler {
     return result;
   }
 
-  Future<int> updateUser(Dzikir dzikir) async {
+  Future<int> updateDzikir(Dzikir dzikir) async {
     final db = await initializeDB();
     var result = await db.update("dzikirs", dzikir.toMap(),
         where: "id = ?", whereArgs: [dzikir.id]);
@@ -81,6 +94,39 @@ class DatabaseHandler {
       );
     });
   }
+
+  Future<int> updateSetting(Settings settings) async {
+    final db = await initializeDB();
+    var result = await db.update("features_setting", settings.toMap(),
+        where: "featureCode = ?", whereArgs: [settings.featureCode]);
+    return result;
+  }
+
+  Future<List<Settings>> retrieveSettings() async {
+    final Database db = await initializeDB();
+    final List<Map<String, dynamic>> maps = await db.query('features_setting');
+    return List.generate(maps.length, (i) {
+      return Settings(
+        id: maps[i]['id'],
+        featureCode: maps[i]['featureCode'],
+        active: maps[i]['active'],
+        name: maps[i]['name'],
+      );
+    });
+  }
+
+  Future<Settings> retrieveSettingsByCode(String fieldCode) async {
+    final Database db = await initializeDB();
+    final List<Map<String, dynamic>> result = await db.query('features_setting',
+        where: "featureCode = ?", whereArgs: [fieldCode]);
+
+    return Settings(
+      id: result[0]['id'],
+      featureCode: result[0]['featureCode'],
+      active: result[0]['active'],
+      name: result[0]['name'],
+    );
+  }
 }
 
 class Dzikir {
@@ -113,5 +159,32 @@ class Dzikir {
   @override
   String toString() {
     return 'Dzikir{id: $id, name: $name, qty: $qty, timer: $timer, lastcount: $lastcount}';
+  }
+}
+
+class Settings {
+  final int? id;
+  final String featureCode;
+  final int active;
+  final String? name;
+
+  Settings(
+      {this.id, required this.featureCode, required this.active, this.name});
+
+  // Convert a Dog into a Map. The keys must correspond to the names of the
+  // columns in the database.
+  Map<String, dynamic> toMap() {
+    return {
+      'featureCode': featureCode,
+      'active': active,
+      'id': id,
+      'name': name,
+    };
+  }
+
+  // Implement toString to make it easier to see information about
+  @override
+  String toString() {
+    return 'Dzikir{id: $id, name: $name, featureCode: $featureCode, active: $active}';
   }
 }

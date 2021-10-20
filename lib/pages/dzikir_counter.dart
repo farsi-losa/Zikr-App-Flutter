@@ -141,14 +141,14 @@ class _StackOverState extends State<StackOver>
     }
   }
 
-  Future<int> updateUsers(id) async {
+  Future<int> updateDzikirs(id) async {
     Dzikir dzikir = Dzikir(
         id: id,
         name: _dzikirName,
         qty: _qtyZikr,
         timer: _timerLength,
         lastcount: _counter);
-    return await this.handler.updateUser(dzikir);
+    return await this.handler.updateDzikir(dzikir);
   }
 
   @override
@@ -164,7 +164,7 @@ class _StackOverState extends State<StackOver>
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        updateUsers(_id);
+        updateDzikirs(_id);
         return true;
       },
       child: new Scaffold(

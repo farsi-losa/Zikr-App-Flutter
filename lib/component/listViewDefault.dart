@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 
 ListView dzikirDefaultListView(data, onDataChange, onItemClicked) {
-  print(data);
   return ListView.builder(
       itemCount: data.length,
       scrollDirection: Axis.horizontal,
       shrinkWrap: true,
-      // padding: const EdgeInsets.all(8),
       itemBuilder: (BuildContext context, int index) {
         // return _tile(data[index].title, data[index].synopsis, data[index].type);
         return Container(
@@ -35,20 +33,29 @@ ListView dzikirDefaultListView(data, onDataChange, onItemClicked) {
               child: Column(children: [
                 Align(
                   alignment: Alignment.topLeft,
-                  child: Container(
-                    height: 36,
-                    width: 85,
-                    child: Center(
+                  child: ConstrainedBox(
+                    constraints: new BoxConstraints(
+                      minWidth: 85.0,
+                      maxWidth: 125.0,
+                    ),
+                    child: Container(
+                      height: 36,
+                      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 7),
                       child: Text(
                         data![index].name.toUpperCase(),
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
                       ),
-                    ),
-                    decoration: new BoxDecoration(
-                      color: Color(0xff93BC9C),
-                      borderRadius: new BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        bottomRight: Radius.circular(10),
+                      decoration: new BoxDecoration(
+                        color: Color(0xff93BC9C),
+                        borderRadius: new BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10),
+                        ),
                       ),
                     ),
                   ),
