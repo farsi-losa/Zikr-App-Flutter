@@ -75,15 +75,28 @@ class _AppInformation extends State<AppInformation> {
     return MaterialApp(
       home: Scaffold(
         body: Container(
+          color: Color(0xffE8F0EF),
           child: Column(
             children: [
               Flexible(
                 child: Center(
                   child: Container(
-                    height: 300,
+                    height: 330,
                     margin: const EdgeInsets.fromLTRB(35, 0, 35, 55),
                     padding: const EdgeInsets.all(35),
                     alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.2),
+                          spreadRadius: 2,
+                          blurRadius: 3,
+                          offset: Offset(2, 2), // changes position of shadow
+                        ),
+                      ],
+                    ),
                     child: Column(children: [
                       Text(
                         'Dzikir Settings',
@@ -98,7 +111,13 @@ class _AppInformation extends State<AppInformation> {
                               (context, AsyncSnapshot<List<dynamic>> snapshot) {
                             if (snapshot.hasData) {
                               return SwitchListTile(
-                                title: const Text('Show dzikir reference'),
+                                title: const Text(
+                                  'Show dzikir reference',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xff24573F),
+                                  ),
+                                ),
                                 value: globalCounter.dzikirReference,
                                 activeColor: Color(0xff24573F),
                                 onChanged: (bool value) {
@@ -111,32 +130,15 @@ class _AppInformation extends State<AppInformation> {
                             return CircularProgressIndicator();
                           },
                         ),
-                        //             child: FutureBuilder(
-                        //                 future: this.handler.retrieveDzikirs(),
-                        //                 builder: (context,
-                        //                     AsyncSnapshot<List<dynamic>> snapshot) {
-                        //                   if (snapshot.hasData) {
-                        //                     return SwitchListTile(
-                        //                       title: const Text('Show dzikir reference'),
-                        //                       value: _showDzikirReference,
-                        //                       activeColor: Color(0xff24573F),
-                        //                       onChanged: (bool value) {
-                        //                         setState(() {
-                        //                           _showDzikirReference = value;
-                        //                         });
-                        //                       },
-                        //                     );
-                        //                   } else else if (snapshot.hasError) {
-                        //   return Text("${snapshot.error}");
-                        // }
-                        // return CircularProgressIndicator();
-
-                        //                 }),
                       ),
-                      Row(
-                        children: <Widget>[
-                          Text('show dzikir reference'),
-                        ],
+                      Spacer(),
+                      Container(
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                                width: 1.0, color: Color(0xffE7EFEE)),
+                          ),
+                        ),
                       ),
                       Spacer(),
                       Container(
@@ -173,18 +175,6 @@ class _AppInformation extends State<AppInformation> {
                             TextStyle(color: Color(0xffAF9C4D), fontSize: 12),
                       ),
                     ]),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(5)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.2),
-                          spreadRadius: 2,
-                          blurRadius: 3,
-                          offset: Offset(2, 2), // changes position of shadow
-                        ),
-                      ],
-                    ),
                   ),
                 ),
               ),

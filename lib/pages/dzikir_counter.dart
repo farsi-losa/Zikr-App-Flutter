@@ -4,26 +4,29 @@ import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:dzikirapp/component/route.dart';
 import 'package:dzikirapp/db.dart';
 
-class StackOver extends StatefulWidget {
+class DzikirCounter extends StatefulWidget {
   final int timer;
   final int qty;
   final String name;
   final int lastCount;
   final int id;
-  StackOver(
+  final String dzikirType;
+
+  DzikirCounter(
       {Key? key,
       required this.id,
       required this.timer,
       required this.name,
       required this.qty,
-      required this.lastCount})
+      required this.lastCount,
+      required this.dzikirType})
       : super(key: key);
 
   @override
-  _StackOverState createState() => _StackOverState();
+  _DzikirCounterState createState() => _DzikirCounterState();
 }
 
-class _StackOverState extends State<StackOver>
+class _DzikirCounterState extends State<DzikirCounter>
     with SingleTickerProviderStateMixin {
   late DatabaseHandler handler;
   late TabController _tabController;
@@ -148,7 +151,7 @@ class _StackOverState extends State<StackOver>
         qty: _qtyZikr,
         timer: _timerLength,
         lastcount: _counter);
-    return await this.handler.updateDzikir(dzikir);
+    return await this.handler.updateDzikir(dzikir, widget.dzikirType);
   }
 
   @override

@@ -60,10 +60,11 @@ class DatabaseHandler {
     return result;
   }
 
-  Future<int> updateDzikir(Dzikir dzikir) async {
+  Future<int> updateDzikir(Dzikir dzikir, String dzikirType) async {
+    final table = dzikirType == 'custom' ? 'dzikirs' : 'dzikirs_default';
     final db = await initializeDB();
-    var result = await db.update("dzikirs", dzikir.toMap(),
-        where: "id = ?", whereArgs: [dzikir.id]);
+    var result = await db
+        .update(table, dzikir.toMap(), where: "id = ?", whereArgs: [dzikir.id]);
     return result;
   }
 

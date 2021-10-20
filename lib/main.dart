@@ -91,7 +91,12 @@ class _MyHomePageState extends State<MyHomePage> {
       context: context,
       builder: (context) {
         return DialogAddDzikir(
-            method: 'add', name: '', qty: 0, timer: 0, lastCount: 0);
+            method: 'add',
+            name: '',
+            qty: 0,
+            timer: 0,
+            lastCount: 0,
+            dzikirType: 'custom');
       },
     ).then((value) {
       setState(() {});

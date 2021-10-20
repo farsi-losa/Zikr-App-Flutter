@@ -8,6 +8,7 @@ class DialogAddDzikir extends StatefulWidget {
   final String name;
   final int? id;
   final int lastCount;
+  final String dzikirType;
 
   DialogAddDzikir(
       {Key? key,
@@ -16,7 +17,8 @@ class DialogAddDzikir extends StatefulWidget {
       this.method,
       this.id,
       required this.name,
-      required this.lastCount})
+      required this.lastCount,
+      required this.dzikirType})
       : super(key: key);
 
   @override
@@ -121,7 +123,7 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
         qty: _qtyZikr,
         timer: _timerLength,
         lastcount: _lastCount);
-    return await this.handler.updateDzikir(dzikir);
+    return await this.handler.updateDzikir(dzikir, widget.dzikirType);
   }
 
   @override

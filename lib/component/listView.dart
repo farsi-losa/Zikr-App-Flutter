@@ -71,6 +71,7 @@ class DzikirListView extends StatelessWidget {
                           onDataChange: onDataChange,
                           id: data![index].id!,
                           data: data![index],
+                          dzikirType: 'custom',
                           child: Container(
                             child: new Material(
                               color: Colors.transparent,
@@ -81,7 +82,7 @@ class DzikirListView extends StatelessWidget {
                                   bottomLeft: Radius.circular(15),
                                 ),
                                 onTap: () {
-                                  onItemClicked(data![index]);
+                                  onItemClicked(data![index], 'custom');
                                 },
                                 child: Row(children: [
                                   Container(

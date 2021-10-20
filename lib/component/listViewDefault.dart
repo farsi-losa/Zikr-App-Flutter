@@ -6,7 +6,6 @@ ListView dzikirDefaultListView(data, onDataChange, onItemClicked) {
       scrollDirection: Axis.horizontal,
       shrinkWrap: true,
       itemBuilder: (BuildContext context, int index) {
-        // return _tile(data[index].title, data[index].synopsis, data[index].type);
         return Container(
           margin: EdgeInsets.fromLTRB(10, 0, 10, 0),
           width: 125,
@@ -28,7 +27,7 @@ ListView dzikirDefaultListView(data, onDataChange, onItemClicked) {
                 bottomLeft: Radius.circular(15),
               ),
               onTap: () {
-                onItemClicked(data![index]);
+                onItemClicked(data![index], 'dafault');
               },
               child: Column(children: [
                 Align(

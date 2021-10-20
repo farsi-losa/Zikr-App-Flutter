@@ -68,8 +68,8 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
     modalController.reverseDuration = const Duration(milliseconds: 100);
   }
 
-  void _onItemClicked(data) {
-    Navigator.of(context).push(createRoute(data)).then((value) {
+  void _onItemClicked(data, dzikirType) {
+    Navigator.of(context).push(createRoute(data, dzikirType)).then((value) {
       _onDataChange();
     });
   }

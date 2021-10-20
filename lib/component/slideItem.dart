@@ -7,13 +7,14 @@ class SlideMenu extends StatefulWidget {
   final int id;
   final data;
   final onDataChange;
+  final dzikirType;
 
-  SlideMenu({
-    required this.child,
-    required this.id,
-    this.data,
-    this.onDataChange,
-  });
+  SlideMenu(
+      {required this.child,
+      required this.id,
+      this.data,
+      this.onDataChange,
+      required this.dzikirType});
 
   @override
   _SlideMenuState createState() => new _SlideMenuState();
@@ -91,7 +92,8 @@ class _SlideMenuState extends State<SlideMenu>
             name: widget.data.name,
             qty: widget.data.qty,
             lastCount: widget.data.lastcount,
-            timer: widget.data.timer);
+            timer: widget.data.timer,
+            dzikirType: widget.dzikirType);
       },
     ).then((value) {
       widget.onDataChange();
