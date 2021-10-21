@@ -54,6 +54,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/images/empty_dzikir.png
+    - assets/images/icon_dzikir_small.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

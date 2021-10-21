@@ -100,6 +100,21 @@ class _SlideMenuState extends State<SlideMenu>
     });
   }
 
+  static lastCountColor(int lastCount, int target) {
+    var percentage = lastCount / target * 100;
+    if (percentage > 0 && percentage <= 33)
+      return LinearGradient(
+          colors: [Color(0xffB64839), Color(0xffE8F0EF), Color(0xffE8F0EF)]);
+    if ((percentage > 33 && percentage <= 66))
+      return LinearGradient(
+          colors: [Color(0xffAF9C4D), Color(0xffAF9C4D), Color(0xffE8F0EF)]);
+    if ((percentage > 66 && percentage <= 99))
+      return LinearGradient(
+          colors: [Color(0xff24573F), Color(0xff24573F), Color(0xffE8F0EF)]);
+
+    return LinearGradient(colors: [Color(0xffE8F0EF), Color(0xffE8F0EF)]);
+  }
+
   @override
   dispose() {
     _controller.dispose();
@@ -112,6 +127,10 @@ class _SlideMenuState extends State<SlideMenu>
             begin: const Offset(0.0, 0.0), end: const Offset(-0.4, 0.0))
         .animate(new CurveTween(curve: Curves.decelerate).animate(_controller));
 
+    final kGradientBoxDecoration = BoxDecoration(
+      gradient: lastCountColor(widget.data.lastcount, widget.data.qty),
+      borderRadius: BorderRadius.circular(15),
+    );
     return Stack(
       children: <Widget>[
         new Positioned.fill(
@@ -191,37 +210,39 @@ class _SlideMenuState extends State<SlideMenu>
         new SlideTransition(
           position: animation,
           child: Container(
-            decoration: new BoxDecoration(
-              color: Colors.white,
-              border: Border.all(
-                width: 1.0,
-                color: Color(0xffE8F0EF),
+            decoration: kGradientBoxDecoration,
+            child: Padding(
+              padding: const EdgeInsets.all(1.0),
+              child: Container(
+                decoration: new BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: new BorderRadius.all(Radius.circular(15)),
+                ),
+                child: Row(children: [
+                  Expanded(child: widget.child),
+                  Material(
+                    color: Colors.transparent,
+                    borderRadius: new BorderRadius.only(
+                      topRight: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
+                    ),
+                    child: InkWell(
+                      splashColor: Color(0xffE8F0EF),
+                      borderRadius: new BorderRadius.only(
+                        topRight: Radius.circular(15),
+                        bottomRight: Radius.circular(15),
+                      ),
+                      onTap: () => {onTap()},
+                      child: Container(
+                        width: 68,
+                        height: 68,
+                        child: Icon(Icons.more_vert),
+                      ),
+                    ),
+                  ),
+                ]),
               ),
-              borderRadius: new BorderRadius.all(Radius.circular(15)),
             ),
-            child: Row(children: [
-              Expanded(child: widget.child),
-              Material(
-                color: Colors.transparent,
-                borderRadius: new BorderRadius.only(
-                  topRight: Radius.circular(15),
-                  bottomRight: Radius.circular(15),
-                ),
-                child: InkWell(
-                  splashColor: Color(0xffE8F0EF),
-                  borderRadius: new BorderRadius.only(
-                    topRight: Radius.circular(15),
-                    bottomRight: Radius.circular(15),
-                  ),
-                  onTap: () => {onTap()},
-                  child: Container(
-                    width: 68,
-                    height: 68,
-                    child: Icon(Icons.more_vert),
-                  ),
-                ),
-              ),
-            ]),
           ),
         ),
       ],

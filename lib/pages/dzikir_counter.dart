@@ -175,6 +175,7 @@ class _DzikirCounterState extends State<DzikirCounter>
           leading: new IconButton(
               icon: new Icon(Icons.arrow_back),
               onPressed: () {
+                updateDzikirs(_id);
                 Navigator.of(context).pop(createRouteToHome);
               }),
           title: Text(
@@ -269,7 +270,7 @@ class _DzikirCounterState extends State<DzikirCounter>
                                 Align(
                                   alignment: Alignment(0, 0.15),
                                   child: Text(
-                                    'Max',
+                                    'Target',
                                     style: TextStyle(
                                         color: Color(0xff93BC9C), fontSize: 12),
                                   ),

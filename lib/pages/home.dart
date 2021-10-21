@@ -101,11 +101,11 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
         appBar: AppBar(
           centerTitle: true,
           title: Text(
-            'Dzikir List',
+            'DZIKIR LIST',
             style: const TextStyle(color: Color(0xffAF9C4D)),
           ),
           elevation: 0,
-          backgroundColor: Color(0xffE7EFEE),
+          backgroundColor: Colors.white,
         ),
         body: FutureBuilder(
           future: Future.wait([
@@ -121,30 +121,46 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
                   Container(
                       child: globalCounter.dzikirReference
                           ? AnimatedContainer(
-                              height: scrollVisibility ? 180.0 : 0.0,
-                              duration: Duration(milliseconds: 400),
-                              child: Stack(children: <Widget>[
-                                Positioned(
-                                  height: 160.0,
-                                  left: 15.0,
-                                  right: 15.0,
-                                  top: 15.0,
-                                  // bottom: 40.0,
-                                  child: SizedBox(
-                                    // height: 160.0,
-                                    width: double.infinity,
-                                    child: dzikirDefaultListView(
-                                        snapshot.data![0],
-                                        _onDataChange,
-                                        _onItemClicked),
+                              height: scrollVisibility ? 250.0 : 20.0,
+                              duration: Duration(milliseconds: 500),
+                              child: Stack(
+                                children: <Widget>[
+                                  Positioned(
+                                    left: 25.0,
+                                    right: 15.0,
+                                    top: 20.0,
+                                    // bottom: 40.0,
+                                    child: Text(
+                                      'Dzikir Reference',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        color: Color(0xff24573F),
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ]),
+                                  Positioned(
+                                    height: 160.0,
+                                    left: 0.0,
+                                    right: 0.0,
+                                    top: 60.0,
+                                    // bottom: 40.0,
+                                    child: Container(
+                                      // height: 160.0,
+                                      width: double.infinity,
+                                      child: dzikirDefaultListView(
+                                          snapshot.data![0],
+                                          _onDataChange,
+                                          _onItemClicked),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             )
                           : null),
                   Flexible(
                     child: Container(
-                      margin: EdgeInsets.only(top: 40),
+                      // margin: EdgeInsets.only(top: 40),
                       decoration: new BoxDecoration(
                         color: Colors.white,
                         borderRadius: new BorderRadius.only(
@@ -185,6 +201,19 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
                             ),
                           ),
                         ),
+                        Container(
+                          padding: EdgeInsets.only(bottom: 20, left: 25),
+                          width: double.infinity,
+                          child: Text(
+                            'Yours Dzikir',
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Color(0xff24573F),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
                         Flexible(
                           child: DzikirListView(
                             data: snapshot.data![1],
@@ -201,7 +230,9 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
             } else if (snapshot.hasError) {
               return Text("${snapshot.error}");
             }
-            return CircularProgressIndicator();
+            return Center(
+              child: CircularProgressIndicator(),
+            );
           },
         ),
       ),

@@ -30,7 +30,7 @@ class DzikirListView extends StatelessWidget {
                     children: [
                       Center(
                         child: Container(
-                          margin: EdgeInsets.only(top: 100),
+                          margin: EdgeInsets.only(top: 20),
                           width: 190,
                           height: 140,
                           decoration: BoxDecoration(
@@ -142,11 +142,6 @@ class DzikirListView extends StatelessWidget {
                                               children: [
                                                 Container(
                                                   child: Row(children: [
-                                                    Icon(
-                                                      Icons.access_time_filled,
-                                                      size: 14,
-                                                      color: Color(0xff24573F),
-                                                    ),
                                                     Padding(
                                                       padding:
                                                           EdgeInsets.symmetric(
@@ -163,7 +158,7 @@ class DzikirListView extends StatelessWidget {
                                                 Align(
                                                   alignment: Alignment.center,
                                                   child: Text(
-                                                    '${data![index].qty.toString()} x',
+                                                    '${data![index].lastcount.toString()} / ${data![index].qty.toString()} x',
                                                   ),
                                                 ),
                                               ]),
