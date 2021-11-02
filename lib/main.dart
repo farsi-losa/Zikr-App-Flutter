@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:dzikirapp/db.dart';
 import 'package:dzikirapp/pages/information.dart';
 import 'package:provider/provider.dart';
-import 'package:dzikirapp/models/globalCounter.dart';
+import 'package:dzikirapp/models/settings.dart';
 import 'package:dzikirapp/component/dialogAddDzikir.dart';
 import 'package:dzikirapp/pages/home.dart';
-import 'package:provider/provider.dart';
+// import 'package:provider/provider.dart';
 // import 'package:dzikirapp/component/AnimatedBottomNav.dart';
 
 void main() {

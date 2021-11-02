@@ -24,13 +24,13 @@ class DatabaseHandler {
             [0, "Tasbih", 33, 900, 0]);
         await database.execute(
             "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
-            [1, "Tahmid", 33, 900, 0]);
+            [1, "Tahlil", 33, 900, 0]);
         await database.execute(
             "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
             [2, "Takbir", 33, 900, 0]);
         await database.execute(
             "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
-            [3, "Alhamdulillah", 33, 900, 0]);
+            [3, "Tahmid", 33, 900, 0]);
 
         // init record settings
         await database.execute(

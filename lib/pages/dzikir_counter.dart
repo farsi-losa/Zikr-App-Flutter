@@ -503,10 +503,9 @@ class _DzikirCounterState extends State<DzikirCounter>
                       borderRadius: BorderRadius.circular(
                         15.0,
                       ),
-                      color: Color(0xffE8F0EF),
+                      color: Color(0xff24573F),
                     ),
 
-                    labelColor: Color(0xff93BC9C),
                     unselectedLabelColor: Color(0xff93BC9C),
                     tabs: [
                       Tab(
