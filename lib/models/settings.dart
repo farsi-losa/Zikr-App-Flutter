@@ -15,18 +15,14 @@ class SettingsModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  void initDzikirReference(bool value) {
-    final address =
-        this.handler.retrieveSettingsByCode('dzikir_default').then((data) {
-      print(data);
+  initDzikirReference() {
+    this.handler.retrieveSettingsByCode('dzikir_default').then((data) {
       _dzikirReference = data.active == 1;
 
       return data.active == 1;
     }, onError: (e) {
       print(e);
     });
-    print(address);
-    notifyListeners();
   }
 
   get dzikirReference => _dzikirReference;
@@ -34,14 +30,12 @@ class SettingsModel extends ChangeNotifier {
   Future<bool> get fetchSetting {
     final address =
         this.handler.retrieveSettingsByCode('dzikir_default').then((data) {
-      print(data);
       _dzikirReference = data.active == 1;
 
       return data.active == 1;
     }, onError: (e) {
       print(e);
     });
-    print(address);
     return address;
   }
 }

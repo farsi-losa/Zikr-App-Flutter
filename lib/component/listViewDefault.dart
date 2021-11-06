@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 ListView dzikirDefaultListView(data, onDataChange, onItemClicked) {
   Color lastCountColor(int lastCount, int target) {
     var hasilbagi = lastCount / target * 100;
-    if (hasilbagi <= 33) return Color(0xffB64839);
+    if (hasilbagi <= 33 && hasilbagi != 0) return Color(0xffB64839);
     if ((hasilbagi > 33 && hasilbagi <= 66)) return Color(0xffAF9C4D);
 
     return Color(0xff24573F);

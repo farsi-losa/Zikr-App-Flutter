@@ -38,9 +38,7 @@ class _DzikirCounterState extends State<DzikirCounter>
   late int _id;
   late int _counter;
 
-  int _loopLength = 33;
   int _currentIndex = 0;
-  int _countLoop = 1;
   bool _isPlaying = false;
   bool _vibrateOnTap = true;
 
@@ -72,17 +70,7 @@ class _DzikirCounterState extends State<DzikirCounter>
       _timerActive = true;
     });
     _timerZikr = Timer.periodic(Duration(milliseconds: _timerLength), (timer) {
-      if (_countLoop == _loopLength) {
-        setState(() {
-          _countLoop = 1;
-        });
-        Vibrate.vibrate();
-      } else {
-        Vibrate.feedback(FeedbackType.success);
-        setState(() {
-          _countLoop++;
-        });
-      }
+      Vibrate.feedback(FeedbackType.success);
       setState(() {
         _counter++;
       });
@@ -107,7 +95,7 @@ class _DzikirCounterState extends State<DzikirCounter>
   void _resetCounter() {
     setState(() {
       _counter = 0;
-      _countLoop = 1;
+      // _countLoop = 1;
     });
   }
 
@@ -128,19 +116,12 @@ class _DzikirCounterState extends State<DzikirCounter>
       });
     }
 
-    if (_countLoop == _loopLength || _qtyZikr == _counter) {
-      setState(() {
-        _countLoop = 1;
-      });
-
+    if (_qtyZikr == _counter) {
       Vibrate.vibrate();
     } else {
       if (_vibrateOnTap) {
         Vibrate.feedback(FeedbackType.success);
       }
-      setState(() {
-        _countLoop++;
-      });
     }
   }
 

@@ -126,6 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ],
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: getBody(),
         floatingActionButton: _currentIndex == 0 ? _getFAB() : null,
         floatingActionButtonLocation:

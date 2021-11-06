@@ -49,12 +49,22 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
     _qtyZikr = widget.qty;
     _nameDzikir = widget.name;
     txtQty = TextEditingController(text: widget.qty.toString());
+    txtQty.addListener(() {
+      final String text = txtQty.text;
+      txtQty.value = txtQty.value.copyWith(
+        text: text,
+        selection:
+            TextSelection(baseOffset: text.length, extentOffset: text.length),
+        composing: TextRange.empty,
+      );
+    });
     txtName = TextEditingController(text: widget.name);
 
     this.handler = DatabaseHandler();
   }
 
   void _inputQtyChange(value) {
+    txtQty.text = value.toString();
     setState(() {
       _qtyZikr = value;
     });
@@ -136,9 +146,9 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
     return AlertDialog(
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20.0))),
-      content: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(15),
+      content: Scrollbar(
+        isAlwaysShown: true,
+        child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
@@ -173,7 +183,7 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
               ),
               Padding(
                 padding: EdgeInsets.only(bottom: 20.0),
-                child: TextField(
+                child: TextFormField(
                   controller: txtQty,
                   style: TextStyle(fontSize: 16.0, height: 1.5),
                   decoration: InputDecoration(
@@ -192,6 +202,14 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
                 child: Text(
                   'Set Timer',
                   style: TextStyle(color: Color(0xff407C60)),
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'Please start then saying your dzikir and stop after finish',
+                  style: TextStyle(fontSize: 12),
+                  textAlign: TextAlign.center,
                 ),
               ),
               Padding(
@@ -239,13 +257,6 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
                         style: TextStyle(fontSize: 12, color: Colors.red),
                         textAlign: TextAlign.left,
                       ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  '*please start then saying your dzikir and stop after finish',
-                  style: TextStyle(fontSize: 12),
-                ),
               ),
             ],
           ),

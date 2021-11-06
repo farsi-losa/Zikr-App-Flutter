@@ -15,7 +15,6 @@ class _AppInformation extends State<AppInformation> {
   // This widget is the root of your application.
 
   late DatabaseHandler handler;
-  late bool _showDzikirReference;
   late Settings _dzikirReference;
   String appVersion = '0.0.0';
 
@@ -23,9 +22,7 @@ class _AppInformation extends State<AppInformation> {
   void initState() {
     super.initState();
     this.handler = DatabaseHandler();
-    // print(_getSettingByCode());
     this.handler.retrieveSettingsByCode('dzikir_default').then((data) {
-      print(data);
       _dzikirReference = data;
       return data;
     }, onError: (e) {
@@ -42,7 +39,7 @@ class _AppInformation extends State<AppInformation> {
     Settings setting = Settings(
         id: _dzikirReference.id,
         name: _dzikirReference.name,
-        active: value ? 0 : 1,
+        active: value ? 1 : 0,
         featureCode: _dzikirReference.featureCode);
     return await this.handler.updateSetting(setting);
   }
@@ -61,9 +58,9 @@ class _AppInformation extends State<AppInformation> {
   }
 
   void _referenceOnchange(value) {
-    var globalCounter = Provider.of<SettingsModel>(context, listen: false);
+    var settings = Provider.of<SettingsModel>(context, listen: false);
     _updateSettingReference(value);
-    globalCounter.setDzikirReference(value);
+    settings.setDzikirReference(value);
     setState(() {});
   }
 
@@ -71,7 +68,7 @@ class _AppInformation extends State<AppInformation> {
   Widget build(BuildContext context) {
     const _url =
         'https://play.google.com/store/apps/details?id=com.farsi.dzikirapp';
-    var globalCounter = Provider.of<SettingsModel>(context, listen: false);
+    var settings = Provider.of<SettingsModel>(context, listen: false);
     return MaterialApp(
       home: Scaffold(
         body: Container(
@@ -152,7 +149,7 @@ class _AppInformation extends State<AppInformation> {
                                       color: Color(0xffE8F0EF),
                                     ),
                                   ),
-                                  value: globalCounter.dzikirReference,
+                                  value: settings.dzikirReference,
                                   activeColor: Colors.white,
                                   inactiveThumbColor: Colors.grey[400],
                                   onChanged: (bool value) {

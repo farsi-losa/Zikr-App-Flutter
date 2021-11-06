@@ -95,8 +95,10 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     var settings = Provider.of<SettingsModel>(context);
+    settings.initDzikirReference();
     return MaterialApp(
       home: Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           centerTitle: true,
           title: Text(
@@ -128,7 +130,6 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
                                     left: 25.0,
                                     right: 15.0,
                                     top: 20.0,
-                                    // bottom: 40.0,
                                     child: Text(
                                       'Dzikir Reference',
                                       style: TextStyle(
