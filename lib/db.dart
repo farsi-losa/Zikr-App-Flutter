@@ -5,39 +5,58 @@ import 'package:sqflite/sqflite.dart';
 class DatabaseHandler {
   Future<Database> initializeDB() async {
     String path = await getDatabasesPath();
+    void _createTableSettings(Batch batch) {
+      batch.execute(
+        'CREATE TABLE features_setting(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, featureCode TEXT, active INTEGER, name TEXT)',
+      );
+
+      // init record settings
+      batch.execute(
+          "INSERT INTO features_setting ('featureCode', 'active', 'name')values (?, ?, ?)",
+          ["dzikir_default", 1, 'Dzikir Reference']);
+    }
+
+    void _createTableDzikirDefault(Batch batch) async {
+      batch.execute(
+        'CREATE TABLE dzikirs_default(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT, qty INTEGER, timer INTEGER, lastcount INTEGER)',
+      );
+
+      // init record dzikirs default
+      batch.execute(
+          "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
+          [0, "Tasbih", 33, 900, 0]);
+      batch.execute(
+          "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
+          [1, "Tahlil", 33, 900, 0]);
+      batch.execute(
+          "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
+          [2, "Takbir", 33, 900, 0]);
+      batch.execute(
+          "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
+          [3, "Tahmid", 33, 900, 0]);
+    }
+
     return openDatabase(
       join(path, 'dzikir_database.db'),
+      version: 4,
       onCreate: (database, version) async {
+        var batch = database.batch();
         await database.execute(
           'CREATE TABLE dzikirs(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT, qty INTEGER, timer INTEGER, lastcount INTEGER)',
         );
-        await database.execute(
-          'CREATE TABLE dzikirs_default(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, name TEXT, qty INTEGER, timer INTEGER, lastcount INTEGER)',
-        );
-        await database.execute(
-          'CREATE TABLE features_setting(id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, featureCode TEXT, active INTEGER, name TEXT)',
-        );
-
-        // init record dzikirs default
-        await database.execute(
-            "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
-            [0, "Tasbih", 33, 900, 0]);
-        await database.execute(
-            "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
-            [1, "Tahlil", 33, 900, 0]);
-        await database.execute(
-            "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
-            [2, "Takbir", 33, 900, 0]);
-        await database.execute(
-            "INSERT INTO dzikirs_default ('id', 'name', 'qty', 'timer', 'lastcount')values (?, ?, ?, ?, ?)",
-            [3, "Tahmid", 33, 900, 0]);
-
-        // init record settings
-        await database.execute(
-            "INSERT INTO features_setting ('featureCode', 'active', 'name')values (?, ?, ?)",
-            ["dzikir_default", 1, 'Dzikir Reference']);
+        _createTableDzikirDefault(batch);
+        _createTableSettings(batch);
+        await batch.commit();
       },
-      version: 3,
+      onUpgrade: (db, oldVersion, newVersion) async {
+        var batch = db.batch();
+        if (oldVersion == 3) {
+          // We update existing table and create the new tables
+          _createTableDzikirDefault(batch);
+          _createTableSettings(batch);
+        }
+        await batch.commit();
+      },
     );
   }
 
