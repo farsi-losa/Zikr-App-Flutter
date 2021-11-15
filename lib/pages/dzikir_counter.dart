@@ -209,29 +209,6 @@ class _DzikirCounterState extends State<DzikirCounter>
                           ),
                         ),
                       ),
-                      // Container(
-                      //   margin: const EdgeInsets.only(top: 40, bottom: 70),
-                      //   child: Center(
-                      //     child: FutureBuilder(
-                      //         future: this.handler.retrieveDzikir(_id),
-                      //         builder: (BuildContext context,
-                      //             AsyncSnapshot<List<Dzikir>> snapshot) {
-                      //           if (snapshot.hasData) {
-                      //             return Text(
-                      //               _counter.toString(),
-                      //               style: TextStyle(
-                      //                   color: Color(0xff2F6149), fontSize: 80),
-                      //             );
-                      //           } else {
-                      //             return Text(
-                      //               _counter.toString(),
-                      //               style: TextStyle(
-                      //                   color: Color(0xff2F6149), fontSize: 80),
-                      //             );
-                      //           }
-                      //         }),
-                      //   ),
-                      // ),
                       AnimatedContainer(
                         // Define how long the animation should take.
                         duration: const Duration(seconds: 1),

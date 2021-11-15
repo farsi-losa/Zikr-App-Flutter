@@ -55,6 +55,7 @@ flutter:
   assets:
     - assets/images/empty_dzikir.png
     - assets/images/icon_dzikir_small.png
+    - assets/dzikirpagi.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -67,7 +68,13 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
+    - family: Amiri
+      fonts:
+        - asset: fonts/Amiri-Bold.ttf
+        - asset: fonts/Amiri-BoldItalic.ttf
+        - asset: fonts/Amiri-Italic.ttf
+        - asset: fonts/Amiri-Regular.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
