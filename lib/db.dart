@@ -116,6 +116,8 @@ class DatabaseHandler {
   }
 
   Future<int> updateSetting(Settings settings) async {
+    print('settings');
+    print(settings);
     final db = await initializeDB();
     var result = await db.update("features_setting", settings.toMap(),
         where: "featureCode = ?", whereArgs: [settings.featureCode]);

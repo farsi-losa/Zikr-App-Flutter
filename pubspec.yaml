@@ -55,7 +55,12 @@ flutter:
   assets:
     - assets/images/empty_dzikir.png
     - assets/images/icon_dzikir_small.png
+    - assets/images/pagi_icon.png
+    - assets/images/petang_icon.png
+    - assets/images/custom_dzikir_icon.png
+    - assets/images/info_setting.png
     - assets/dzikirpagi.json
+    - assets/dzikirpetang.json
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -23,7 +23,9 @@ class _AppInformation extends State<AppInformation> {
     super.initState();
     this.handler = DatabaseHandler();
     this.handler.retrieveSettingsByCode('dzikir_default').then((data) {
-      _dzikirReference = data;
+      this.setState(() {
+        _dzikirReference = data;
+      });
       return data;
     }, onError: (e) {
       print(e);
@@ -35,7 +37,9 @@ class _AppInformation extends State<AppInformation> {
     });
   }
 
-  Future<int> _updateSettingReference(value) async {
+  Future<int> _updateReferenceIntoDb(value) async {
+    print('_updateSettingReference value');
+    print(value);
     Settings setting = Settings(
         id: _dzikirReference.id,
         name: _dzikirReference.name,
@@ -57,9 +61,9 @@ class _AppInformation extends State<AppInformation> {
     }
   }
 
-  void _referenceOnchange(value) {
-    var settings = Provider.of<SettingsModel>(context, listen: false);
-    _updateSettingReference(value);
+  void _referenceOnchange(value, settings) {
+    // var settings = Provider.of<SettingsModel>(context, listen: false);
+    _updateReferenceIntoDb(value);
     settings.setDzikirReference(value);
     setState(() {});
   }
@@ -68,9 +72,15 @@ class _AppInformation extends State<AppInformation> {
   Widget build(BuildContext context) {
     const _url =
         'https://play.google.com/store/apps/details?id=com.farsi.dzikirapp';
-    var settings = Provider.of<SettingsModel>(context, listen: false);
-    return MaterialApp(
-      home: Scaffold(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => SettingsModel()),
+        FutureProvider<bool>(
+          create: (context) => SettingsModel().fetchSetting,
+          initialData: false,
+        ),
+      ],
+      child: Scaffold(
         body: Container(
           color: Color(0xffE8F0EF),
           child: Column(
@@ -141,6 +151,8 @@ class _AppInformation extends State<AppInformation> {
                             builder: (context,
                                 AsyncSnapshot<List<dynamic>> snapshot) {
                               if (snapshot.hasData) {
+                                print('-----');
+                                print(snapshot.data?[0].active);
                                 return SwitchListTile(
                                   title: const Text(
                                     'Show dzikir reference',
@@ -149,11 +161,15 @@ class _AppInformation extends State<AppInformation> {
                                       color: Color(0xffE8F0EF),
                                     ),
                                   ),
-                                  value: settings.dzikirReference,
+                                  value: snapshot.data?[0].active == 1,
                                   activeColor: Colors.white,
                                   inactiveThumbColor: Colors.grey[400],
                                   onChanged: (bool value) {
-                                    _referenceOnchange(value);
+                                    _referenceOnchange(
+                                      value,
+                                      Provider.of<SettingsModel>(context,
+                                          listen: false),
+                                    );
                                   },
                                 );
                               } else if (snapshot.hasError) {

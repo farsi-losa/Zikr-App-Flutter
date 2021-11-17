@@ -148,6 +148,7 @@ class _DzikirCounterState extends State<DzikirCounter>
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
+        // save last count when back
         updateDzikirs(_id);
         return true;
       },
@@ -157,7 +158,7 @@ class _DzikirCounterState extends State<DzikirCounter>
               icon: new Icon(Icons.arrow_back),
               onPressed: () {
                 updateDzikirs(_id);
-                Navigator.of(context).pop(createRouteToHome);
+                Navigator.of(context).pop(createRouteToDzikirCustom);
               }),
           title: Text(
             '$_dzikirName',

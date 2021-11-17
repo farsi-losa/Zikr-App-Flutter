@@ -5,9 +5,6 @@ import 'package:provider/provider.dart';
 import 'package:dzikirapp/models/settings.dart';
 import 'package:dzikirapp/component/dialogAddDzikir.dart';
 import 'package:dzikirapp/pages/home.dart';
-import 'package:dzikirapp/pages/dzikir_detail.dart';
-// import 'package:provider/provider.dart';
-// import 'package:dzikirapp/component/AnimatedBottomNav.dart';
 
 class DzikirCustom extends StatefulWidget {
   DzikirCustom({
@@ -123,29 +120,7 @@ class _DzikirCustomState extends State<DzikirCustom> {
             RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20))),
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: <Widget>[
-              IconButton(
-                  icon: Icon(Icons.home),
-                  color: _currentIndex == 0 ? Color(0xffAF9C4D) : Colors.white,
-                  onPressed: () {
-                    setState(() {
-                      _currentIndex = 0;
-                    });
-                  }),
-              IconButton(
-                icon: Icon(Icons.info_outlined),
-                color: _currentIndex == 1 ? Color(0xffAF9C4D) : Colors.white,
-                onPressed: () {
-                  setState(() {
-                    _currentIndex = 1;
-                  });
-                },
-              ),
-            ],
-          ),
+          child: Container(height: 50),
         ),
       ),
     );

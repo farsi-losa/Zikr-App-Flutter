@@ -4,13 +4,14 @@
 
 import 'package:dzikirapp/db.dart';
 import 'package:flutter/foundation.dart';
-// import 'package:provider_shopper/models/catalog.dart';
 
 class SettingsModel extends ChangeNotifier {
   late bool _dzikirReference = true;
   final DatabaseHandler handler = DatabaseHandler();
 
   void setDzikirReference(bool value) {
+    print('value');
+    print(value);
     _dzikirReference = value;
     notifyListeners();
   }

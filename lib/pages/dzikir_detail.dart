@@ -2,22 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
 import 'package:dzikirapp/component/wrapperDzikir.dart';
-// import 'package:package_info_plus/package_info_plus.dart';
-// import 'package:dzikirapp/db.dart';
-// import 'package:dzikirapp/models/settings.dart';
-// import 'package:provider/provider.dart';
-// import 'package:url_launcher/url_launcher.dart';
+import 'package:dzikirapp/pages/index.dart';
 
 class DzikirDetail extends StatefulWidget {
-  DzikirDetail({Key? key}) : super(key: key);
+  final String dzikirType;
+  DzikirDetail({required this.dzikirType, Key? key}) : super(key: key);
   @override
   _DzikirDetail createState() => _DzikirDetail();
 }
 
 class _DzikirDetail extends State<DzikirDetail>
     with SingleTickerProviderStateMixin {
-  // This widget is the root of your application.
-
   List _items = [];
   late TabController _tabController;
   late int _activeTabIndex;
@@ -45,8 +40,10 @@ class _DzikirDetail extends State<DzikirDetail>
   }
 
   Future<void> readJson() async {
-    final String response =
-        await rootBundle.loadString('assets/dzikirpagi.json');
+    final String dzikirPagi = 'assets/dzikirpagi.json';
+    final String dzikirPetang = 'assets/dzikirpetang.json';
+    final String response = await rootBundle
+        .loadString(widget.dzikirType == 'pagi' ? dzikirPagi : dzikirPetang);
     final data = await json.decode(response);
     setState(() {
       _items = data["items"];
@@ -56,53 +53,50 @@ class _DzikirDetail extends State<DzikirDetail>
   @override
   Widget build(BuildContext context) {
     String _dzikirLength = _items.length.toString();
-    return MaterialApp(
-      home: DefaultTabController(
-        length: _items.length,
-        child: Scaffold(
-          appBar: AppBar(
-            leading: new IconButton(
-                icon: new Icon(Icons.arrow_back),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                }),
-            backgroundColor: Color(0xff93BC9C),
-            elevation: 0,
-            title: Text(
-              'Dzikir Pagi',
-              style: const TextStyle(color: Colors.white),
+    return DefaultTabController(
+      length: _items.length,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: new IconButton(
+              icon: new Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.of(context).pop(AppIndex);
+              }),
+          backgroundColor: Color(0xff24573F),
+          elevation: 0,
+          title: Text(
+            'Dzikir Pagi',
+            style: const TextStyle(color: Colors.white),
+          ),
+        ),
+        body: Column(children: [
+          Flexible(
+            child: Container(
+              child: _items.isNotEmpty
+                  ? TabBarView(
+                      controller: _tabController,
+                      children:
+                          List<Widget>.generate(_items.length, (int index) {
+                        return WrapperDzikir(data: _items[index]);
+                      }),
+                    )
+                  : Container(),
             ),
           ),
-          body: Column(children: [
-            Flexible(
-              child: Container(
-                child: _items.isNotEmpty
-                    ? TabBarView(
-                        controller: _tabController,
-                        children:
-                            List<Widget>.generate(_items.length, (int index) {
-                          print(_items[index]);
-                          return WrapperDzikir(data: _items[index]);
-                        }),
-                      )
-                    : Container(),
-              ),
+          Container(
+            height: 60,
+            width: double.infinity,
+            color: Color(0xff24573F),
+            child: Center(
+              child: Text("${_activeTabIndex + 1} / $_dzikirLength",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  )),
             ),
-            Container(
-              height: 60,
-              width: double.infinity,
-              color: Color(0xff24573F),
-              child: Center(
-                child: Text("${_activeTabIndex + 1} / $_dzikirLength",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    )),
-              ),
-            ),
-          ]),
-        ),
+          ),
+        ]),
       ),
     );
   }
