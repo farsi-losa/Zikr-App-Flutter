@@ -28,14 +28,31 @@ class WrapperDzikir extends StatelessWidget {
                 top: 15,
                 bottom: 15,
               ),
-              child: Text(
-                  "${data["title"] != "-" ? data["title"] : ''} ${data["qty"]} x",
-                  textAlign: TextAlign.right,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  )),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        "${data["title"] != "-" ? data["title"] : ''}",
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        "dibaca ${data["qty"]}",
+                        textAlign: TextAlign.right,
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ]),
+              ),
             ),
           ),
           Expanded(
@@ -50,7 +67,7 @@ class WrapperDzikir extends StatelessWidget {
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
                           fontFamily: 'Amiri',
-                          fontSize: 18,
+                          fontSize: 22,
                           height: 2.7,
                         ),
                       ),
@@ -61,6 +78,7 @@ class WrapperDzikir extends StatelessWidget {
                         data["arti"],
                         style: TextStyle(
                           height: 1.5,
+                          fontSize: 18,
                           color: Color(0xff24573F),
                         ),
                       ),
@@ -72,9 +90,6 @@ class WrapperDzikir extends StatelessWidget {
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(30),
-                                    topRight: Radius.circular(30)),
                                 boxShadow: [
                                   BoxShadow(
                                     color: Colors.grey.withOpacity(0.2),

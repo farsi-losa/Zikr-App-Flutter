@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:dzikirapp/component/route.dart';
+import 'package:dzikirapp/component/circle.dart';
 import 'package:dzikirapp/component/itemMenu.dart';
 import 'package:dzikirapp/models/settings.dart';
 import 'package:dzikirapp/pages/information.dart';
@@ -55,16 +55,19 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
             children: [
               Container(
                 width: double.infinity,
-                height: 300,
+                height: 280,
                 child: Stack(children: <Widget>[
-                  Positioned(
-                      child: Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xffE8F0EF),
-                            borderRadius: BorderRadius.all(Radius.circular(90)),
-                          ),
-                          height: 200,
-                          width: double.infinity)),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Color(0xffE8F0EF),
+                      // borderRadius: BorderRadius.only(
+                      //     bottomLeft: Radius.circular(90),
+                      //     bottomRight: Radius.circular(90)),
+                    ),
+                    height: 150,
+                    width: double.infinity,
+                    child: MyArc(diameter: double.infinity),
+                  ),
                   Center(
                     child: Container(
                       margin: EdgeInsets.only(

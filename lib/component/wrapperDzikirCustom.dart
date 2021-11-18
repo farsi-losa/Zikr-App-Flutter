@@ -5,15 +5,17 @@ import 'package:dzikirapp/component/listViewDefault.dart';
 import 'package:dzikirapp/component/route.dart';
 import 'package:dzikirapp/models/settings.dart';
 import 'package:provider/provider.dart';
+import 'package:dzikirapp/pages/index.dart';
 import 'package:flutter/rendering.dart';
 
-class AppHome extends StatefulWidget {
-  AppHome({Key? key}) : super(key: key);
+class WrapperDzikirCustom extends StatefulWidget {
+  WrapperDzikirCustom({Key? key}) : super(key: key);
   @override
-  _AppHome createState() => _AppHome();
+  _WrapperDzikirCustomState createState() => _WrapperDzikirCustomState();
 }
 
-class _AppHome extends State<AppHome> with TickerProviderStateMixin {
+class _WrapperDzikirCustomState extends State<WrapperDzikirCustom>
+    with TickerProviderStateMixin {
   // This widget is the root of your application.
   late ScrollController scrollcontroller = new ScrollController();
   late DatabaseHandler handler;
@@ -100,7 +102,12 @@ class _AppHome extends State<AppHome> with TickerProviderStateMixin {
       home: Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          centerTitle: true,
+          leading: new IconButton(
+              color: Color(0XFFAF9C4D),
+              icon: new Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.of(context).pop(AppIndex);
+              }),
           title: Text(
             'DZIKIR LIST',
             style: const TextStyle(color: Color(0xffAF9C4D)),

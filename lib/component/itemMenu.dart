@@ -97,30 +97,27 @@ class _ItemMenuState extends State<ItemMenu>
           curve: Curves.fastOutSlowIn,
           child: FadeTransition(
             opacity: _animation,
-            child: Material(
-              color: Colors.transparent,
-              child: Container(
-                margin: EdgeInsets.all(20),
-                width: 143,
-                height: 135,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xff8D8D8D).withOpacity(0.25),
-                      spreadRadius: 0,
-                      blurRadius: 10,
-                      offset: Offset(0, 7), // changes position of shadow
-                    ),
-                  ],
-                ),
+            child: Container(
+              margin: EdgeInsets.all(20),
+              width: 143,
+              height: 135,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+                boxShadow: [
+                  BoxShadow(
+                    color: Color(0xff8D8D8D).withOpacity(0.25),
+                    spreadRadius: 0,
+                    blurRadius: 10,
+                    offset: Offset(0, 7), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Material(
+                color: Colors.transparent,
                 child: InkWell(
                   splashColor: Color(0xffE8F0EF),
-                  borderRadius: new BorderRadius.only(
-                    topLeft: Radius.circular(15),
-                    bottomLeft: Radius.circular(15),
-                  ),
+                  borderRadius: new BorderRadius.all(Radius.circular(15)),
                   onTap: () {
                     _onItemClicked();
                   },

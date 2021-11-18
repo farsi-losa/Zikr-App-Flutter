@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:dzikirapp/db.dart';
-import 'package:dzikirapp/pages/information.dart';
 import 'package:provider/provider.dart';
 import 'package:dzikirapp/models/settings.dart';
 import 'package:dzikirapp/component/dialogAddDzikir.dart';
-import 'package:dzikirapp/pages/home.dart';
+import 'package:dzikirapp/component/wrapperDzikirCustom.dart';
 
 class DzikirCustom extends StatefulWidget {
   DzikirCustom({
@@ -24,17 +23,6 @@ class _DzikirCustomState extends State<DzikirCustom> {
   void initState() {
     super.initState();
     this.handler = DatabaseHandler();
-  }
-
-  Widget getBody() {
-    List<Widget> pages = [
-      Container(child: AppHome()),
-      Container(child: AppInformation()),
-    ];
-    return IndexedStack(
-      index: _currentIndex,
-      children: pages,
-    );
   }
 
   // Widget _buildBottomBar() {
@@ -106,8 +94,8 @@ class _DzikirCustomState extends State<DzikirCustom> {
       ],
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        body: getBody(),
-        floatingActionButton: _currentIndex == 0 ? _getFAB() : null,
+        body: Container(child: WrapperDzikirCustom()),
+        floatingActionButton: _getFAB(),
         floatingActionButtonLocation:
             FloatingActionButtonLocation.miniCenterDocked,
         bottomNavigationBar: BottomAppBar(
