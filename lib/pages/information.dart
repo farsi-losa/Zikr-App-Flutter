@@ -3,6 +3,7 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:dzikirapp/db.dart';
 import 'package:dzikirapp/models/settings.dart';
 import 'package:provider/provider.dart';
+import 'package:dzikirapp/pages/index.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class AppInformation extends StatefulWidget {
@@ -62,7 +63,6 @@ class _AppInformation extends State<AppInformation> {
   }
 
   void _referenceOnchange(value, settings) {
-    // var settings = Provider.of<SettingsModel>(context, listen: false);
     _updateReferenceIntoDb(value);
     settings.setDzikirReference(value);
     setState(() {});
@@ -81,6 +81,19 @@ class _AppInformation extends State<AppInformation> {
         ),
       ],
       child: Scaffold(
+        appBar: AppBar(
+          leading: new IconButton(
+              icon: new Icon(Icons.arrow_back),
+              onPressed: () {
+                Navigator.of(context).pop(AppIndex);
+              }),
+          backgroundColor: Color(0xff24573F),
+          // elevation: 1,
+          title: Text(
+            'Dzikir Pagi',
+            style: const TextStyle(color: Colors.white),
+          ),
+        ),
         body: Container(
           color: Color(0xffE8F0EF),
           child: Column(
@@ -91,7 +104,7 @@ class _AppInformation extends State<AppInformation> {
                   Positioned(
                     left: 0.0,
                     right: 0.0,
-                    top: 20.0,
+                    top: 0.0,
                     // bottom: 40.0,
                     child: Container(
                       height: 280,
@@ -188,21 +201,9 @@ class _AppInformation extends State<AppInformation> {
               Spacer(),
               Container(
                 height: 180,
-                margin: const EdgeInsets.fromLTRB(35, 0, 35, 55),
+                margin: const EdgeInsets.fromLTRB(35, 0, 35, 10),
                 padding: const EdgeInsets.fromLTRB(35, 25, 35, 25),
                 alignment: Alignment.center,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.2),
-                      spreadRadius: 2,
-                      blurRadius: 3,
-                      offset: Offset(2, 2), // changes position of shadow
-                    ),
-                  ],
-                ),
                 child: Column(children: [
                   Spacer(),
                   Container(
@@ -222,7 +223,7 @@ class _AppInformation extends State<AppInformation> {
                         _launchInBrowser(_url);
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xff93BC9C),
+                        primary: Color(0xffAF9C4D),
                       ),
                       child: Text(
                         'Review',

@@ -3,7 +3,6 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:dzikirapp/component/circle.dart';
 import 'package:dzikirapp/component/itemMenu.dart';
 import 'package:dzikirapp/models/settings.dart';
-import 'package:dzikirapp/pages/information.dart';
 import 'package:provider/provider.dart';
 
 class AppIndex extends StatefulWidget {
@@ -39,6 +38,12 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
   }
 
   @override
+  void dispose() {
+    _controller.stop();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
@@ -55,14 +60,11 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
             children: [
               Container(
                 width: double.infinity,
-                height: 280,
+                height: 240,
                 child: Stack(children: <Widget>[
                   Container(
                     decoration: BoxDecoration(
-                      color: Color(0xffE8F0EF),
-                      // borderRadius: BorderRadius.only(
-                      //     bottomLeft: Radius.circular(90),
-                      //     bottomRight: Radius.circular(90)),
+                      color: Color(0xff24573F),
                     ),
                     height: 150,
                     width: double.infinity,
@@ -71,7 +73,7 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
                   Center(
                     child: Container(
                       margin: EdgeInsets.only(
-                        top: 10,
+                        top: 40,
                       ),
                       width: 172,
                       height: 172,
@@ -87,6 +89,9 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
                       child: Container(
                         width: 104,
                         height: 54,
+                        margin: EdgeInsets.only(
+                          top: 40,
+                        ),
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: AssetImage(
@@ -99,68 +104,60 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
                 ]),
               ),
               Container(
-                width: double.infinity,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ItemMenu(
-                        order: 1,
-                        color: Color(0xffE8F0EF),
-                        textMenu: 'Dzikir pagi',
-                        image: 'assets/images/pagi_icon.png',
-                        pageType: 'pagi'),
-                    ItemMenu(
-                      order: 2,
-                      color: Color(0xffAF9C4D),
-                      textMenu: 'Dzikir petang',
-                      image: 'assets/images/petang_icon.png',
-                      pageType: 'petang',
-                    ),
-                  ],
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ItemMenu(
-                    order: 3,
-                    color: Color(0xff93BC9C),
-                    textMenu: 'Custom dzikir',
-                    image: 'assets/images/custom_dzikir_icon.png',
-                    pageType: 'custom',
+                child: Column(children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ItemMenu(
+                          order: 1,
+                          color: Color(0xffE8F0EF),
+                          textMenu: 'Dzikir pagi',
+                          image: 'assets/images/pagi_icon.png',
+                          pageType: 'pagi'),
+                      ItemMenu(
+                        order: 2,
+                        color: Color(0xffAF9C4D),
+                        textMenu: 'Dzikir petang',
+                        image: 'assets/images/petang_icon.png',
+                        pageType: 'petang',
+                      ),
+                    ],
                   ),
-                  ItemMenu(
-                    order: 4,
-                    color: Color(0xffB64839),
-                    textMenu: 'App info',
-                    image: 'assets/images/info_setting.png',
-                    pageType: 'appinfo',
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ItemMenu(
+                        order: 3,
+                        color: Color(0xff93BC9C),
+                        textMenu: 'Custom dzikir',
+                        image: 'assets/images/custom_dzikir_icon.png',
+                        pageType: 'custom',
+                      ),
+                      ItemMenu(
+                        order: 4,
+                        color: Color(0xffB64839),
+                        textMenu: 'App info',
+                        image: 'assets/images/info_setting.png',
+                        pageType: 'appinfo',
+                      ),
+                    ],
                   ),
-                ],
+                ]),
               ),
               Spacer(),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 20),
-                // color: Color(0xff2F6149),
+                padding: EdgeInsets.symmetric(vertical: 15),
+                color: Color(0xff2F6149),
                 alignment: Alignment.center,
-                child: Column(children: [
-                  Text(
-                    'Dzikir App',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Color(0xff2F6149),
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                child: Text(
+                  'Dzikir App',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
                   ),
-                  Text(
-                    'Version $appVersion',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Color(0xff2F6149),
-                      fontSize: 16,
-                    ),
-                  ),
-                ]),
+                ),
               ),
             ],
           ),

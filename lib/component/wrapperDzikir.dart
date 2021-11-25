@@ -66,9 +66,11 @@ class WrapperDzikir extends StatelessWidget {
                         data["ayat"],
                         textDirection: TextDirection.rtl,
                         style: TextStyle(
-                          fontFamily: 'Amiri',
-                          fontSize: 22,
-                          height: 2.7,
+                          fontFamily: 'Trado',
+                          fontSize: 35,
+                          // fontWeight: FontWeight.w600,
+                          // letterSpacing: 0.5,
+                          // height: 2.0,
                         ),
                       ),
                     ),
@@ -76,6 +78,7 @@ class WrapperDzikir extends StatelessWidget {
                       padding: EdgeInsets.fromLTRB(30, 40, 30, 40),
                       child: Text(
                         data["arti"],
+                        textAlign: TextAlign.justify,
                         style: TextStyle(
                           height: 1.5,
                           fontSize: 18,
@@ -119,7 +122,7 @@ class WrapperDzikir extends StatelessWidget {
                                   ),
                                   Text(
                                     data["benefit"],
-                                    textAlign: TextAlign.left,
+                                    textAlign: TextAlign.justify,
                                     style: TextStyle(color: Color(0xff24573F)),
                                   ),
                                 ],

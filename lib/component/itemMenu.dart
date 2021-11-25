@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:dzikirapp/pages/information.dart';
 import 'package:dzikirapp/component/route.dart';
 
 class ItemMenu extends StatefulWidget {
@@ -37,6 +36,10 @@ class _ItemMenuState extends State<ItemMenu>
   @override
   initState() {
     super.initState();
+    _runningAnimation();
+  }
+
+  void _runningAnimation() {
     int timer = 800 + (100 * widget.order);
     Future.delayed(Duration(milliseconds: timer), () {
       _controller.forward();
@@ -57,29 +60,13 @@ class _ItemMenuState extends State<ItemMenu>
       routeDzikir = createRouteToDzikirCustom();
     } else {
       routeDzikir = createRouteToAppInfo();
-      // Navigator.of(context).push(AppInformation());
-      // Navigator.push(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (BuildContext context) => AppInformation(),
-      //   ),
-      // );
     }
     Navigator.of(context).push(routeDzikir);
-    // Navigator.of(context).push(createRoute(data, pageType)).then((value) {
-    //   _onDataChange();
-    // });
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(
-    //     builder: (BuildContext context) =>
-    //         DzikirDetail(pageType: widget.pageType),
-    //   ),
-    // );
   }
 
   @override
   dispose() {
+    _controller.dispose();
     super.dispose();
   }
 
@@ -98,18 +85,18 @@ class _ItemMenuState extends State<ItemMenu>
           child: FadeTransition(
             opacity: _animation,
             child: Container(
-              margin: EdgeInsets.all(20),
-              width: 143,
-              height: 135,
+              margin: EdgeInsets.all(15),
+              height: 145,
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
+                // border: Border.all(color: widget.color),
                 boxShadow: [
                   BoxShadow(
                     color: Color(0xff8D8D8D).withOpacity(0.25),
                     spreadRadius: 0,
-                    blurRadius: 10,
-                    offset: Offset(0, 7), // changes position of shadow
+                    blurRadius: 5,
+                    offset: Offset(0, 3), // changes position of shadow
                   ),
                 ],
               ),
@@ -123,8 +110,8 @@ class _ItemMenuState extends State<ItemMenu>
                   },
                   child: Column(children: [
                     Container(
-                      height: 94,
-                      width: 143,
+                      height: 104,
+                      width: double.infinity,
                       child: Stack(children: [
                         Positioned(
                           bottom: 0,

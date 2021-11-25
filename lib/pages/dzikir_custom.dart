@@ -17,7 +17,6 @@ class DzikirCustom extends StatefulWidget {
 
 class _DzikirCustomState extends State<DzikirCustom> {
   late DatabaseHandler handler;
-  int _currentIndex = 0;
 
   @override
   void initState() {

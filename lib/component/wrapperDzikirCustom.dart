@@ -112,7 +112,7 @@ class _WrapperDzikirCustomState extends State<WrapperDzikirCustom>
             'DZIKIR LIST',
             style: const TextStyle(color: Color(0xffAF9C4D)),
           ),
-          elevation: 0,
+          // elevation: 0,
           backgroundColor: Colors.white,
         ),
         body: FutureBuilder(

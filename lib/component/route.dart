@@ -80,7 +80,6 @@ Route createRouteToDetailDzikir(String dzikirType) {
       animation = CurvedAnimation(parent: animation, curve: Curves.easeInCubic);
       return FadeTransition(
         opacity: animation,
-        // position: animation.drive(tween),
         child: child,
       );
     },

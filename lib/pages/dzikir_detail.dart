@@ -84,7 +84,7 @@ class _DzikirDetail extends State<DzikirDetail>
             ),
           ),
           Container(
-            height: 60,
+            height: 45,
             width: double.infinity,
             color: Color(0xff24573F),
             child: Center(
