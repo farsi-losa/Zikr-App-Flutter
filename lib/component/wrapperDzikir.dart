@@ -44,7 +44,7 @@ class WrapperDzikir extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "dibaca ${data["qty"]}",
+                        "Dibaca ${data["qty"]}",
                         textAlign: TextAlign.right,
                         style: TextStyle(
                           fontSize: 14,
@@ -68,9 +68,9 @@ class WrapperDzikir extends StatelessWidget {
                         style: TextStyle(
                           fontFamily: 'Trado',
                           fontSize: 35,
-                          // fontWeight: FontWeight.w600,
-                          // letterSpacing: 0.5,
-                          // height: 2.0,
+                          letterSpacing: 0.5,
+                          height: 1.35,
+                          color: Colors.grey.shade800,
                         ),
                       ),
                     ),
@@ -78,9 +78,9 @@ class WrapperDzikir extends StatelessWidget {
                       padding: EdgeInsets.fromLTRB(30, 40, 30, 40),
                       child: Text(
                         data["arti"],
-                        textAlign: TextAlign.justify,
+                        textAlign: TextAlign.center,
                         style: TextStyle(
-                          height: 1.5,
+                          height: 1.4,
                           fontSize: 18,
                           color: Color(0xff24573F),
                         ),
