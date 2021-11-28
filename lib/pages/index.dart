@@ -129,7 +129,7 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
                       ItemMenu(
                         order: 3,
                         color: Color(0xff93BC9C),
-                        textMenu: 'Custom dzikir',
+                        textMenu: 'Dzikir custom',
                         image: 'assets/images/custom_dzikir_icon.png',
                         pageType: 'custom',
                       ),
