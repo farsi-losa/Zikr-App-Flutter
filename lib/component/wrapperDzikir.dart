@@ -130,6 +130,40 @@ class WrapperDzikir extends StatelessWidget {
                             )
                           : null,
                     ),
+                    Container(
+                        child: Container(
+                      padding: EdgeInsets.all(20),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                        color: Color(0xff93BC9C),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.2),
+                            spreadRadius: 2,
+                            blurRadius: 3,
+                            offset: Offset(2, 2), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: Container(
+                        padding: EdgeInsets.only(
+                          left: 10,
+                        ),
+                        width: double.infinity,
+                        child: Text(
+                          data["riwayat"],
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        decoration: BoxDecoration(
+                          border: Border(
+                            left: BorderSide(
+                              width: 10,
+                              color: Color(0xffE7EFEE),
+                            ),
+                          ),
+                        ),
+                      ),
+                    )),
                   ],
                 ),
               ),
