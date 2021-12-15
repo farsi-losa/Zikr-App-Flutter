@@ -97,7 +97,6 @@ class _ItemMenuState extends State<ItemMenu>
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.all(Radius.circular(15)),
-                // border: Border.all(color: widget.color),
                 boxShadow: [
                   BoxShadow(
                     color: Color(0xff8D8D8D).withOpacity(0.25),

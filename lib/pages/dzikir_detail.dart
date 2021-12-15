@@ -53,6 +53,7 @@ class _DzikirDetail extends State<DzikirDetail>
   @override
   Widget build(BuildContext context) {
     String _dzikirLength = _items.length.toString();
+    String _dzikirType = widget.dzikirType;
     return DefaultTabController(
       length: _items.length,
       child: Scaffold(
@@ -65,7 +66,7 @@ class _DzikirDetail extends State<DzikirDetail>
           backgroundColor: Color(0xff24573F),
           elevation: 0,
           title: Text(
-            'Dzikir Pagi',
+            'Dzikir $_dzikirType',
             style: const TextStyle(color: Colors.white),
           ),
         ),

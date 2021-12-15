@@ -103,17 +103,17 @@ class _WrapperDzikirCustomState extends State<WrapperDzikirCustom>
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
           leading: new IconButton(
-              color: Color(0XFFAF9C4D),
+              color: Colors.white,
               icon: new Icon(Icons.arrow_back),
               onPressed: () {
                 Navigator.of(context).pop(AppIndex);
               }),
           title: Text(
-            'DZIKIR LIST',
-            style: const TextStyle(color: Color(0xffAF9C4D)),
+            'Dzikir list',
+            style: const TextStyle(color: Colors.white),
           ),
           // elevation: 0,
-          backgroundColor: Colors.white,
+          backgroundColor: Color(0xff24573F),
         ),
         body: FutureBuilder(
           future: Future.wait([

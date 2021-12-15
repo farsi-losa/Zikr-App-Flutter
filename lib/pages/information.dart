@@ -90,7 +90,7 @@ class _AppInformation extends State<AppInformation> {
           backgroundColor: Color(0xff24573F),
           // elevation: 1,
           title: Text(
-            'Dzikir Pagi',
+            'App info',
             style: const TextStyle(color: Colors.white),
           ),
         ),
