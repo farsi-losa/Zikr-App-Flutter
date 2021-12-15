@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 
 class AppIndex extends StatefulWidget {
   AppIndex({Key? key}) : super(key: key);
+
   @override
   _AppIndex createState() => _AppIndex();
 }

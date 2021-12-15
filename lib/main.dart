@@ -6,12 +6,15 @@ import 'package:firebase_analytics/firebase_analytics.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(
+    name: 'DzikirApps',
     options: const FirebaseOptions(
-      apiKey: 'AIzaSyAHAsf51D0A407EklG1bs-5wA7EbyfNFg0',
-      appId: 'dzikir-app',
-      messagingSenderId: '448618578101',
-      projectId: 'react-native-firebase-testing',
+      apiKey:
+          'AAAAUtHohKQ:APA91bFYtyzr5LY-J04eoxVtCZ1KaG3XqZhvQ-xO6PnDWsHJJaT1FEkBZeu2qcjped2Oagza9DUrFkUexWT5ggnQyD5ppj4lKoHZO5DoIhguqHLj87lQ_BTfY2MTY4HVLJeAXSyZDV7Q',
+      appId: '1:355708994724:android:d351638d0db00519205231',
+      messagingSenderId: '355708994724',
+      projectId: 'dzikir-app',
     ),
   );
   runApp(MyApp());
@@ -19,6 +22,11 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+  MyApp({Key? key}) : super(key: key);
+
+  static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+  static FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: analytics);
 
   @override
   Widget build(BuildContext context) {

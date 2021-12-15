@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:dzikirapp/component/route.dart';
+// import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 
 class ItemMenu extends StatefulWidget {
   final Color color;
@@ -52,12 +54,17 @@ class _ItemMenuState extends State<ItemMenu>
   void _onItemClicked() {
     late var routeDzikir;
 
+    FirebaseAnalytics analytics = FirebaseAnalytics.instance;
+
     if (widget.pageType == 'pagi') {
       routeDzikir = createRouteToDetailDzikir('pagi');
+      analytics.logEvent(name: 'dzikir_pagi_click', parameters: null);
     } else if (widget.pageType == 'petang') {
       routeDzikir = createRouteToDetailDzikir('petang');
+      analytics.logEvent(name: 'dzikir_petang_click', parameters: null);
     } else if (widget.pageType == 'custom') {
       routeDzikir = createRouteToDzikirCustom();
+      analytics.logEvent(name: 'dzikir_custom_click', parameters: null);
     } else {
       routeDzikir = createRouteToAppInfo();
     }
