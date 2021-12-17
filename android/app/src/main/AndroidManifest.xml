@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.farsi.dzikirapp">
-    <uses-permission android:name="android.permission.VIBRATE" />
-   <application
+     <uses-permission android:name="android.permission.VIBRATE" />
+     <uses-permission android:name="android.permission.INTERNET" />
+     <application
         android:label="dzikirapp"
         android:icon="@mipmap/iconzikr">
         <activity
@@ -38,5 +39,5 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-    </application>
+     </application>
 </manifest>
