@@ -3,27 +3,26 @@ import 'dart:async';
 import 'package:dzikirapp/pages/index.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
+import 'package:dzikirapp/models/settings.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
-    await Firebase.initializeApp(
-      name: 'DzikirApps',
-      options: const FirebaseOptions(
-        apiKey:
-            'AAAAUtHohKQ:APA91bFYtyzr5LY-J04eoxVtCZ1KaG3XqZhvQ-xO6PnDWsHJJaT1FEkBZeu2qcjped2Oagza9DUrFkUexWT5ggnQyD5ppj4lKoHZO5DoIhguqHLj87lQ_BTfY2MTY4HVLJeAXSyZDV7Q',
-        appId: '1:355708994724:android:d351638d0db00519205231',
-        messagingSenderId: '355708994724',
-        projectId: 'dzikir-app',
-      ),
-    );
+    final String secretsKey = 'assets/secret.json';
+    SecretLoader(secretPath: secretsKey)
+        .load()
+        .then((value) => Firebase.initializeApp(
+              name: 'DzikirApps',
+              options: FirebaseOptions(
+                apiKey: value.toString(),
+                appId: '1:355708994724:android:d351638d0db00519205231',
+                messagingSenderId: '355708994724',
+                projectId: 'dzikir-app',
+              ),
+            ));
   } on FirebaseException catch (e) {
     if (e.code == 'duplicate-app') {
-// you can choose not to do anything here or either
-// In a case where you are assigning the initializer instance to a FirebaseApp variable, // do something like this:
-//
       Firebase.app('DzikirApps');
-//
     } else {
       throw e;
     }

@@ -4,6 +4,11 @@
 
 import 'package:dzikirapp/db.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
+import 'dart:convert';
+import 'dart:async' show Future;
+import 'dart:convert' show json;
+import 'package:flutter/services.dart' show rootBundle;
 
 class SettingsModel extends ChangeNotifier {
   late bool _dzikirReference = true;
@@ -38,5 +43,27 @@ class SettingsModel extends ChangeNotifier {
       print(e);
     });
     return address;
+  }
+}
+
+class Secret {
+  final String apiKey;
+  Secret({this.apiKey = ""});
+  factory Secret.fromJson(Map<String, dynamic> jsonMap) {
+    return new Secret(apiKey: jsonMap["api_key"]);
+  }
+}
+
+class SecretLoader {
+  final String secretPath;
+
+  SecretLoader({required this.secretPath});
+  Future<Secret> load() {
+    return rootBundle.loadStructuredData<Secret>(this.secretPath,
+        (jsonStr) async {
+      final secret = Secret.fromJson(json.decode(jsonStr));
+      print(secret);
+      return secret;
+    });
   }
 }
