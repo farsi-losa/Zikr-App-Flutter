@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:dzikirapp/component/route.dart';
+import 'package:dzikirapp/component/circle.dart';
 import 'package:dzikirapp/db.dart';
 
 class DzikirCounter extends StatefulWidget {
@@ -201,12 +202,12 @@ class _DzikirCounterState extends State<DzikirCounter>
                   child: Column(
                     children: [
                       Container(
-                        margin: const EdgeInsets.only(top: 40, bottom: 70),
+                        height: 230,
+                        margin: const EdgeInsets.only(top: 20, bottom: 20),
                         child: Center(
-                          child: Text(
-                            _counter.toString(),
-                            style: TextStyle(
-                                color: Color(0xff2F6149), fontSize: 80),
+                          child: CustomPaint(
+                            painter: CircleCounter(
+                                counter: _counter, target: _qtyZikr),
                           ),
                         ),
                       ),
@@ -362,7 +363,7 @@ class _DzikirCounterState extends State<DzikirCounter>
                                               size: 100),
                                           Spacer(),
                                           Text(
-                                            'click to start counting',
+                                            'tap untuk mulai',
                                             style:
                                                 TextStyle(color: Colors.white),
                                           ),
@@ -410,7 +411,7 @@ class _DzikirCounterState extends State<DzikirCounter>
                                           ),
                                           Spacer(),
                                           Text(
-                                            'tap to counting',
+                                            'tap untuk menghitung',
                                             style:
                                                 TextStyle(color: Colors.white),
                                           ),
