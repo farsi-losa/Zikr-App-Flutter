@@ -9,9 +9,9 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
     final String secretsKey = 'assets/secret.json';
-    SecretLoader(secretPath: secretsKey)
-        .load()
-        .then((value) => Firebase.initializeApp(
+    await SecretLoader(secretPath: secretsKey).load().then(
+          (value) async => {
+            await Firebase.initializeApp(
               name: 'DzikirApps',
               options: FirebaseOptions(
                 apiKey: value.toString(),
@@ -19,7 +19,9 @@ Future<void> main() async {
                 messagingSenderId: '355708994724',
                 projectId: 'dzikir-app',
               ),
-            ));
+            )
+          },
+        );
   } on FirebaseException catch (e) {
     if (e.code == 'duplicate-app') {
       Firebase.app('DzikirApps');

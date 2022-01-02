@@ -62,14 +62,14 @@ class DzikirListView extends StatelessWidget {
             controller: scrollcontroller,
             child: Center(
               child: Container(
+                padding: EdgeInsets.only(top: 10),
                 child: ListView.builder(
                   itemCount: data.length,
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   itemBuilder: (BuildContext context, int index) {
-                    // return _tile(data[index].title, data[index].synopsis, data[index].type);
                     return Container(
-                      margin: EdgeInsets.fromLTRB(30, 0, 30, 20),
+                      margin: EdgeInsets.fromLTRB(30, 10, 30, 10),
                       child: SlideMenu(
                         onDataChange: onDataChange,
                         id: data![index].id!,

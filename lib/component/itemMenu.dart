@@ -42,7 +42,7 @@ class _ItemMenuState extends State<ItemMenu>
   }
 
   void _runningAnimation() {
-    int timer = 800 + (100 * widget.order);
+    int timer = 800 + (200 * widget.order);
     Future.delayed(Duration(milliseconds: timer), () {
       _controller.forward();
       setState(() {
@@ -114,37 +114,34 @@ class _ItemMenuState extends State<ItemMenu>
                   onTap: () {
                     _onItemClicked();
                   },
-                  child: Column(children: [
-                    Container(
-                      height: 104,
-                      width: double.infinity,
-                      child: Stack(children: [
-                        Positioned(
-                          bottom: 0,
-                          right: 0,
-                          height: 50,
-                          child: Image(
-                            image: AssetImage(widget.image),
-                          ),
+                  child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                            padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                            child: Text(
+                              widget.textMenu,
+                              textAlign: TextAlign.left,
+                              style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
+                                  color: Color(0xff24573F)),
+                            )),
+                        Container(
+                          height: 106,
+                          width: double.infinity,
+                          child: Stack(children: [
+                            Positioned(
+                              bottom: 0,
+                              right: 0,
+                              width: 111,
+                              child: Image(
+                                image: AssetImage(widget.image),
+                              ),
+                            ),
+                          ]),
                         ),
                       ]),
-                      decoration: BoxDecoration(
-                        color: widget.color,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(15),
-                            topRight: Radius.circular(15)),
-                      ),
-                    ),
-                    Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        child: Text(
-                          widget.textMenu,
-                          style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xff24573F)),
-                        )),
-                  ]),
                 ),
               ),
             ),

@@ -202,7 +202,7 @@ class _DzikirCounterState extends State<DzikirCounter>
                   child: Column(
                     children: [
                       Container(
-                        height: 230,
+                        height: 200,
                         margin: const EdgeInsets.only(top: 20, bottom: 20),
                         child: Center(
                           child: CustomPaint(

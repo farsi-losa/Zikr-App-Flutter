@@ -58,7 +58,7 @@ class CircleCounter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // draw the circle indicator
-    final rect = Rect.fromLTRB(-100, -100, 100, 100);
+    final rect = Rect.fromLTRB(-80, -80, 80, 80);
     final startAngle = -math.pi / 2;
     final sweepAngle = ((math.pi * 2) / (target / counter * 100) * 100);
     final useCenter = false;

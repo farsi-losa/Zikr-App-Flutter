@@ -57,10 +57,10 @@ flutter:
   assets:
     - assets/images/empty_dzikir.png
     - assets/images/icon_dzikir_small.png
-    - assets/images/pagi_icon.png
-    - assets/images/petang_icon.png
-    - assets/images/custom_dzikir_icon.png
-    - assets/images/info_setting.png
+    - assets/images/pagi_icon_color.png
+    - assets/images/petang_icon_color.png
+    - assets/images/counter_dzikir.png
+    - assets/images/info_setting_color.png
     - assets/dzikirpagi.json
     - assets/dzikirpetang.json
     - assets/secret.json

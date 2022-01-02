@@ -216,8 +216,7 @@ class _WrapperDzikirCustomState extends State<WrapperDzikirCustom>
                         Container(
                             child: settings.dzikirReference
                                 ? Container(
-                                    padding:
-                                        EdgeInsets.only(bottom: 20, left: 25),
+                                    padding: EdgeInsets.only(left: 25),
                                     width: double.infinity,
                                     child: Text(
                                       'Custom Dzikir',
