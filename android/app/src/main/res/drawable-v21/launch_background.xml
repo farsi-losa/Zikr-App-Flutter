@@ -7,6 +7,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap/flash_screen" />
+            android:src="@mipmap/flash_screen_v2" />
     </item>
 </layer-list>
