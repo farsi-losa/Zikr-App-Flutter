@@ -117,7 +117,8 @@ class _ItemMenuState extends State<ItemMenu>
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Padding(
+                        Container(
+                            height: 39,
                             padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
                             child: Text(
                               widget.textMenu,
@@ -132,7 +133,7 @@ class _ItemMenuState extends State<ItemMenu>
                           width: double.infinity,
                           child: Stack(children: [
                             Positioned(
-                              bottom: 0,
+                              bottom: -0.5,
                               right: 0,
                               width: 111,
                               child: Image(
