@@ -1,6 +1,7 @@
 {
   "items": [
     {
+      "counter": false,
       "title": "Ayat kursi",
       "ayat": "اللَّهُ لاَ إِلَهَ إِلاَّ هُوَ الْحَيُّ الْقَيُّومُ، لاَ تَأْخُذُهُ سِنَةٌ وَلاَ نَوْمٌ، لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ، مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلاَّ بِإِذْنِهِ، يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ، وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلاَّ بِمَا شَاءَ، وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ، وَلَا يَئُودُهُ حِفْظُهُمَا، وَهُوَ الْعَلِيُّ الْعَظِيمُ",
       "qty": "1 x",
@@ -8,6 +9,7 @@
       "benefit": "Siapa yang membacanya ketika petang, maka ia akan dilindungi (oleh Allah dari berbagai gangguan) hingga pagi. Siapa yang membacanya ketika pagi, maka ia akan dilindungi hingga petang.",
       "riwayat": "Lihat Mustadrak Al-Hakim 1/562, Shahiih at-Targhiib wat Tarhiib 1/418 no. 662, shahih"
     },{
+      "counter": false,
       "title": "Surat Al Ikhlas",
       "ayat": "قُلْ هُوَ اللَّهُ أَحَدٌ * اللَّهُ الصَّمَدُ * لَمْ يَلِدْ وَلَمْ يُولَدْ * وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ",
       "qty": "3 x",
@@ -15,6 +17,7 @@
       "benefit": "Siapa yang mengucapkannya masing-masing tiga kali ketika pagi dan petang, maka segala sesuatu akan dicukupkan untuknya.",
       "riwayat": " HR. Abu Dawud no. 5082, Shahiih Abu Dawud no. 4241, Annasa-i VIII 250 dan At-Tirmizi no. 3575 , At-Tarmidzi berkata “Hadits ini hasan shahih” Ahmad V/312, dari Abdullah bin Khubaib radhiyallahu ‘anhu. Shahiih at-Tirmidzi no. 2829, Tuhfatul Ahwadzi no. 3646, Shahiih at-Targhiib wat Tarhiib 1/411 no. 649, hasan shahih"
     },{
+      "counter": false,
       "title": "Surat Al Falaq",
       "ayat": "قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ * مِن شَرِّ مَا خَلَقَ * وَمِن شَرِّ غَاسِقٍ إِذَا وَقَبَ * وَمِن شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ * وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ",
       "qty": "3 x",
@@ -22,6 +25,7 @@
       "benefit": "Siapa yang mengucapkannya masing-masing tiga kali ketika pagi dan petang, maka segala sesuatu akan dicukupkan untuknya.",
       "riwayat": " HR. Abu Dawud no. 5082, Shahiih Abu Dawud no. 4241, Annasa-i VIII 250 dan At-Tirmizi no. 3575 , At-Tarmidzi berkata “Hadits ini hasan shahih” Ahmad V/312, dari Abdullah bin Khubaib radhiyallahu ‘anhu. Shahiih at-Tirmidzi no. 2829, Tuhfatul Ahwadzi no. 3646, Shahiih at-Targhiib wat Tarhiib 1/411 no. 649, hasan shahih"
     },{
+      "counter": false,
       "title": "Surat An Naas",
       "ayat": "قُلْ أَعُوذُ بِرَبِّ النَّاسِ * مَلِكِ النَّاسِ * إِلَهِ النَّاسِ * مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ * الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ * مِنَ الْجِنَّةِ وَ النَّاسِ",
       "qty": "3 x",
@@ -29,6 +33,7 @@
       "benefit": "Siapa yang mengucapkannya masing-masing tiga kali ketika pagi dan petang, maka segala sesuatu akan dicukupkan untuknya.",
       "riwayat": " HR. Abu Dawud no. 5082, Shahiih Abu Dawud no. 4241, Annasa-i VIII 250 dan At-Tirmizi no. 3575 , At-Tarmidzi berkata “Hadits ini hasan shahih” Ahmad V/312, dari Abdullah bin Khubaib radhiyallahu ‘anhu. Shahiih at-Tirmidzi no. 2829, Tuhfatul Ahwadzi no. 3646, Shahiih at-Targhiib wat Tarhiib 1/411 no. 649, hasan shahih"
     },{
+      "counter": false,
       "title": "Sayyidul Istighfar",
       "ayat": "اَللَّهُمَّ أَنْتَ رَبِّيْ لاَ إِلَـهَ إِلاَّ أَنْتَ، خَلَقْتَنِيْ وَأَنَا عَبْدُكَ، وَأَنَا عَلَى عَهْدِكَ وَوَعْدِكَ مَا اسْتَطَعْتُ، أَعُوْذُ بِكَ مِنْ شَرِّ مَا صَنَعْتُ، أَبُوْءُ لَكَ بِنِعْمَتِكَ عَلَيَّ، وَأَبُوْءُ بِذَنْبِيْ فَاغْفِرْ لِيْ فَإِنَّهُ لاَ يَغْفِرُ الذُّنُوْبَ إِلاَّ أَنْتَ",
       "qty": "1 x",
@@ -36,6 +41,7 @@
       "benefit": "Barangsiapa membacanya dengan yakin di waktu pagi lalu ia meninggal sebelum masuk waktu sore, maka ia termasuk ahli Surga. Dan barangsiapa membacanya dengan yakin di waktu sore lalu ia meninggal sebelum masuk waktu pagi, maka ia termasuk ahli Surga.",
       "riwayat": "HR. Al-Bukhari no. 6306, 6323, Ahmad IV/122-125, an-Nasa-i VIII/279-280"
     },{
+      "counter": false,
       "title": "-",
       "ayat": "أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لاَ إِلَـهَ إِلاَّ اللهُ وَحْدَهُ لاَ شَرِيْكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيْرُ. رَبِّ أَسْأَلُكَ خَيْرَ مَا فِيْ هَذَا الْيَوْمِ وَخَيْرَ مَا بَعْدَهُ، وَأَعُوْذُ بِكَ مِنْ شَرِّ مَا فِيْ هَذَا الْيَوْمِ وَشَرِّ مَا بَعْدَهُ، رَبِّ أَعُوْذُ بِكَ مِنَ الْكَسَلِ وَسُوْءِ الْكِبَرِ، رَبِّ أَعُوْذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ",
       "qty": "1 x",
@@ -43,6 +49,7 @@
       "benefit": "Meminta pada Allah kebaikan di hari ini dan kebaikan sesudahnya, juga agar terhindar dari kejelekan di hari ini dan kejelekan sesudahnya. Di dalamnya berisi pula permintaan agar terhindar dari rasa malas padahal mampu untuk beramal, juga agar terhindar dari kejelekan di masa tua. Di dalamnya juga berisi permintaan agar terselamatkan dari siksa kubur dan siksa neraka yang merupakan siksa terberat di hari kiamat kelak.",
       "riwayat": "HR. Muslim no. 2723 (75), Abu Dawud no. 5071, dan at-Tirmidzi 3390, shahih"
     },{
+      "counter": false,
       "title": "-",
       "ayat": "اَللَّهُمَّ بِكَ أَصْبَحْنَا، وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوْتُ وَإِلَيْكَ النُّشُوْرُ",
       "qty": "1 x",
@@ -50,6 +57,7 @@
       "benefit": "-",
       "riwayat": "HR. Al-Bukhari dalam al-Adabul Mufrad no. 1199, lafazh ini adalah lafazh al-Bukhari, at-Tirmidzi no. 3391, Abu Dawud no. 5068, Ahmad 11/354, Ibnu Majah no. 3868, Dari Abu Hurairah Radhiyallahu ‘anhu. Shahiih al-Adabil Mufrad no. 911, shahih. Lihat pula Silsilah al-Ahaadiits ash-Shahiihah no. 262."
     },{
+      "counter": false,
       "title": "-",
       "ayat": "اَللَّهُمَّ إِنِّيْ أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَاْلآخِرَةِ، اَللَّهُمَّ إِنِّيْ أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِيْنِيْ وَدُنْيَايَ وَأَهْلِيْ وَمَالِيْ اللَّهُمَّ اسْتُرْ عَوْرَاتِى وَآمِنْ رَوْعَاتِى. اَللَّهُمَّ احْفَظْنِيْ مِنْ بَيْنِ يَدَيَّ، وَمِنْ خَلْفِيْ، وَعَنْ يَمِيْنِيْ وَعَنْ شِمَالِيْ، وَمِنْ فَوْقِيْ، وَأَعُوْذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِيْ",
       "qty": "1 x",
@@ -57,6 +65,7 @@
       "benefit": "Rasulullah shallallahu ‘alaihi wa sallam tidaklah pernah meninggalkan do’a ini di pagi dan petang hari. Di dalamnya berisi perlindungan dan keselamatan pada agama, dunia, keluarga dan harta dari berbagai macam gangguan yang datang dari berbagai arah.",
       "riwayat": "HR. Al-Bukhari dalam al-Adabul Mufrad no. 1200, Abu Dawud no. 5074, An-Nasa-i VIII / 282, Ibnu Majah no. 3871, al-Hakim 1/517-518, dan lainnya dari Ibnu Umar radhiyallahu ‘anhumaa. Lihat Shahiih al-Adabul Mufrad no. 912, shahih"
       },{
+      "counter": false,
       "title": "-",
       "ayat": "اَللَّهُمَّ عَالِمَ الْغَيْبِ وَالشَّهَادَةِ فَاطِرَ السَّمَاوَاتِ وَاْلأَرْضِ، رَبَّ كُلِّ شَيْءٍ وَمَلِيْكَهُ، أَشْهَدُ أَنْ لاَ إِلَـهَ إِلاَّ أَنْتَ، أَعُوْذُ بِكَ مِنْ شَرِّ نَفْسِيْ، وَمِنْ شَرِّ الشَّيْطَانِ وَشِرْكِهِ، وَأَنْ أَقْتَرِفَ عَلَى نَفْسِيْ سُوْءًا أَوْ أَجُرَّهُ إِلَى مُسْلِمٍ",
       "qty": "1 x",
@@ -64,6 +73,7 @@
       "benefit": "“Ya Allah, Yang Maha Mengetahui yang ghaib dan yang nyata, wahai Rabb pencipta langit dan bumi, Rabb segala sesuatu dan yang merajainya. Aku bersaksi bahwa tidak ada ilah yang berhak disembah kecuali Engkau. Aku berlindung kepadaMu dari kejahatan diriku, setan dan balatentaranya (godaan untuk berbuat syirik pada Allah), dan aku (berlindung kepada-Mu) dari berbuat kejelekan terhadap diriku atau menyeretnya kepada seorang muslim.”",
       "riwayat": "HR. Al-Bukhari dalam Al-Adabul Mufrad 1202, at-Tirmidzi no.3392 dan Abu Daud no. 5067,Lihat Shahih At- Tirmidzi no. 2798, Shahiih al-Adabil Mufrad no. 914, shahih. Lihat Silsilah al-Ahaadiits ash-Shahiihah no. 2753"
     },{
+      "counter": false,
       "title": "-",
       "ayat": "بِسْمِ اللَّهِ الَّذِى لاَ يَضُرُّ مَعَ اسْمِهِ شَىْءٌ فِى الأَرْضِ وَلاَ فِى السَّمَاءِ وَهُوَ السَّمِيعُ الْعَلِيمُ",
       "qty": "3 x",
@@ -71,6 +81,7 @@
       "benefit": "Barangsiapa yang mengucapkan dzikir tersebut sebanyak tiga kali di pagi hari dan tiga kali di petang hari, maka tidak akan ada bahaya yang tiba-tiba memudaratkannya.",
       "riwayat": "HR. At-Tirmidzi no. 3388, Abu Dawud no. 5088,Ibnu Majah no. 3869, al-Hakim 1/514, Dan Ahmad no. 446 dan 474, Tahqiq Ahmad Syakir. Dari ‘Utsman bin ‘Affan radhiyallahu ‘anhu, lihat Shahiih Ibni Majah no. 3120, al-Hakim 1/513, Shahiih al-Adabil Mufrad no. 513, Shahiih at-Targhiib wat Tarhiib 1/413 no. 655, sanad-nya shahih"
       },{
+      "counter": false,
       "title": "-",
       "ayat": "رَضِيْتُ بِاللهِ رَبًّا، وَبِاْلإِسْلاَمِ دِيْنًا، وَبِمُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ نَبِيًّا",
       "qty": "3 x",
@@ -78,6 +89,7 @@
       "benefit": "Barangsiapa yang mengucapkan dzikir ini sebanyak tiga kali di pagi hari dan tiga kali di petang hari, maka pantas baginya mendapatkan ridha Allah.",
       "riwayat": "HR. Ahmad IV/337, Abu Dawud no. 5072, at-Tirmidzi no. 3389, Ibnu Majah no. 3870, an-Nasa-i dalam ‘Amalul Yaum wal Lailah no. 4 dan Ibnus Sunni no. 68, dishahihkan oleh Imam al-Hakim dalam al-Mustadrak 1/518 dan disetujui oleh Imam adz-Dzahabi, hasan. Lihat Shahiih At Targhiib wat Tarhiib I/415 no. 657, Shahiih At Targhiib wat Tarhiib al-Waabilish Shayyib hal. 170, Zaadul Ma’aad II/372, Silsilah al-Ahaadiits ash-Shahiihah no. 2686."
     },{
+      "counter": false,
       "title": "-",
       "ayat": "يَا حَيُّ يَا قَيُّوْمُ بِرَحْمَتِكَ أَسْتَغِيْثُ، وَأَصْلِحْ لِيْ شَأْنِيْ كُلَّهُ وَلاَ تَكِلْنِيْ إِلَى نَفْسِيْ طَرْفَةَ عَيْنٍ أَبَدًا",
       "qty": "1 x",
@@ -85,6 +97,7 @@
       "benefit": "Dzikir ini diajarkan oleh Nabi shallallahu ‘alaihi wa sallam pada Fathimah supaya diamalkan pagi dan petang.",
       "riwayat": "Silsilah Ahaadits Ash Shohihah no.227]"
     },{
+      "counter": false,
       "title": "-",
       "ayat": "أَصْبَحْنَا عَلَى فِطْرَةِ اْلإِسْلاَمِ وَعَلَى كَلِمَةِ اْلإِخْلاَصِ، وَعَلَى دِيْنِ نَبِيِّنَا مُحَمَّدٍ صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ، وَعَلَى مِلَّةِ أَبِيْنَا إِبْرَاهِيْمَ، حَنِيْفًا مُسْلِمًا وَمَا كَانَ مِنَ الْمُشْرِكِيْنَ",
       "qty": "1 x",
@@ -92,6 +105,8 @@
       "benefit": "-",
       "riwayat": "HR. Ahmad III/406, 407, ad-Darimi II/292 dan Ibnus Sunni dalam Amalul Yaum wol Lailah no. 34, Misykaatul Mashaabiih no. 2415, Shahiihal-Jaami’ish Shaghiir no. 4674, shahih"
     },{
+      "counter": true,
+      "timer": 4500,
       "title": "-",
       "ayat": "لاَ إِلَـهَ إِلاَّ اللهُ وَحْدَهُ لاَ شَرِيْكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيْرُ",
       "qty": "100 / 10 x",
@@ -99,6 +114,7 @@
       "benefit": "Barangsiapa yang mengucapkan dzikir tersebut dalam sehari sebanyak 100 / 10x, maka itu seperti membebaskan 100/10 orang budak, dicatat baginya 100 kebaikan, dihapus baginya 100 kesalahan, dirinya akan terjaga dari gangguan setan dari pagi hingga petang hari, dan tidak ada seorang pun yang lebih baik dari yang ia lakukan kecuali oleh orang yang mengamalkan lebih dari itu.",
       "riwayat": "(100 x) HR. Al-Bukhari no. 3293 dan 6403, Muslim IV/2071 no. 2691 (28), at-Tirmidzi no. 3468, Ibnu Majah no. 3798, dari Sahabat Abu Hurairah رضي الله عنه. | (10 x) HR. Muslim no. 2693, Ahmad V/420, Silsilah al-Ahaadiits ash-Shahiihah no. 113 dan 114, Shahiih at-Targhiib wat Tarhiib 1/416 no. 660, shaahih"
     },{
+      "counter": false,
       "title": "-",
       "ayat": "سُبْحَانَ اللهِ وَبِحَمْدِهِ: عَدَدَ خَلْقِهِ، وَرِضَا نَفْسِهِ، وَزِنَةَ عَرْشِهِ وَمِدَادَ كَلِمَاتِهِ",
       "qty": "3 x",
@@ -106,6 +122,7 @@
       "benefit": "Nabi shallallahu ‘alaihi wa sallam mengatakan pada Juwairiyah bahwa dzikir di atas telah mengalahkan dzikir yang dibaca oleh Juwairiyah dari selepas Shubuh sampai waktu Dhuha.",
       "riwayat": "HR Muslim no.2776"
     },{
+      "counter": false,
       "title": "-",
       "ayat": "اَللَّهُمَّ إِنِّيْ أَسْأَلُكَ عِلْمًا نَافِعًا، وَرِزْقًا طَيِّبًا، وَعَمَلاً مُتَقَبَّلاً",
       "qty": "1x setelah salam dari shalat Shubuh",
@@ -113,6 +130,8 @@
       "benefit": "-",
       "riwayat": "Hr. Ibnu Majah no. 925. Shohih"
     },{
+      "counter": true,
+      "timer": 1000,
       "title": "-",
       "ayat": "سُبْحَانَ اللهِ وَبِحَمْدِهِ",
       "qty": "100 x dalam sehari",
@@ -120,6 +139,8 @@
       "benefit": "Barangsiapa yang mengucapkan kalimat ‘subhanallah wa bi hamdih’ di pagi dan petang hari sebanyak 100 x, maka tidak ada yang datang pada hari kiamat yang lebih baik dari yang ia lakukan kecuali orang yang mengucapkan semisal atau lebih dari itu.",
       "riwayat": "HR. Muslim no. 2692"
       },{
+      "counter": true,
+      "timer": 1000,
       "title": "-",
       "ayat": "أَسْتَغْفِرُ اللهَ وَأَتُوْبُ إِلَيْهِ",
       "qty": "100 x dalam sehari",

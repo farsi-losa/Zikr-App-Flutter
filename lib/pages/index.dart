@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:dzikirapp/component/circle.dart';
 import 'package:dzikirapp/component/itemMenu.dart';
 import 'package:dzikirapp/models/settings.dart';
 import 'package:provider/provider.dart';
@@ -115,9 +114,9 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
                       child: FadeTransition(
                         opacity: _animation,
                         child: Container(
-                          // margin: EdgeInsets.only(
-                          //   top: 40,
-                          // ),
+                          margin: EdgeInsets.only(
+                            top: 40,
+                          ),
                           padding: EdgeInsets.all(28),
                           width: 362,
                           height: 120,

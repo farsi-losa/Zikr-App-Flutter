@@ -147,7 +147,7 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20.0))),
       content: Scrollbar(
-        isAlwaysShown: true,
+        thumbVisibility: true,
         child: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -274,7 +274,10 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
           onPressed: () => onSaveClick(),
           child: Text(
             'Save',
-            style: TextStyle(color: Color(0xff407C60), fontSize: 16),
+            style: TextStyle(
+                color: Color(0xff407C60),
+                fontSize: 16,
+                fontWeight: FontWeight.bold),
           ),
         ),
       ],

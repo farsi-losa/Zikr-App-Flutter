@@ -1,3 +1,5 @@
+import 'package:dzikirapp/component/counterSmall.dart';
+import 'package:dzikirapp/component/separator.dart';
 import 'package:flutter/material.dart';
 
 // ListView WrapperDzikir(data, onDataChange, onItemClicked) {
@@ -75,7 +77,20 @@ class WrapperDzikir extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: EdgeInsets.fromLTRB(30, 40, 30, 40),
+                      padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                      child: const Separator(color: Color(0xff93BC9C)),
+                    ),
+                    data["counter"]
+                        ? Column(children: [
+                            CounterSmall(timer: data["timer"], qty: 100),
+                            Container(
+                              padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+                              child: const Separator(color: Color(0xff93BC9C)),
+                            )
+                          ])
+                        : Container(),
+                    Container(
+                      padding: EdgeInsets.fromLTRB(30, 10, 30, 40),
                       child: Text(
                         data["arti"],
                         textAlign: TextAlign.center,

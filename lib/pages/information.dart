@@ -19,6 +19,9 @@ class _AppInformation extends State<AppInformation> {
   late Settings _dzikirReference;
   String appVersion = '0.0.0';
 
+  final Uri _url = Uri.parse(
+      'https://play.google.com/store/apps/details?id=com.farsi.dzikirapp&pli=1');
+
   @override
   void initState() {
     super.initState();
@@ -49,16 +52,12 @@ class _AppInformation extends State<AppInformation> {
     return await this.handler.updateSetting(setting);
   }
 
-  Future<void> _launchInBrowser(String url) async {
-    if (await canLaunch(url)) {
-      await launch(
-        url,
-        forceSafariVC: false,
-        forceWebView: false,
-        headers: <String, String>{'my_header_key': 'my_header_value'},
-      );
-    } else {
-      throw 'Could not launch $url';
+  Future<void> _launchInBrowser() async {
+    if (!await launchUrl(
+      _url,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw Exception('Could not launch $_url');
     }
   }
 
@@ -70,8 +69,6 @@ class _AppInformation extends State<AppInformation> {
 
   @override
   Widget build(BuildContext context) {
-    const _url =
-        'https://play.google.com/store/apps/details?id=com.farsi.dzikirapp';
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => SettingsModel()),
@@ -164,11 +161,9 @@ class _AppInformation extends State<AppInformation> {
                             builder: (context,
                                 AsyncSnapshot<List<dynamic>> snapshot) {
                               if (snapshot.hasData) {
-                                print('-----');
-                                print(snapshot.data?[0].active);
                                 return SwitchListTile(
                                   title: const Text(
-                                    'Show dzikir reference',
+                                    'Referensi dzikir',
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: Color(0xffE8F0EF),
@@ -220,7 +215,7 @@ class _AppInformation extends State<AppInformation> {
                     height: 34,
                     child: ElevatedButton(
                       onPressed: () {
-                        _launchInBrowser(_url);
+                        _launchInBrowser();
                       },
                       style: ElevatedButton.styleFrom(
                         primary: Color(0xffAF9C4D),
