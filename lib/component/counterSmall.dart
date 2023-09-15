@@ -70,8 +70,8 @@ class _CounterSmallState extends State<CounterSmall>
   }
 
   final ButtonStyle raisedButtonStyle = ElevatedButton.styleFrom(
-      onPrimary: Color(0xff24573F),
-      primary: Color(0xffC8DDD0),
+      foregroundColor: Color(0xff24573F),
+      backgroundColor: Color(0xffC8DDD0),
       padding: EdgeInsets.all(10),
       shape: const CircleBorder());
 

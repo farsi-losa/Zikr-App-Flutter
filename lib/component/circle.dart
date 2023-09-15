@@ -58,7 +58,7 @@ class CircleCounter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     // draw the circle indicator
-    final rect = Rect.fromLTRB(-80, -80, 80, 80);
+    final rect = Rect.fromLTRB(-70, -70, 70, 70);
     final startAngle = -math.pi / 2;
     final sweepAngle = ((math.pi * 2) / (target / counter * 100) * 100);
     final useCenter = false;
@@ -78,7 +78,7 @@ class CircleCounter extends CustomPainter {
     // draw the number of counter inside Arc
     final textStyle = TextStyle(
       color: Color(0xff2F6149),
-      fontSize: 50,
+      fontSize: 40,
       fontWeight: FontWeight.bold,
     );
     final textSpan = TextSpan(

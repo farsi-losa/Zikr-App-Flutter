@@ -239,7 +239,7 @@ class _DialogAddDzikirState extends State<DialogAddDzikir> {
                     Expanded(
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                            primary: Color(0xff93BC9C)),
+                            foregroundColor: Color(0xff93BC9C)),
                         onPressed: _handleTimerCLick,
                         child: Text(_timerStart ? 'stop' : 'start'),
                       ),
