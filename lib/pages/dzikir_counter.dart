@@ -372,16 +372,16 @@ class _DzikirCounterState extends State<DzikirCounter>
                                       : Column(children: [
                                           Spacer(),
                                           Container(
-                                            width: 130,
-                                            height: 130,
+                                            width: 90,
+                                            height: 90,
                                             child: Center(
                                               child: Container(
-                                                width: 95,
-                                                height: 95,
+                                                width: 60,
+                                                height: 60,
                                                 child: Center(
                                                   child: Container(
-                                                    width: 60,
-                                                    height: 60,
+                                                    width: 30,
+                                                    height: 30,
                                                     decoration: BoxDecoration(
                                                       borderRadius:
                                                           BorderRadius.all(

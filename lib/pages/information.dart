@@ -218,7 +218,7 @@ class _AppInformation extends State<AppInformation> {
                         _launchInBrowser();
                       },
                       style: ElevatedButton.styleFrom(
-                        primary: Color(0xffAF9C4D),
+                        foregroundColor: Color(0xffAF9C4D),
                       ),
                       child: Text(
                         'Review',

@@ -9,11 +9,11 @@ import 'firebase_options.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   try {
-    final String secretsKey = 'assets/secret.json';
+    final String secretsKey = 'assets/secret-dev.json';
     await SecretLoader(secretPath: secretsKey).load().then(
           (value) async => {
             await Firebase.initializeApp(
-              name: 'DzikirApps',
+              name: 'DzikirAppsDev',
               options: DefaultFirebaseOptions.currentPlatform,
             )
           },

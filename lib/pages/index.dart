@@ -114,9 +114,9 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
                       child: FadeTransition(
                         opacity: _animation,
                         child: Container(
-                          margin: EdgeInsets.only(
-                            top: 40,
-                          ),
+                          // margin: EdgeInsets.only(
+                          //   top: 40,
+                          // ),
                           padding: EdgeInsets.all(28),
                           width: 362,
                           height: 120,
