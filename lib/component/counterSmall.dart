@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:flutter_vibrate/flutter_vibrate.dart';
+
+import 'package:vibration/vibration.dart';
+import 'package:vibration/vibration_presets.dart';
 
 class CounterSmall extends StatefulWidget {
   final int timer;
@@ -40,12 +42,12 @@ class _CounterSmallState extends State<CounterSmall>
       _timerActive = true;
     });
     _timerZikr = Timer.periodic(Duration(milliseconds: _timerLength), (timer) {
-      Vibrate.feedback(FeedbackType.success);
+      Vibration.vibrate(preset: VibrationPreset.singleShortBuzz);
       setState(() {
         _counter++;
       });
       if (_counter == _qtyZikr) {
-        Vibrate.vibrate();
+        Vibration.vibrate(preset: VibrationPreset.longAlarmBuzz);
         _zikrStop();
       }
     });

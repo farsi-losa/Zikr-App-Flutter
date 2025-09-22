@@ -114,10 +114,7 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
                       child: FadeTransition(
                         opacity: _animation,
                         child: Container(
-                          // margin: EdgeInsets.only(
-                          //   top: 40,
-                          // ),
-                          padding: EdgeInsets.all(28),
+                          padding: EdgeInsets.all(20),
                           width: 362,
                           height: 120,
                           decoration: BoxDecoration(
@@ -125,7 +122,7 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
                             borderRadius: BorderRadius.all(Radius.circular(15)),
                             boxShadow: [
                               BoxShadow(
-                                color: Color(0xff8D8D8D).withOpacity(0.25),
+                                color: Color(0xff8D8D8D).withAlpha(25),
                                 spreadRadius: 0,
                                 blurRadius: 5,
                                 offset:
@@ -150,7 +147,7 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
                                           fontSize: 20),
                                     ),
                                     Padding(
-                                      padding: EdgeInsets.only(top: 8),
+                                      padding: EdgeInsets.only(top: 0),
                                       child: Text(
                                         'Dengan berdzikir hati menjadi tenang',
                                         style: TextStyle(
@@ -163,7 +160,6 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
                               ),
                               Container(
                                 width: 104,
-                                height: 54,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: AssetImage(

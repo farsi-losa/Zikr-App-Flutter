@@ -99,7 +99,7 @@ class _ItemMenuState extends State<ItemMenu>
                 borderRadius: BorderRadius.all(Radius.circular(15)),
                 boxShadow: [
                   BoxShadow(
-                    color: Color(0xff8D8D8D).withOpacity(0.25),
+                    color: Color(0xff8D8D8D).withAlpha(20),
                     spreadRadius: 0,
                     blurRadius: 5,
                     offset: Offset(0, 3), // changes position of shadow

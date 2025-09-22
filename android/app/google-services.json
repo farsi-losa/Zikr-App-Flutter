@@ -2,7 +2,7 @@
   "project_info": {
     "project_number": "834864364850",
     "project_id": "dzikir-app-dev",
-    "storage_bucket": "dzikir-app-dev.appspot.com"
+    "storage_bucket": "dzikir-app-dev.firebasestorage.app"
   },
   "client": [
     {

@@ -110,7 +110,7 @@ class WrapperDzikir extends StatelessWidget {
                                 color: Colors.white,
                                 boxShadow: [
                                   BoxShadow(
-                                    color: Colors.grey.withOpacity(0.2),
+                                    color: Colors.grey.withAlpha(20),
                                     spreadRadius: 2,
                                     blurRadius: 3,
                                     offset: Offset(
@@ -153,7 +153,7 @@ class WrapperDzikir extends StatelessWidget {
                         color: Color(0xff93BC9C),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
+                            color: Colors.grey.withAlpha(20),
                             spreadRadius: 2,
                             blurRadius: 3,
                             offset: Offset(2, 2), // changes position of shadow

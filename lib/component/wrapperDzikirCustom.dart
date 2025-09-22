@@ -175,7 +175,7 @@ class _WrapperDzikirCustomState extends State<WrapperDzikirCustom>
                                 settings.dzikirReference ? 50 : 0)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black.withOpacity(0.10),
+                            color: Colors.black.withAlpha(20),
                             spreadRadius: 0,
                             blurRadius: 30,
                             offset: Offset(0, -5), // changes position of shadow

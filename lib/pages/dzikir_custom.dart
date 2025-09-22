@@ -74,7 +74,10 @@ class _DzikirCustomState extends State<DzikirCustom> {
       onPressed: () {
         _showAddDzikirModal();
       },
-      child: Icon(Icons.add),
+      child: Icon(
+        Icons.add,
+        color: Colors.white,
+      ),
       backgroundColor: Color(0xff24573F),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(15))),

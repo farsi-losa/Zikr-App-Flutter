@@ -152,7 +152,7 @@ GridView animeGridView(data) {
             color: Colors.white,
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
+                color: Colors.grey.withAlpha(20),
                 blurRadius: 4,
                 offset: Offset(4, 4), // Shadow position
               ),

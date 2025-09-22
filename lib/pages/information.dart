@@ -80,7 +80,7 @@ class _AppInformation extends State<AppInformation> {
       child: Scaffold(
         appBar: AppBar(
           leading: new IconButton(
-              icon: new Icon(Icons.arrow_back),
+              icon: new Icon(Icons.arrow_back, color: Colors.white),
               onPressed: () {
                 Navigator.of(context).pop(AppIndex);
               }),
@@ -129,9 +129,9 @@ class _AppInformation extends State<AppInformation> {
                   Positioned(
                     left: 25.0,
                     right: 15.0,
-                    top: 230.0,
+                    top: 210.0,
                     child: Container(
-                      height: 150,
+                      height: 160,
                       margin: const EdgeInsets.fromLTRB(35, 0, 35, 20),
                       padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
                       alignment: Alignment.center,
@@ -140,7 +140,7 @@ class _AppInformation extends State<AppInformation> {
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.grey.withOpacity(0.2),
+                            color: Colors.grey.withAlpha(20),
                             spreadRadius: 2,
                             blurRadius: 3,
                             offset: Offset(2, 2), // changes position of shadow
@@ -195,7 +195,7 @@ class _AppInformation extends State<AppInformation> {
               ),
               Spacer(),
               Container(
-                height: 180,
+                height: 200,
                 margin: const EdgeInsets.fromLTRB(35, 0, 35, 10),
                 padding: const EdgeInsets.fromLTRB(35, 25, 35, 25),
                 alignment: Alignment.center,
@@ -218,7 +218,8 @@ class _AppInformation extends State<AppInformation> {
                         _launchInBrowser();
                       },
                       style: ElevatedButton.styleFrom(
-                        foregroundColor: Color(0xffAF9C4D),
+                        foregroundColor: Color.fromARGB(255, 122, 104, 33),
+                        backgroundColor: Color(0xffAF9C4D),
                       ),
                       child: Text(
                         'Review',

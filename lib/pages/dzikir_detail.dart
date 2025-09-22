@@ -59,7 +59,7 @@ class _DzikirDetail extends State<DzikirDetail>
       child: Scaffold(
         appBar: AppBar(
           leading: new IconButton(
-              icon: new Icon(Icons.arrow_back),
+              icon: new Icon(Icons.arrow_back, color: Colors.white),
               onPressed: () {
                 Navigator.of(context).pop(AppIndex);
               }),

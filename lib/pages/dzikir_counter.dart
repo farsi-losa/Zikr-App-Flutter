@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:flutter_vibrate/flutter_vibrate.dart';
+
+import 'package:vibration/vibration.dart';
 import 'package:dzikirapp/component/route.dart';
 import 'package:dzikirapp/component/circle.dart';
 import 'package:dzikirapp/db.dart';
+import 'package:vibration/vibration_presets.dart';
 
 class DzikirCounter extends StatefulWidget {
   final int timer;
@@ -71,12 +73,12 @@ class _DzikirCounterState extends State<DzikirCounter>
       _timerActive = true;
     });
     _timerZikr = Timer.periodic(Duration(milliseconds: _timerLength), (timer) {
-      Vibrate.feedback(FeedbackType.success);
+      Vibration.vibrate(preset: VibrationPreset.singleShortBuzz);
       setState(() {
         _counter++;
       });
       if (_counter == _qtyZikr) {
-        Vibrate.vibrate();
+        Vibration.vibrate(preset: VibrationPreset.longAlarmBuzz);
         _zikrStop();
       }
     });
@@ -118,10 +120,10 @@ class _DzikirCounterState extends State<DzikirCounter>
     }
 
     if (_qtyZikr == _counter) {
-      Vibrate.vibrate();
+      Vibration.vibrate(preset: VibrationPreset.longAlarmBuzz);
     } else {
       if (_vibrateOnTap) {
-        Vibrate.feedback(FeedbackType.success);
+        Vibration.vibrate(preset: VibrationPreset.singleShortBuzz);
       }
     }
   }
@@ -147,11 +149,12 @@ class _DzikirCounterState extends State<DzikirCounter>
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        // save last count when back
-        updateDzikirs(_id);
-        return true;
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (didPop) {
+          updateDzikirs(_id);
+        }
       },
       child: new Scaffold(
         appBar: AppBar(
@@ -186,7 +189,7 @@ class _DzikirCounterState extends State<DzikirCounter>
                       bottomRight: Radius.circular(25)),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.grey.withOpacity(0.20),
+                      color: Colors.grey.withAlpha(20),
                       spreadRadius: 0,
                       blurRadius: 14,
                       offset: Offset(0, 3), // changes position of shadow
@@ -321,7 +324,7 @@ class _DzikirCounterState extends State<DzikirCounter>
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           boxShadow: [
                             BoxShadow(
-                              color: Colors.grey.withOpacity(0.20),
+                              color: Colors.grey.withAlpha(20),
                               spreadRadius: 0,
                               blurRadius: 14,
                               offset:
@@ -423,7 +426,7 @@ class _DzikirCounterState extends State<DzikirCounter>
                             decoration: BoxDecoration(
                               boxShadow: [
                                 BoxShadow(
-                                  color: Color(0xff8D8D8D).withOpacity(0.25),
+                                  color: Color(0xff8D8D8D).withAlpha(25),
                                   spreadRadius: 0,
                                   blurRadius: 20,
                                   offset: Offset(
@@ -449,7 +452,7 @@ class _DzikirCounterState extends State<DzikirCounter>
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Color(0xffCACACA).withOpacity(0.20),
+                        color: Color(0xffCACACA).withAlpha(20),
                         spreadRadius: 0,
                         blurRadius: 20,
                         offset: Offset(0, 0), // changes position of shadow
@@ -465,7 +468,8 @@ class _DzikirCounterState extends State<DzikirCounter>
                       ),
                       color: Color(0xff24573F),
                     ),
-
+                    labelColor: Colors.white,
+                    indicatorSize: TabBarIndicatorSize.tab,
                     unselectedLabelColor: Color(0xff93BC9C),
                     tabs: [
                       Tab(

@@ -126,7 +126,9 @@ class _ItemWidget extends StatelessWidget {
                   data: IconThemeData(
                     size: iconSize,
                     color: isSelected
-                        ? item.activeColor.withOpacity(1)
+                        ? item.activeColor.withValues(
+                            alpha: 255,
+                          )
                         : item.inactiveColor == null
                             ? item.activeColor
                             : item.inactiveColor,
