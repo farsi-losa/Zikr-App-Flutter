@@ -1,0 +1,13 @@
+{
+  "welcomeMessage": "Dengan berdzikir hati menjadi tenang",
+  "@welcomeMessage": {
+    "description": "A simple greeting"
+  },
+  "advantage": "faedah",
+  "dzikirReference":"Referensi Dzikir",
+  "support":"Dukung kami dengan memberikan penilaian di appstore",
+  "titleMenu_1": "Dzikir Pagi",
+  "titleMenu_2": "Dzikir Petang",
+  "titleMenu_3": "Penghitung Dzikir",
+  "titleMenu_4": "Info Aplikasi"
+}

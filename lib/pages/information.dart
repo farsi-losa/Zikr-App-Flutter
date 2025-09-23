@@ -1,3 +1,4 @@
+import 'package:dzikirapp/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:dzikirapp/db.dart';
@@ -162,8 +163,9 @@ class _AppInformation extends State<AppInformation> {
                                 AsyncSnapshot<List<dynamic>> snapshot) {
                               if (snapshot.hasData) {
                                 return SwitchListTile(
-                                  title: const Text(
-                                    'Referensi dzikir',
+                                  title: Text(
+                                    AppLocalizations.of(context)!
+                                        .dzikirReference,
                                     style: TextStyle(
                                       fontSize: 14,
                                       color: Color(0xffE8F0EF),
@@ -204,7 +206,7 @@ class _AppInformation extends State<AppInformation> {
                   Container(
                     width: 200,
                     child: Text(
-                      'Dukung kami dengan memberikan penilaian di appstore',
+                      AppLocalizations.of(context)!.support,
                       textAlign: TextAlign.center,
                       style: TextStyle(color: Color(0xff24573F), fontSize: 12),
                     ),

@@ -71,10 +71,10 @@ Route createRouteToIndex() {
   );
 }
 
-Route createRouteToDetailDzikir(String dzikirType) {
+Route createRouteToDetailDzikir(String dzikirType, String languageCode) {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) =>
-        DzikirDetail(dzikirType: dzikirType),
+        DzikirDetail(dzikirType: dzikirType, LanguageCode: languageCode),
     transitionDuration: Duration(milliseconds: 500),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       animation = CurvedAnimation(parent: animation, curve: Curves.easeInCubic);

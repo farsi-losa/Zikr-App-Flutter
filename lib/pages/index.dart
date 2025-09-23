@@ -1,3 +1,4 @@
+import 'package:dzikirapp/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:dzikirapp/component/itemMenu.dart';
@@ -46,6 +47,7 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    // final l10n = AppLocalizations.of(context)!;
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => SettingsModel()),
@@ -149,7 +151,8 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
                                     Padding(
                                       padding: EdgeInsets.only(top: 0),
                                       child: Text(
-                                        'Dengan berdzikir hati menjadi tenang',
+                                        AppLocalizations.of(context)!
+                                            .welcomeMessage,
                                         style: TextStyle(
                                             color: Color(0xff24573F),
                                             fontWeight: FontWeight.w300),
@@ -183,13 +186,13 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
                       ItemMenu(
                           order: 1,
                           color: Color(0xffE8F0EF),
-                          textMenu: 'Dzikir pagi',
+                          textMenu: AppLocalizations.of(context)!.titleMenu_1,
                           image: 'assets/images/pagi_icon_color.png',
                           pageType: 'pagi'),
                       ItemMenu(
                         order: 2,
                         color: Color(0xffAF9C4D),
-                        textMenu: 'Dzikir petang',
+                        textMenu: AppLocalizations.of(context)!.titleMenu_2,
                         image: 'assets/images/petang_icon_color.png',
                         pageType: 'petang',
                       ),
@@ -201,14 +204,14 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
                       ItemMenu(
                         order: 3,
                         color: Color(0xff93BC9C),
-                        textMenu: 'Dzikir counter',
+                        textMenu: AppLocalizations.of(context)!.titleMenu_3,
                         image: 'assets/images/counter_dzikir.png',
                         pageType: 'custom',
                       ),
                       ItemMenu(
                         order: 4,
                         color: Color(0xffB64839),
-                        textMenu: 'App info',
+                        textMenu: AppLocalizations.of(context)!.titleMenu_4,
                         image: 'assets/images/info_setting_color.png',
                         pageType: 'appinfo',
                       ),

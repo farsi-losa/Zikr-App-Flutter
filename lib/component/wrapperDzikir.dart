@@ -1,5 +1,6 @@
 import 'package:dzikirapp/component/counterSmall.dart';
 import 'package:dzikirapp/component/separator.dart';
+import 'package:dzikirapp/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 // ListView WrapperDzikir(data, onDataChange, onItemClicked) {
@@ -126,7 +127,7 @@ class WrapperDzikir extends StatelessWidget {
                                     ),
                                     width: double.infinity,
                                     child: Text(
-                                      'Faedah:',
+                                      AppLocalizations.of(context)!.advantage,
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
                                         color: Color(0xff24573F),

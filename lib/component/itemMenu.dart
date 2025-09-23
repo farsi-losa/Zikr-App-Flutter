@@ -51,16 +51,16 @@ class _ItemMenuState extends State<ItemMenu>
     });
   }
 
-  void _onItemClicked() {
+  void _onItemClicked(String languageCode) {
     late var routeDzikir;
 
     FirebaseAnalytics analytics = FirebaseAnalytics.instance;
 
     if (widget.pageType == 'pagi') {
-      routeDzikir = createRouteToDetailDzikir('pagi');
+      routeDzikir = createRouteToDetailDzikir('pagi', languageCode);
       analytics.logEvent(name: 'dzikir_pagi_click', parameters: null);
     } else if (widget.pageType == 'petang') {
-      routeDzikir = createRouteToDetailDzikir('petang');
+      routeDzikir = createRouteToDetailDzikir('petang', languageCode);
       analytics.logEvent(name: 'dzikir_petang_click', parameters: null);
     } else if (widget.pageType == 'custom') {
       routeDzikir = createRouteToDzikirCustom();
@@ -79,6 +79,7 @@ class _ItemMenuState extends State<ItemMenu>
 
   @override
   Widget build(BuildContext context) {
+    final String langCode = Localizations.localeOf(context).languageCode;
     return Container(
       width: 183,
       height: 185,
@@ -112,7 +113,7 @@ class _ItemMenuState extends State<ItemMenu>
                   splashColor: Color(0xffE8F0EF),
                   borderRadius: new BorderRadius.all(Radius.circular(15)),
                   onTap: () {
-                    _onItemClicked();
+                    _onItemClicked(langCode);
                   },
                   child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

@@ -6,7 +6,9 @@ import 'package:dzikirapp/pages/index.dart';
 
 class DzikirDetail extends StatefulWidget {
   final String dzikirType;
-  DzikirDetail({required this.dzikirType, Key? key}) : super(key: key);
+  final String LanguageCode;
+  DzikirDetail({required this.dzikirType, required this.LanguageCode, Key? key})
+      : super(key: key);
   @override
   _DzikirDetail createState() => _DzikirDetail();
 }
@@ -41,10 +43,19 @@ class _DzikirDetail extends State<DzikirDetail>
 
   Future<void> readJson() async {
     final String dzikirPagi = 'assets/dzikirpagi.json';
+    final String dzikirPagiEN = 'assets/dzikirpagi_en.json';
     final String dzikirPetang = 'assets/dzikirpetang.json';
-    final String response = await rootBundle
-        .loadString(widget.dzikirType == 'pagi' ? dzikirPagi : dzikirPetang);
-    final data = await json.decode(response);
+    final String dzikirPetangEN = 'assets/dzikirpetang_en.json';
+    print("widget.LanguageCode : ${widget.LanguageCode}");
+    final String jsonString =
+        await rootBundle.loadString(widget.dzikirType == 'pagi'
+            ? (widget.LanguageCode == 'id' ? dzikirPagi : dzikirPagiEN)
+            : widget.LanguageCode == 'id'
+                ? dzikirPetang
+                : dzikirPetangEN);
+    // final String response = await rootBundle
+    //     .loadString(widget.dzikirType == 'pagi' ? dzikirPagi : dzikirPetang);
+    final data = await json.decode(jsonString);
     setState(() {
       _items = data["items"];
     });
