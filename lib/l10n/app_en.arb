@@ -4,10 +4,10 @@
     "description": "A simple greeting"
   },
   "advantage": "advantage",
-  "dzikirReference":"Dzikir reference",
+  "dzikirReference":"Dhikr reference",
   "support":"Support us by giving a rating on the App Store",
-  "titleMenu_1": "Morning Dzikir",
-  "titleMenu_2": "Afternoon Dzikir",
-  "titleMenu_3": "Dzikir Counter",
+  "titleMenu_1": "Morning Dhikr",
+  "titleMenu_2": "Evening Dhikr",
+  "titleMenu_3": "Dhikr Counter",
   "titleMenu_4": "App Info"
 }

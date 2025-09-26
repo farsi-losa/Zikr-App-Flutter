@@ -119,18 +119,18 @@ class _ItemMenuState extends State<ItemMenu>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
-                            height: 39,
-                            padding: EdgeInsets.fromLTRB(20, 20, 20, 0),
+                            height: 65,
+                            padding: EdgeInsets.fromLTRB(20, 15, 20, 0),
                             child: Text(
                               widget.textMenu,
                               textAlign: TextAlign.left,
                               style: TextStyle(
-                                  fontSize: 16,
+                                  fontSize: 19,
                                   fontWeight: FontWeight.bold,
                                   color: Color(0xff24573F)),
                             )),
                         Container(
-                          height: 106,
+                          height: 80,
                           width: double.infinity,
                           child: Stack(children: [
                             Positioned(

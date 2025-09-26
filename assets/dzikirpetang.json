@@ -64,7 +64,15 @@
       "arti": "“Aku berlindung dengan kalimat-kalimat Allah yang sempurna dari kejahatan makhluk yang diciptakanNya.”",
       "benefit": "Siapa yang mengucapkannya di petang hari, niscaya tidak ada racun atau binatang (seperti: kalajengking) yang mencelakakannya di malam itu.",
       "riwayat": "(HR. Ahmad 2/290, An Nasai-dalam ‘Amal Al Yaum wal Lailah no. 590 dan Ibnus Sunni no. 68. Lihat Shahih At-Tirmidzi 3/187, Shahih Ibnu Majah 2/266, dan-Tuhfatul Akhyar hal. 45"
-      },{
+    },{
+      "counter":false,
+      "title": "-",
+      "ayat":"اَللَّهُمَّ إِنِّيْ أَمْسَيْتُ أُشْهِدُكَ وَأُشْهِدُ حَمَلَةَ عَرْشِكَ، وَمَلاَئِكَتَكَ وَجَمِيْعَ خَلْقِكَ، أَنَّكَ أَنْتَ اللهُ لاَ إِلَـهَ إِلاَّ أَنْتَ وَحْدَكَ لاَ شَرِيْكَ لَكَ، وَأَنَّ مُحَمَّدًا عَبْدُكَ وَرَسُوْلُكَ",
+      "arti":"“Ya Allah, sesungguhnya aku di waktu petang ini mempersaksikan Engkau, malaikat yang memikul ‘Arsy-Mu, malaikat-malaikat, dan seluruh makhluk-Mu bahwa sesungguhnya Engkau adalah Allah, tiada ilah yang berhak disembah kecuali Engkau semata, tiada sekutu bagi-Mu, dan sesungguhnya Muhammad adalah hamba dan utusan-Mu.”",
+      "qty":"4 x",
+      "benefit":"dibaca 4x di pagi atau petang hari, Allah akan membebaskan pembacanya dari api neraka.",
+      "riwayat":"HR. Abu Daud no. 5069. Al Hafizh Abu Thohir mengatakan bahwa hadits ini hasan."
+    },{
       "counter": false,
       "title": "-",
       "ayat": "اَللَّهُمَّ إِنِّيْ أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي الدُّنْيَا وَاْلآخِرَةِ، اَللَّهُمَّ إِنِّيْ أَسْأَلُكَ الْعَفْوَ وَالْعَافِيَةَ فِي دِيْنِيْ وَدُنْيَايَ وَأَهْلِيْ وَمَالِيْ اللَّهُمَّ اسْتُرْ عَوْرَاتِى وَآمِنْ رَوْعَاتِى. اَللَّهُمَّ احْفَظْنِيْ مِنْ بَيْنِ يَدَيَّ، وَمِنْ خَلْفِيْ، وَعَنْ يَمِيْنِيْ وَعَنْ شِمَالِيْ، وَمِنْ فَوْقِيْ، وَأَعُوْذُ بِعَظَمَتِكَ أَنْ أُغْتَالَ مِنْ تَحْتِيْ",
@@ -72,7 +80,7 @@
       "arti": "“Ya Allah, sesungguhnya aku memohon kebajikan dan keselamatan di dunia dan akhirat. Ya Allah, sesungguhnya aku memohon kebajikan dan keselamatan dalam agama, dunia, keluarga dan hartaku. Ya Allah, tutupilah auratku (aib dan sesuatu yang tidak layak dilihat orang) dan tenteramkanlah aku dari rasa takut. Ya Allah, peliharalah aku dari muka, belakang, kanan, kiri dan atasku. Aku berlindung dengan kebesaran-Mu, agar aku tidak disambar dari bawahku (oleh ular atau tenggelam dalam bumi dan lain-lain yang membuat aku jatuh).”",
       "benefit": "Rasulullah shallallahu ‘alaihi wa sallam tidaklah pernah meninggalkan do’a ini di pagi dan petang hari. Di dalamnya berisi perlindungan dan keselamatan pada agama, dunia, keluarga dan harta dari berbagai macam gangguan yang datang dari berbagai arah.",
       "riwayat": "HR. Al-Bukhari dalam al-Adabul Mufrad no. 1200, Abu Dawud no. 5074, An-Nasa-i VIII / 282, Ibnu Majah no. 3871, al-Hakim 1/517-518, dan lainnya dari Ibnu Umar radhiyallahu ‘anhumaa. Lihat Shahiih al-Adabul Mufrad no. 912, shahih"
-      },{
+    },{
       "counter": false,
       "title": "-",
       "ayat": "اَللَّهُمَّ عَالِمَ الْغَيْبِ وَالشَّهَادَةِ فَاطِرَ السَّمَاوَاتِ وَاْلأَرْضِ، رَبَّ كُلِّ شَيْءٍ وَمَلِيْكَهُ، أَشْهَدُ أَنْ لاَ إِلَـهَ إِلاَّ أَنْتَ، أَعُوْذُ بِكَ مِنْ شَرِّ نَفْسِيْ، وَمِنْ شَرِّ الشَّيْطَانِ وَشِرْكِهِ، وَأَنْ أَقْتَرِفَ عَلَى نَفْسِيْ سُوْءًا أَوْ أَجُرَّهُ إِلَى مُسْلِمٍ",
@@ -122,15 +130,6 @@
       "arti": "“Maha suci Allah, aku memuji-Nya.”",
       "benefit": "Barangsiapa yang mengucapkan kalimat ‘subhanallah wa bi hamdih’ di pagi dan petang hari sebanyak 100 x, maka tidak ada yang datang pada hari kiamat yang lebih baik dari yang ia lakukan kecuali orang yang mengucapkan semisal atau lebih dari itu.",
       "riwayat": "HR. Muslim no. 2692"
-    },{
-      "counter": true,
-      "timer": 1300,
-      "title": "-",
-      "ayat": "أَعُوْذُ بِكَلِمَاتِ اللهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ",
-      "qty": "3 x",
-      "arti": "“Aku berlindung dengan kalimat-kalimat Allah yang sempurna dari kejahatan makhluk yang diciptakanNya.”",
-      "benefit": "Siapa yang mengucapkannya di petang hari, niscaya tidak ada racun atau binatang (seperti: kalajengking) yang mencelakakannya di malam itu.",
-      "riwayat": "HR. Ahmad 2: 290"
     }
   ]
 } 

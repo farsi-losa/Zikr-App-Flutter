@@ -110,7 +110,7 @@ abstract class AppLocalizations {
   /// No description provided for @dzikirReference.
   ///
   /// In en, this message translates to:
-  /// **'Dzikir reference'**
+  /// **'Dhikr reference'**
   String get dzikirReference;
 
   /// No description provided for @support.
@@ -122,19 +122,19 @@ abstract class AppLocalizations {
   /// No description provided for @titleMenu_1.
   ///
   /// In en, this message translates to:
-  /// **'Morning Dzikir'**
+  /// **'Morning Dhikr'**
   String get titleMenu_1;
 
   /// No description provided for @titleMenu_2.
   ///
   /// In en, this message translates to:
-  /// **'Afternoon Dzikir'**
+  /// **'Evening Dhikr'**
   String get titleMenu_2;
 
   /// No description provided for @titleMenu_3.
   ///
   /// In en, this message translates to:
-  /// **'Dzikir Counter'**
+  /// **'Dhikr Counter'**
   String get titleMenu_3;
 
   /// No description provided for @titleMenu_4.

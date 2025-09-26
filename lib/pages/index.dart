@@ -146,7 +146,7 @@ class _AppIndex extends State<AppIndex> with TickerProviderStateMixin {
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           color: Color(0xffAF9C4D),
-                                          fontSize: 20),
+                                          fontSize: 25),
                                     ),
                                     Padding(
                                       padding: EdgeInsets.only(top: 0),

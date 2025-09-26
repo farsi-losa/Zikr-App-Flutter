@@ -47,6 +47,7 @@ class MyApp extends StatelessWidget {
       title: 'Dzikir app',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        
       ),
       localizationsDelegates: const [
         AppLocalizations.delegate,

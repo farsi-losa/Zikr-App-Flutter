@@ -15,19 +15,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get advantage => 'advantage';
 
   @override
-  String get dzikirReference => 'Dzikir reference';
+  String get dzikirReference => 'Dhikr reference';
 
   @override
   String get support => 'Support us by giving a rating on the App Store';
 
   @override
-  String get titleMenu_1 => 'Morning Dzikir';
+  String get titleMenu_1 => 'Morning Dhikr';
 
   @override
-  String get titleMenu_2 => 'Afternoon Dzikir';
+  String get titleMenu_2 => 'Evening Dhikr';
 
   @override
-  String get titleMenu_3 => 'Dzikir Counter';
+  String get titleMenu_3 => 'Dhikr Counter';
 
   @override
   String get titleMenu_4 => 'App Info';

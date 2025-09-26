@@ -71,7 +71,7 @@ class _WrapperDzikirCustomState extends State<WrapperDzikirCustom>
   }
 
   void _onItemClicked(data, dzikirType) {
-    Navigator.of(context).push(createRoute(data, dzikirType)).then((value) {
+    Navigator.of(context).push(createRoute(data, dzikirType, )).then((value) {
       _onDataChange();
     });
   }
